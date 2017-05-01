@@ -8,7 +8,7 @@
 \usepackage{pdfpages}
 
 
-\title{Build Your Own Octopus(OctopusDB). Blinktopus}
+\title{Build Your Own OctopusDB.\\ Blinktopus}
 \author{Ali Hashaam, Ali Memon, Guzel Mussilova, Pavlo Shevchenko}
 \date{May 2, 2017}
 \institute{Scientific Project: Databases for Multi-Dimensional Data, Genomics and Modern Hardware}
@@ -59,16 +59,101 @@ Like "real" octopuses can mimic other creatures and adjust to the environment
 \begin{itemize}
 \item{Not to \textbf{clone} OctopusDB} \pause
 \item{Provide a \textbf{framework} that gives user a chance to act as \textit{Holistic SV Optimizer}} \pause
+\item{Add \textbf{Approximate Query Processing (AQP)}. BlinkDB}
+\pause
 \item{\textbf{Evaluate} performance depending on choice of SV}
+\end{itemize}
+\end{frame}
+
+\section{Approximate Query Processing}
+\subsection{Schedule}
+\begin{frame}
+\frametitle{AQP. Motivation}
+The goal is to provide approximate answers with acceptable accuracy in orders of magnitude less time than that for the exact query processing.\footnote{Liu, Qing. Approximate Query Processing (Reference work entry) in: Liu, Ling, and M. Tamer Özsu. Encyclopedia of database systems. Vol. 6. Berlin, Heidelberg, Germany: Springer, 2009.}\\
+\vspace{0.3 cm}
+Revised query optimization goals:
+\begin{itemize}
+\item{Efficiently Accessing all query-relevant tuples.}
+\item{Choose the best query plan among the available equivalent ones.}
+\end{itemize}
+In many cases, not all query-relevant data needs to be accessed.
+
+\end{frame}
+
+\subsection{Workflow}
+\begin{frame}
+\frametitle{AQP. Workflow}
+\includegraphics[scale=0.5]{img/blinkdb-workflow.png}
+\footnote{The general anatomy of approximate query processing system}
+\end{frame}
+
+\subsection{Synopsis Manager}
+\begin{frame}
+\frametitle{AQP. Synopsis Manager}
+A synopsis captures essential properties of the real data while taking less space.\\
+\vspace{0.3 cm}
+The synopses manager is responsible for:
+\begin{itemize}
+\item{Type of summary to use(Samples, histograms, sketches, wavelets etc.)}
+\item{When to build it (offline vs. online)}
+\item{How to store it (to use overlapping samples, how to structure/index/cache the synopses)}
+\item{When to update it (batch or online)}
 \end{itemize}
 \end{frame}
 
 \subsection{Our Vision}
 \begin{frame}
 \frametitle{Our Vision}
+\includegraphics[scale=0.45]{img/flow.jpeg}
+\end{frame}
+
+\section{Building a Blinktopus: What is our challenge?}
+\begin{frame}
+\frametitle{Building a Blinktopus: What is our challenge?}
+First, the Octopus:
+\begin{itemize}
+\item{Store incoming data in logs.}
+\item{Query the logs (just a filter query)}
+\item{Allow users to create views (row, column) over certain logs.}
+\item{List all views and logs}
+\item{Launch the query over views or over logs, see the changes in performance.}
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Building a Blinktopus: What is our challenge?}
+Enter AQP:
+\begin{itemize}
+\item{What synopsis can we easily support as a view for a specific query? Which will we choose to test? (Samples, histograms?)}
+\item{Do Octopuses and AQP match well together?}
+\item{How will we allow users to build this view?}
+\item{How will we support queries using this view?}\\
+\vspace{0.5 cm}
+Blinktopuses are entirely a novel idea\\ \textbf{No one has done this before, ever..!}
+\end{itemize}
 \end{frame}
 
 \section{Project Organisation}
+
+
+\subsection{Roles}
+\begin{frame}
+\frametitle{Project Organisation.Roles}
+
+\textbf{Team:} \\
+\hspace{0.3 cm}Guzel - Manager (Team Leader)\\
+\hspace{0.3 cm}Ali H. - Developer\\
+\hspace{0.3 cm}Ali M. - Developer\\
+\hspace{0.3 cm}Pavlo - Researcher\\
+
+\vspace{0.2 cm}
+\textbf{Supervisor:} \\
+\hspace{0.3 cm} Gabriel Campero Durand \\
+
+\vspace{0.2 cm}
+Changing roles after each milestone.
+
+\end{frame}
+
 
 \subsection{Schedule}
 \begin{frame}
@@ -91,25 +176,6 @@ Like "real" octopuses can mimic other creatures and adjust to the environment
 \vspace{0.5 cm}
 \hspace{0.5 cm} Team Meetings: Mo 14-15 \\
 \hspace{0.5 cm} Meetings with supervisor: We 10-11
-
-\end{frame}
-
-\subsection{Roles}
-\begin{frame}
-\frametitle{Project Organisation.Roles}
-
-\textbf{Team:} \\
-\hspace{0.3 cm}Ali H. - Developer\\
-\hspace{0.3 cm}Ali M. - Developer\\
-\hspace{0.3 cm}Guzel - Manager (Team Leader)\\
-\hspace{0.3 cm}Pavlo - Researcher\\
-
-\vspace{0.2 cm}
-\textbf{Supervisor:} \\
-\hspace{0.3 cm} Gabriel Campero Durand \\
-
-\vspace{0.2 cm}
-Changing roles after each milestone.
 
 \end{frame}
 
