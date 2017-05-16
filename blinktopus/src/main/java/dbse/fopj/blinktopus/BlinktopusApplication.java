@@ -1,5 +1,8 @@
 package dbse.fopj.blinktopus;
 
+import dbse.fopj.blinktopus.api.managers.LogManager;
+import dbse.fopj.blinktopus.health.BlinktopusHealth;
+import dbse.fopj.blinktopus.resources.QueryProcessor;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -17,13 +20,14 @@ public class BlinktopusApplication extends Application<BlinktopusConfiguration> 
 
     @Override
     public void initialize(final Bootstrap<BlinktopusConfiguration> bootstrap) {
-        // TODO: application initialization
+        LogManager.getLogManager().loadData("/home/urmikl18/Uni/SoSe17/Blinking_Octopus/blinktopus/dataset/orders1.csv");
     }
 
     @Override
     public void run(final BlinktopusConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
+        environment.healthChecks().register("default", new BlinktopusHealth());
+        environment.jersey().register(new QueryProcessor());
     }
 
 }
