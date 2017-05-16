@@ -112,11 +112,12 @@ Samples, histograms, wavelets, sketches." Foundations and Trends in Databases 4,
 Representative subset, chosen by stochastic sampling methods (e.g. Bernoulli, stratified,simple random with and without replacement).\pause
 \vspace{0.2 cm}
 \begin{itemize}
-\item{The same schema as the data is used to sample, thus they the specialized operators are not needed.}
+\item{Easy to implement.}
+\item{Through adhering the same data structure as original tables support the widest range of queries.}
 \item{Unbiased estimators for SUM/AVG queries are straightforwardly built.}
-\item{Can be constructed immediately after user query has been issued, without incurring a delay.}
-\item{Imprecise estimates of a query result can be incrementally enhanced by collecting more samples.}
-\item{Due to general-purpose data structure can be used to answer a wide variety of arbitrary queries.}
+\item{Due to the immediate construction after issuing user query do not incur a delay.}
+\item{Collecting more samples incrementally enhance imprecise estimates of a query results.}
+\item{Without using the attribute value independence assumption allow high quality selectivity estimations.}
 \end{itemize}
 \end{frame}
 
@@ -125,10 +126,11 @@ Representative subset, chosen by stochastic sampling methods (e.g. Bernoulli, st
 \frametitle{Types of Synopses: Samples}
 \begin{itemize}
 \item{Poor estimations for less results.}
-\item{For larger relations more advanced techniques to make the sampling scalable are to be implemented.}
-\item{Selectivity estimations over larger datasets might be less efficient.}
+\item{Larger relations need more advanced techniques to make the sampling more scalable.}
+\item{Selectivity estimations over larger datasets are less efficient.}
 \item{Sensitive to skew and outliers.}
 \item{Hard to use with (NOT-)/IN, DISTINCT, EXISTS queries.}
+\item{Might be difficult to interpret by statistically unsophisticated users.}
 \end{itemize}
 \end{frame}
 
@@ -141,7 +143,7 @@ to approximately answer the query.\pause
 \vspace{0.2 cm}
 \begin{itemize}
 \item{A natural solution for range-sum queries.}
-\item{Due to conceptual simplicity can be effectively used for a broad variety of estimation tasks(E.g. set-valued queries, real-valued data, and aggregate queries over predicates that more complex than simple ranges.}
+\item{Conceptual simplicity allows an effective use of a broad variety of estimation tasks(E.g. set-valued queries, real-valued data, and aggregate queries over predicates that more complex than simple ranges).}
 \item{Relatively simple in interpretation.}
 \item{Practically acceptable accuracies, provided that the “sufficient” storage space are allocated.}
 \end{itemize}
@@ -161,13 +163,13 @@ to approximately answer the query.\pause
 \subsection{Types of Synopses: Wavelets}
 \begin{frame}
 \frametitle{Types of Synopses: Wavelets}
-Transform the data to represent the most significant features in a “frequency” domain and can capture combinations of high and low frequency information.\pause
+Transform the data to represent significant features in a “frequency” domain and can capture combinations of high and low frequency information.\pause
 \begin{itemize}
 \item{Useful for range-sum queries.}
-\item{Through an appropriately defined AQP algebra general SPJ (select, project, join) queries can be applied on relation summaries.}
-\item{More amenable to maintenance under dynamic data due to the linearity of the basic Haar transform.}
-%%\item{Non-trivial to maintain wavelet coefficients under arbitrary update patterns.}
-\item{Large number of coefficients must be retained in order to guarantee accurate reconstruction of the data distribution in the multi-dimensional wavelet.}
+\item{Appropriately defined AQP algebra allows applying general SPJ (select, project, join) queries on relation summaries.}
+\item{The linearity of the basic Haar transform manages a better maintenance under dynamic data than histograms.}
+\item{Non-trivial to maintain wavelet coefficients under arbitrary update patterns.}
+\item{Large number of coefficients must be retained to guarantee an accurate reconstruction of the data distribution in the multi-dimensional wavelet.}
 \end{itemize}
 \end{frame}
 
@@ -176,8 +178,8 @@ Transform the data to represent the most significant features in a “frequency�
 \frametitle{Types of Synopses: Sketches}
 \begin{itemize}
 \item{Especially appropriate for streaming data.}
-\item{Each new piece of data might be independent of the current state of the summary, which  makes them faster to process, and easy parallelizable.}
-\item{Sketch summaries can be used as primitives within more complex mining operations, and to extract wavelet and histogram representations of streaming data.}
+\item{Process fasters and easily paralleliazed if each new piece of data is independent of the current state of the summary.}
+\item{Can be used as primitives within more complex mining operations, and to extract wavelet and histogram representations of streaming data.}
 \end{itemize}
 \end{frame}
 
@@ -185,13 +187,27 @@ Transform the data to represent the most significant features in a “frequency�
 \begin{frame}
 \frametitle{Types of Synopses: Sketches}
 \begin{itemize}
-\item{Tends to be focused on answering a single type of query.}
-\item{Number of parameters affect the accuracy and probability of failure.}
+\item{Mostly focused on answering a single type of query.}
+\item{Number of parameters affects the accuracy and probability of failure.}
 \item{Techniques do not extend well to more complex queries which combine multiple sub-queries.}
 \item{The only complexity is mathematical (for complete accuracy estimation).}
 \end{itemize}
 \end{frame}
 
+\begin{comment}
+\subsection{Types of Synopses: Others}
+\begin{frame}
+\frametitle{Types of Synopses: Others}
+Other types of synopses given the specific queries:
+\begin{itemize}
+\vspace{0.25 cm}
+\item{DISTINCT COUNT - HyperLogLog(HLL)}
+\item{COUNT-GROUP BY - Count-Min-Sketch(CMS)}
+\item{K-nearest neighbor - Neighbor Sensitive Hashing (KSH) tables}
+\item{Foreign-key join - Join Synopsis}
+\end{itemize}
+\end{frame}
+\end{comment}
 
 \section{Building a Blinktopus. Recall}
 \begin{frame}
@@ -220,10 +236,10 @@ Enter AQP:
 \begin{frame}
 \frametitle{Building a Blinktopus. IDE}
 \begin{itemize}
-\item{Back-end}
+\item{Back end}
 \includegraphics[scale=0.3]{img/dropwizard.png}
 \vspace{0.25 cm}
-\item{Front-end}
+\item{Front end}
 \includegraphics[scale=0.2]{img/jpnotebook.png}
 \footnote{\tiny 
 Sources: http://jupyter.org/\\
