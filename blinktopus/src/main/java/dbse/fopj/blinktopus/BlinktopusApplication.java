@@ -21,6 +21,7 @@ public class BlinktopusApplication extends Application<BlinktopusConfiguration> 
     @Override
     public void initialize(final Bootstrap<BlinktopusConfiguration> bootstrap) {
         LogManager.getLogManager().loadData("/home/urmikl18/Uni/SoSe17/Blinking_Octopus/blinktopus/dataset/orders1.csv");
+        LogManager.getLogManager().loadData("/home/urmikl18/Uni/SoSe17/Blinking_Octopus/blinktopus/dataset/lineitems1.csv");
     }
 
     @Override

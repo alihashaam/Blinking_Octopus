@@ -1,5 +1,5 @@
 package dbse.fopj.blinktopus.api.sv;
 
-public class ColSV {
-
+public class ColSV extends SV{
+	
 }

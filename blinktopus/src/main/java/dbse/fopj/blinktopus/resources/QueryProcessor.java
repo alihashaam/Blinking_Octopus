@@ -43,6 +43,7 @@ public class QueryProcessor {
 	public Result query(@QueryParam("SVid") String SVId, @QueryParam("type") String type,
 			@QueryParam("attr") String attr, @QueryParam("lower") double lower, @QueryParam("higher") double higher,
 			@QueryParam("create") boolean createSVOrNot) {
+		
 		return LogManager.getLogManager().scan(type, attr, lower, higher);
 	}
 

@@ -3,13 +3,10 @@ package dbse.fopj.blinktopus.api.managers;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import dbse.fopj.blinktopus.api.datamodel.*;
@@ -20,6 +17,9 @@ public final class LogManager {
 	private List<Tuple> dataLog = new ArrayList<Tuple>();
 	
 	private final HashMap<String, Integer> attrIndex = new HashMap<String, Integer>() {
+		
+		private static final long serialVersionUID = 1L;
+
 		{
             put("totalprice", 0);
             put("orderdate", 1);
@@ -60,8 +60,8 @@ public final class LogManager {
 							line[5].trim(), Integer.parseInt(line[6].trim()), line[7].trim()));
 				else if (line.length == 14)
 					this.dataLog.add(new LineItem(Long.parseLong(line[0].trim()), Integer.parseInt(line[1].trim()),
-							Long.parseLong(line[2].trim()), Long.parseLong(line[3].trim()),
-							Long.parseLong(line[4].trim()), Long.parseLong(line[5].trim()), line[6].trim().charAt(0),
+							Double.parseDouble(line[2].trim()), Double.parseDouble(line[3].trim()),
+							Double.parseDouble(line[4].trim()), Double.parseDouble(line[5].trim()), line[6].trim().charAt(0),
 							line[7].trim().charAt(0), format.parse(line[8].trim()), format.parse(line[9].trim()),
 							format.parse(line[10].trim()), line[11].trim(), line[12].trim(), line[13].trim()));
 			}
@@ -79,25 +79,26 @@ public final class LogManager {
 	}
 
 	public LogResult scan(String type, String attr, double lower, double higher) {
-			LogResult res=new LogResult();
+			long start=System.nanoTime();
+			List<Tuple> res = new ArrayList<Tuple>();
 		
 			if (type == null && attr == null)
-				res = new LogResult(this.dataLog);
+				res = this.dataLog;
 			else {
 				if (type.toLowerCase().equals("orders"))
 				{
 					switch(attrIndex.get(attr.toLowerCase()))
 					{
-					case 0: res = new LogResult(this.dataLog.stream().filter(
+					case 0: res = this.dataLog.stream().filter(
 							(Tuple e) -> (e.getType().toLowerCase().equals("order") 
 									&& ((Order) e).getTotalPrice() >= lower 
 									&& ((Order) e).getTotalPrice() <= higher
-									)).collect(Collectors.toList())); break;
-					case 1: res = new LogResult(this.dataLog.stream().filter(
+									)).collect(Collectors.toList()); break;
+					case 1: res = this.dataLog.stream().filter(
 							(Tuple e) -> (e.getType().toLowerCase().equals("order") 
 									&& ((Order) e).getOrderDate().getTime()>=lower 
 									&& ((Order) e).getOrderDate().getTime() <= higher
-									)).collect(Collectors.toList())); break;
+									)).collect(Collectors.toList()); break;
 					default: res = null; break;
 					}
 				}
@@ -105,51 +106,51 @@ public final class LogManager {
 				{
 					switch(attrIndex.get(attr.toLowerCase()))
 					{
-					case 0: res = new LogResult(this.dataLog.stream().filter(
+					case 0: res = this.dataLog.stream().filter(
 							(Tuple e) -> (e.getType().toLowerCase().equals("lineitem") 
 									&& ((LineItem) e).getLineNumber() >= lower 
 									&& ((LineItem) e).getLineNumber() <= higher
-									)).collect(Collectors.toList())); break;
-					case 1: res = new LogResult(this.dataLog.stream().filter(
+									)).collect(Collectors.toList()); break;
+					case 1: res = this.dataLog.stream().filter(
 							(Tuple e) -> (e.getType().toLowerCase().equals("lineitem") 
 									&& ((LineItem) e).getQuantity()>=lower 
 									&& ((LineItem) e).getQuantity() <= higher
-									)).collect(Collectors.toList())); break;
-					case 2: res = new LogResult(this.dataLog.stream().filter(
+									)).collect(Collectors.toList()); break;
+					case 2: res = this.dataLog.stream().filter(
 							(Tuple e) -> (e.getType().toLowerCase().equals("lineitem") 
 									&& ((LineItem) e).getExtendedPrice() >= lower 
 									&& ((LineItem) e).getExtendedPrice() <= higher
-									)).collect(Collectors.toList())); break;
-					case 3: res = new LogResult(this.dataLog.stream().filter(
+									)).collect(Collectors.toList()); break;
+					case 3: res = this.dataLog.stream().filter(
 							(Tuple e) -> (e.getType().toLowerCase().equals("lineitem") 
 									&& ((LineItem) e).getDiscount()>=lower 
 									&& ((LineItem) e).getDiscount() <= higher
-									)).collect(Collectors.toList())); break;
-					case 4: res = new LogResult(this.dataLog.stream().filter(
+									)).collect(Collectors.toList()); break;
+					case 4: res = this.dataLog.stream().filter(
 							(Tuple e) -> (e.getType().toLowerCase().equals("lineitem") 
 									&& ((LineItem) e).getTax() >= lower 
 									&& ((LineItem) e).getTax() <= higher
-									)).collect(Collectors.toList())); break;
-					case 5: res = new LogResult(this.dataLog.stream().filter(
+									)).collect(Collectors.toList()); break;
+					case 5: res = this.dataLog.stream().filter(
 							(Tuple e) -> (e.getType().toLowerCase().equals("lineitem") 
 									&& ((LineItem) e).getShipDate().getTime()>=lower 
 									&& ((LineItem) e).getShipDate().getTime() <= higher
-									)).collect(Collectors.toList())); break;
-					case 6: res = new LogResult(this.dataLog.stream().filter(
+									)).collect(Collectors.toList()); break;
+					case 6: res = this.dataLog.stream().filter(
 							(Tuple e) -> (e.getType().toLowerCase().equals("lineitem") 
 									&& ((LineItem) e).getCommitDate().getTime()>=lower 
 									&& ((LineItem) e).getCommitDate().getTime() <= higher
-									)).collect(Collectors.toList())); break;
-					case 7: res = new LogResult(this.dataLog.stream().filter(
+									)).collect(Collectors.toList()); break;
+					case 7: res = this.dataLog.stream().filter(
 							(Tuple e) -> (e.getType().toLowerCase().equals("lineitem") 
 									&& ((LineItem) e).getReceiptDate().getTime()>=lower 
 									&& ((LineItem) e).getReceiptDate().getTime() <= higher
-									)).collect(Collectors.toList())); break;
+									)).collect(Collectors.toList()); break;
 					default: res = null; break;
 					}
 				}
 			}
-		return res;
+		return new LogResult(res,System.nanoTime()-start,res.size());
 		
 	}
 
