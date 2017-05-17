@@ -42,6 +42,7 @@ public final class LogManager {
 		return INSTANCE;
 	}
 
+	//load data from csv at pathname
 	public void loadData(String pathname) {
 		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 		String csvFile = pathname;
@@ -78,6 +79,7 @@ public final class LogManager {
 		}
 	}
 
+	//get results from Log of type, with range [lower,higher] applied to attr
 	public LogResult scan(String type, String attr, double lower, double higher) {
 			long start=System.nanoTime();
 			List<Tuple> res = new ArrayList<Tuple>();

@@ -1,5 +1,8 @@
 package dbse.fopj.blinktopus;
 
+import java.io.File;
+import java.io.IOException;
+
 import dbse.fopj.blinktopus.api.managers.LogManager;
 import dbse.fopj.blinktopus.health.BlinktopusHealth;
 import dbse.fopj.blinktopus.resources.QueryProcessor;
@@ -20,8 +23,15 @@ public class BlinktopusApplication extends Application<BlinktopusConfiguration> 
 
     @Override
     public void initialize(final Bootstrap<BlinktopusConfiguration> bootstrap) {
-        LogManager.getLogManager().loadData("/home/urmikl18/Uni/SoSe17/Blinking_Octopus/blinktopus/dataset/orders1.csv");
-        LogManager.getLogManager().loadData("/home/urmikl18/Uni/SoSe17/Blinking_Octopus/blinktopus/dataset/lineitems1.csv");
+    	String baseDir="";
+    	try {
+			baseDir=new File(".").getCanonicalPath();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        LogManager.getLogManager().loadData(baseDir+"/src/main/resources/dataset/orders1.csv");
+        LogManager.getLogManager().loadData(baseDir+"/src/main/resources/dataset/lineitems1.csv");
     }
 
     @Override
