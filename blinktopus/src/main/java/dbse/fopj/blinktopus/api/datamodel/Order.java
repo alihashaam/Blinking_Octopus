@@ -5,6 +5,10 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * @author urmikl18 Schema for Order relation
+ */
 public class Order extends Tuple {
 	private long orderKey;
 	private char orderStatus;
@@ -23,7 +27,7 @@ public class Order extends Tuple {
 
 	public Order(long orderKey, char orderStatus, double totalPrice, Date orderDate, String orderPriority, String clerk,
 			int shipPriority, String comment) {
-		this.type="Order";
+		this.table = "Order";
 		this.orderKey = orderKey;
 		this.orderStatus = orderStatus;
 		this.totalPrice = totalPrice;

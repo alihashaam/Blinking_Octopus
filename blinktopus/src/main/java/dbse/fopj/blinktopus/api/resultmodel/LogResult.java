@@ -6,6 +6,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import dbse.fopj.blinktopus.api.datamodel.Tuple;
 
+/**
+ * 
+ * @author urmikl18
+ * Represents JSON-file when QueryProcessor asks for all entries in a log.
+ */
 public class LogResult extends Result {
 
 	private List<Tuple> logResultTuples;

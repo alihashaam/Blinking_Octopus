@@ -2,6 +2,11 @@ package dbse.fopj.blinktopus.api.sv;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * @author urmikl18
+ * Class represents Storage View. Stores relevant information.
+ */
 public class SV {
 	
 	private String id;

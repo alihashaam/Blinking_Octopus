@@ -6,6 +6,10 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * @author urmikl18 Schema for LineItem relation.
+ */
 public class LineItem extends Tuple {
 	private long orderKey;
 	private int lineNumber;
@@ -31,7 +35,7 @@ public class LineItem extends Tuple {
 	public LineItem(long orderKey, int lineNumber, double quantity, double extendedPrice, double discount, double tax,
 			char returnFlag, char lineStatus, Date shipDate, Date commitDate, Date receiptDate, String shipInstruct,
 			String shipMode, String comment) {
-		this.type="LineItem";
+		this.table = "LineItem";
 		this.orderKey = orderKey;
 		this.lineNumber = lineNumber;
 		this.quantity = quantity;

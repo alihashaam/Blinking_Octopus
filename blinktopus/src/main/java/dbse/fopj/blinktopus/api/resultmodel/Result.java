@@ -2,7 +2,12 @@ package dbse.fopj.blinktopus.api.resultmodel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Result {
+/**
+ * 
+ * @author urmikl18
+ * Represents JSON-file as a result of query processing.
+ */
+public abstract class Result {
 	private String SVid;
 	private String type;
 	private String table;

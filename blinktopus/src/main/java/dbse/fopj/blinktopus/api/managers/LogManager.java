@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +12,10 @@ import dbse.fopj.blinktopus.api.datamodel.*;
 import dbse.fopj.blinktopus.api.resultmodel.LogResult;
 import dbse.fopj.blinktopus.resources.QueryProcessor;
 
+/**
+ * 
+ * @author urmikl18 Class that represents a primary log adapted from OctopusDB. Singleton.
+ */
 public final class LogManager {
 	private static final LogManager INSTANCE = new LogManager();
 	private List<Tuple> dataLog = new ArrayList<Tuple>();
@@ -24,7 +27,11 @@ public final class LogManager {
 		return INSTANCE;
 	}
 
-	// load data from csv at pathname
+	/**
+	 * 
+	 * @param pathname
+	 *            - path to .csv
+	 */
 	public void loadData(String pathname) {
 		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 		String csvFile = pathname;
@@ -62,12 +69,28 @@ public final class LogManager {
 		}
 	}
 
+	/**
+	 * 
+	 * @return all entries currently stored in log
+	 */
 	public LogResult getAllLog() {
 		long start = System.nanoTime();
-		return new LogResult("Primary","Log", "", "", 0, 0, System.nanoTime() - start, this.dataLog.size(), 0, this.dataLog);
+		return new LogResult("Primary", "Log", "", "", 0, 0, System.nanoTime() - start, this.dataLog.size(), 0,
+				this.dataLog);
 	}
 
-	// get results from Log of type, with range [lower,higher] applied to attr
+	/**
+	 * 
+	 * @param table
+	 *            - name of a relation
+	 * @param attr
+	 *            - name of an attribute
+	 * @param lower
+	 *            - left border of an interval
+	 * @param higher
+	 *            - right border of an interval
+	 * @return Sublog with relevant data.
+	 */
 	public LogResult scan(String table, String attr, double lower, double higher) {
 		long start = System.nanoTime();
 		List<Tuple> res = new ArrayList<Tuple>();
@@ -76,13 +99,13 @@ public final class LogManager {
 			switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
 			case 0:
 				res = this.dataLog.stream()
-						.filter((Tuple e) -> (e.getType().toLowerCase().equals("order")
+						.filter((Tuple e) -> (e.getTable().toLowerCase().equals("order")
 								&& ((Order) e).getTotalPrice() >= lower && ((Order) e).getTotalPrice() <= higher))
 						.collect(Collectors.toList());
 				break;
 			case 1:
 				res = this.dataLog.stream()
-						.filter((Tuple e) -> (e.getType().toLowerCase().equals("order")
+						.filter((Tuple e) -> (e.getTable().toLowerCase().equals("order")
 								&& ((Order) e).getOrderDate().getTime() >= lower
 								&& ((Order) e).getOrderDate().getTime() <= higher))
 						.collect(Collectors.toList());
@@ -95,52 +118,52 @@ public final class LogManager {
 			switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
 			case 0:
 				res = this.dataLog.stream()
-						.filter((Tuple e) -> (e.getType().toLowerCase().equals("lineitem")
+						.filter((Tuple e) -> (e.getTable().toLowerCase().equals("lineitem")
 								&& ((LineItem) e).getLineNumber() >= lower && ((LineItem) e).getLineNumber() <= higher))
 						.collect(Collectors.toList());
 				break;
 			case 1:
 				res = this.dataLog.stream()
-						.filter((Tuple e) -> (e.getType().toLowerCase().equals("lineitem")
+						.filter((Tuple e) -> (e.getTable().toLowerCase().equals("lineitem")
 								&& ((LineItem) e).getQuantity() >= lower && ((LineItem) e).getQuantity() <= higher))
 						.collect(Collectors.toList());
 				break;
 			case 2:
 				res = this.dataLog.stream()
-						.filter((Tuple e) -> (e.getType().toLowerCase().equals("lineitem")
+						.filter((Tuple e) -> (e.getTable().toLowerCase().equals("lineitem")
 								&& ((LineItem) e).getExtendedPrice() >= lower
 								&& ((LineItem) e).getExtendedPrice() <= higher))
 						.collect(Collectors.toList());
 				break;
 			case 3:
 				res = this.dataLog.stream()
-						.filter((Tuple e) -> (e.getType().toLowerCase().equals("lineitem")
+						.filter((Tuple e) -> (e.getTable().toLowerCase().equals("lineitem")
 								&& ((LineItem) e).getDiscount() >= lower && ((LineItem) e).getDiscount() <= higher))
 						.collect(Collectors.toList());
 				break;
 			case 4:
 				res = this.dataLog.stream()
-						.filter((Tuple e) -> (e.getType().toLowerCase().equals("lineitem")
+						.filter((Tuple e) -> (e.getTable().toLowerCase().equals("lineitem")
 								&& ((LineItem) e).getTax() >= lower && ((LineItem) e).getTax() <= higher))
 						.collect(Collectors.toList());
 				break;
 			case 5:
 				res = this.dataLog.stream()
-						.filter((Tuple e) -> (e.getType().toLowerCase().equals("lineitem")
+						.filter((Tuple e) -> (e.getTable().toLowerCase().equals("lineitem")
 								&& ((LineItem) e).getShipDate().getTime() >= lower
 								&& ((LineItem) e).getShipDate().getTime() <= higher))
 						.collect(Collectors.toList());
 				break;
 			case 6:
 				res = this.dataLog.stream()
-						.filter((Tuple e) -> (e.getType().toLowerCase().equals("lineitem")
+						.filter((Tuple e) -> (e.getTable().toLowerCase().equals("lineitem")
 								&& ((LineItem) e).getCommitDate().getTime() >= lower
 								&& ((LineItem) e).getCommitDate().getTime() <= higher))
 						.collect(Collectors.toList());
 				break;
 			case 7:
 				res = this.dataLog.stream()
-						.filter((Tuple e) -> (e.getType().toLowerCase().equals("lineitem")
+						.filter((Tuple e) -> (e.getTable().toLowerCase().equals("lineitem")
 								&& ((LineItem) e).getReceiptDate().getTime() >= lower
 								&& ((LineItem) e).getReceiptDate().getTime() <= higher))
 						.collect(Collectors.toList());
@@ -150,7 +173,8 @@ public final class LogManager {
 				break;
 			}
 		}
-		return new LogResult("Primary","Log", table, attr, lower, higher, System.nanoTime() - start, res.size(), 0, res);
+		return new LogResult("Primary", "Log", table, attr, lower, higher, System.nanoTime() - start, res.size(), 0,
+				res);
 
 	}
 

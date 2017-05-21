@@ -1,9 +1,6 @@
 package dbse.fopj.blinktopus.resources;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -17,8 +14,11 @@ import dbse.fopj.blinktopus.api.managers.SVManager;
 import dbse.fopj.blinktopus.api.resultmodel.LogResult;
 import dbse.fopj.blinktopus.api.resultmodel.Result;
 import dbse.fopj.blinktopus.api.resultmodel.SVManagerResult;
-import dbse.fopj.blinktopus.api.sv.*;
 
+/**
+ * 
+ * @author urmikl18 Class that processes queries from user.
+ */
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public class QueryProcessor {
@@ -46,6 +46,10 @@ public class QueryProcessor {
 
 	}
 
+	/**
+	 * 
+	 * @return List of stored Storage Views
+	 */
 	@Path("/sv")
 	@GET
 	@Timed
@@ -53,6 +57,10 @@ public class QueryProcessor {
 		return SVManager.getSVManager().getAllSV();
 	}
 
+	/**
+	 * 
+	 * @return Tuples in the primary log.
+	 */
 	@Path("/log")
 	@GET
 	@Timed
@@ -60,6 +68,24 @@ public class QueryProcessor {
 		return LogManager.getLogManager().getAllLog();
 	}
 
+	/**
+	 * 
+	 * @param SVId
+	 *            - ID of an SV
+	 * @param type
+	 *            - type of an SV (row, col, aqp)
+	 * @param table
+	 *            - name of a relation
+	 * @param attr
+	 *            - name of an attribute in a relation
+	 * @param lower
+	 *            - right border of an interval
+	 * @param higher
+	 *            - left border of an interval
+	 * @param createSV
+	 *            - indicates if new sv of type should be created
+	 * @return Specified SV with results
+	 */
 	@Path("/query")
 	@GET
 	@Timed

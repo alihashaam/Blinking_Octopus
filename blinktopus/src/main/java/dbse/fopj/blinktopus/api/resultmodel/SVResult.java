@@ -4,6 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import dbse.fopj.blinktopus.api.sv.*;
 
+/**
+ * 
+ * @author urmikl18
+ * Class represents a JSON that should be created as a result of query processing on SV.
+ */
 public class SVResult extends Result {
 
 	private SV svResult;

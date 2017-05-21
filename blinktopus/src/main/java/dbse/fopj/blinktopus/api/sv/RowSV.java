@@ -15,6 +15,11 @@ import dbse.fopj.blinktopus.api.managers.SVManager;
 import dbse.fopj.blinktopus.api.resultmodel.SVResult;
 import dbse.fopj.blinktopus.resources.QueryProcessor;
 
+/**
+ * 
+ * @author urmikl18 Class represents row oriented db.\n List of
+ *         {@link RowEntry}s: id: tuple : position in log 
+ */
 public class RowSV extends SV {
 	public class RowEntry {
 		private int id;
@@ -71,11 +76,26 @@ public class RowSV extends SV {
 		return rowData;
 	}
 
+	/**
+	 * 
+	 * @param table
+	 *            - name of a relation to query on
+	 * @param attr
+	 *            - name of an attribute to query on
+	 * @param lower
+	 *            - left border of an interval
+	 * @param higher
+	 *            - right border of an interval
+	 * @return SVResult with relevant information Works as follows: 1. Check if
+	 *         table name and attribute name are of this SV, check if range is a
+	 *         subrange of current one:\n 1.1 YES - create temporary RowSV and
+	 *         return it as a result. 1.2 NO - create new RowSV and store it in
+	 *         SVManager
+	 */
 	public SVResult query(String table, String attr, double lower, double higher) {
 		long start = System.nanoTime();
 		if (this.getTable().equals(table) && this.getAttr().equals(attr) && this.getLower() <= lower
 				&& this.getHigher() >= higher) {
-			System.out.println("!!!!!!!!!!CRACK!!!!!!!!!!!!!!!!!");
 			List<RowEntry> res = new ArrayList<RowEntry>();
 			if (table.toLowerCase().equals("orders")) {
 				switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {

@@ -1,10 +1,13 @@
 package dbse.fopj.blinktopus.api.datamodel;
 
-public class Tuple {
-	protected String type="";
-	
-	public String getType()
-	{
-		return type;
+/**
+ * 
+ * @author urmikl18 Abstract class to combine all schemas.
+ */
+public abstract class Tuple {
+	protected String table = "";
+
+	public String getTable() {
+		return table;
 	}
 }

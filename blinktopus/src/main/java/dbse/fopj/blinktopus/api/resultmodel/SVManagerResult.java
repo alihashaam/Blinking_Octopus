@@ -6,6 +6,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import dbse.fopj.blinktopus.api.sv.SV;
 
+/**
+ * 
+ * @author urmikl18
+ * Class represents a JSON-file that is returned after QueryProcessor asks for all SVs.
+ */
 public class SVManagerResult extends Result {
 
 	private List<SV> allSV;

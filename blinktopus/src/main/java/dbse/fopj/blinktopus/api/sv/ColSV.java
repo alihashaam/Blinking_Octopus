@@ -1,9 +1,10 @@
 package dbse.fopj.blinktopus.api.sv;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+/**
+ * 
+ * @author urmikl18
+ * Class represents column-oriented db.
+ */
 public class ColSV extends SV{
 		
 }
