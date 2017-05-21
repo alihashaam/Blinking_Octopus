@@ -6,33 +6,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import dbse.fopj.blinktopus.api.datamodel.Tuple;
 
-public class LogResult extends Result{
+public class LogResult extends Result {
 
 	private List<Tuple> logResultTuples;
-	private long elapsedTime;
-	private int size;
 
 	public LogResult() {
 	}
 
-	public LogResult(List<Tuple> resultTuples, long time, int size) {
+	public LogResult(String SVid, String type, String table, String attr, double lower, double higher, long elapsedTime, int size,
+			double error, List<Tuple> resultTuples) {
+		super(SVid, type, table, attr, lower, higher, elapsedTime, size, error);
 		this.logResultTuples = resultTuples;
-		this.elapsedTime=time;
-		this.size=size;
 	}
 
 	@JsonProperty
 	public List<Tuple> getResultTuples() {
 		return logResultTuples;
-	}
-	
-	@JsonProperty
-	public long getElapsedTime() {
-		return elapsedTime;
-	}
-	
-	@JsonProperty
-	public int getSize() {
-		return size;
 	}
 }

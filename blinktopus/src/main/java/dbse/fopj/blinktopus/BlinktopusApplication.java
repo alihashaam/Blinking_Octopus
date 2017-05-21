@@ -10,6 +10,11 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
+/**
+ * 
+ * @author urmikl18
+ * Entry point of application. Registers resource class {@link QueryProcessor} and health class {@link BlinktopusHealth}
+ */
 public class BlinktopusApplication extends Application<BlinktopusConfiguration> {
 
     public static void main(final String[] args) throws Exception {
@@ -27,7 +32,6 @@ public class BlinktopusApplication extends Application<BlinktopusConfiguration> 
     	try {
 			baseDir=new File(".").getCanonicalPath();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         LogManager.getLogManager().loadData(baseDir+"/src/main/resources/dataset/orders1.csv");
@@ -40,5 +44,4 @@ public class BlinktopusApplication extends Application<BlinktopusConfiguration> 
         environment.healthChecks().register("default", new BlinktopusHealth());
         environment.jersey().register(new QueryProcessor());
     }
-
 }
