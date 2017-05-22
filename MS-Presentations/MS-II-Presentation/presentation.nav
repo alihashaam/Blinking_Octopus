@@ -25,54 +25,51 @@
 \headcommand {\beamer@subsectionentry {0}{2}{3}{8}{Types of Synopses}}\headcommand {\beamer@subsectionpages {7}{7}}
 \headcommand {\slideentry {2}{3}{1}{8/8}{Types of Synopses}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@subsectionentry {0}{2}{4}{9}{Types of Synopses: Samples}}\headcommand {\beamer@subsectionpages {8}{8}}
-\headcommand {\slideentry {2}{4}{1}{9/10}{Types of Synopses: Samples}{0}}
+\headcommand {\slideentry {2}{3}{2}{9/10}{Types of Synopses}{0}}
 \headcommand {\beamer@framepages {9}{10}}
-\headcommand {\slideentry {2}{4}{2}{11/11}{Types of Synopses: Samples}{0}}
+\headcommand {\slideentry {2}{3}{3}{11/11}{Types of Synopses}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\beamer@subsectionentry {0}{2}{5}{12}{Types of Synopses: Histograms}}\headcommand {\beamer@subsectionpages {9}{11}}
-\headcommand {\slideentry {2}{5}{1}{12/13}{Types of Synopses: Histograms}{0}}
+\headcommand {\slideentry {2}{3}{4}{12/13}{Types of Synopses}{0}}
 \headcommand {\beamer@framepages {12}{13}}
-\headcommand {\slideentry {2}{5}{2}{14/14}{Types of Synopses: Histograms}{0}}
+\headcommand {\slideentry {2}{3}{5}{14/14}{Types of Synopses}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\beamer@subsectionentry {0}{2}{6}{15}{Types of Synopses: Wavelets}}\headcommand {\beamer@subsectionpages {12}{14}}
-\headcommand {\slideentry {2}{6}{1}{15/16}{Types of Synopses: Wavelets}{0}}
+\headcommand {\slideentry {2}{3}{6}{15/16}{Types of Synopses}{0}}
 \headcommand {\beamer@framepages {15}{16}}
-\headcommand {\slideentry {2}{6}{2}{17/17}{Types of Synopses: Wavelets}{0}}
+\headcommand {\slideentry {2}{3}{7}{17/17}{Types of Synopses}{0}}
 \headcommand {\beamer@framepages {17}{17}}
-\headcommand {\beamer@subsectionentry {0}{2}{7}{18}{Types of Synopses: Sketches}}\headcommand {\beamer@subsectionpages {15}{17}}
-\headcommand {\slideentry {2}{7}{1}{18/18}{Types of Synopses: Sketches}{0}}
+\headcommand {\slideentry {2}{3}{8}{18/18}{Types of Synopses}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\sectionentry {3}{Building a Blinktopus. Recall}{19}{Building a Blinktopus. Recall}{0}}
-\headcommand {\beamer@sectionpages {5}{18}}
-\headcommand {\beamer@subsectionpages {18}{18}}
-\headcommand {\slideentry {3}{0}{1}{19/19}{}{0}}
+\headcommand {\slideentry {2}{3}{9}{19/19}{Types of Synopses}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\slideentry {3}{0}{2}{20/20}{}{0}}
+\headcommand {\sectionentry {3}{Building a Blinktopus}{20}{Building a Blinktopus}{0}}
+\headcommand {\beamer@sectionpages {5}{19}}
+\headcommand {\beamer@subsectionpages {8}{19}}
+\headcommand {\slideentry {3}{0}{1}{20/20}{}{0}}
 \headcommand {\beamer@framepages {20}{20}}
-\headcommand {\sectionentry {4}{Building a Blinktopus. Progress}{21}{Building a Blinktopus. Progress}{0}}
-\headcommand {\beamer@sectionpages {19}{20}}
-\headcommand {\beamer@subsectionpages {19}{20}}
-\headcommand {\slideentry {4}{0}{1}{21/21}{}{0}}
+\headcommand {\slideentry {3}{0}{2}{21/21}{}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\sectionentry {5}{Project Organisation}{22}{Project Organisation}{0}}
-\headcommand {\beamer@sectionpages {21}{21}}
-\headcommand {\beamer@subsectionpages {21}{21}}
-\headcommand {\beamer@subsectionentry {0}{5}{1}{22}{Roles}}\headcommand {\beamer@subsectionpages {22}{21}}
-\headcommand {\slideentry {5}{1}{1}{22/22}{Roles}{0}}
+\headcommand {\slideentry {3}{0}{3}{22/22}{}{0}}
 \headcommand {\beamer@framepages {22}{22}}
-\headcommand {\beamer@subsectionentry {0}{5}{2}{23}{Schedule}}\headcommand {\beamer@subsectionpages {22}{22}}
-\headcommand {\slideentry {5}{2}{1}{23/23}{Schedule}{0}}
+\headcommand {\slideentry {3}{0}{4}{23/23}{}{0}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\slideentry {5}{2}{2}{24/24}{Schedule}{0}}
+\headcommand {\sectionentry {4}{Project Organisation}{24}{Project Organisation}{0}}
+\headcommand {\beamer@sectionpages {20}{23}}
+\headcommand {\beamer@subsectionpages {20}{23}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{24}{Roles}}\headcommand {\beamer@subsectionpages {24}{23}}
+\headcommand {\slideentry {4}{1}{1}{24/24}{Roles}{0}}
 \headcommand {\beamer@framepages {24}{24}}
-\headcommand {\sectionentry {6}{Literature}{25}{Literature}{0}}
-\headcommand {\beamer@sectionpages {22}{24}}
-\headcommand {\beamer@subsectionpages {23}{24}}
-\headcommand {\slideentry {6}{0}{1}{25/25}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{25}{Schedule}}\headcommand {\beamer@subsectionpages {24}{24}}
+\headcommand {\slideentry {4}{2}{1}{25/25}{Schedule}{0}}
 \headcommand {\beamer@framepages {25}{25}}
-\headcommand {\beamer@partpages {1}{25}}
-\headcommand {\beamer@subsectionpages {25}{25}}
-\headcommand {\beamer@sectionpages {25}{25}}
-\headcommand {\beamer@documentpages {25}}
-\headcommand {\def \inserttotalframenumber {22}}
+\headcommand {\slideentry {4}{2}{2}{26/26}{Schedule}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\sectionentry {5}{Literature}{27}{Literature}{0}}
+\headcommand {\beamer@sectionpages {24}{26}}
+\headcommand {\beamer@subsectionpages {25}{26}}
+\headcommand {\slideentry {5}{0}{1}{27/27}{}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\beamer@partpages {1}{27}}
+\headcommand {\beamer@subsectionpages {27}{27}}
+\headcommand {\beamer@sectionpages {27}{27}}
+\headcommand {\beamer@documentpages {27}}
+\headcommand {\def \inserttotalframenumber {24}}

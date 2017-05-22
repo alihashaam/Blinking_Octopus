@@ -106,7 +106,7 @@ Samples, histograms, wavelets, sketches." Foundations and Trends in Databases 4,
 \end{itemize}
 \end{frame}
 
-\subsection{Types of Synopses: Samples}
+%%\subsection{Types of Synopses: Samples}
 \begin{frame}
 \frametitle{Types of Synopses: Samples}
 Representative subset, chosen by stochastic sampling methods (e.g. Bernoulli, stratified,simple random with and without replacement).\pause
@@ -134,7 +134,7 @@ Representative subset, chosen by stochastic sampling methods (e.g. Bernoulli, st
 \end{itemize}
 \end{frame}
 
-\subsection{Types of Synopses: Histograms}
+%%\subsection{Types of Synopses: Histograms}
 \begin{frame}
 \frametitle{Types of Synopses: Histograms}
 A binned representation of the data distribution. The summary and bucket information is
@@ -160,7 +160,7 @@ to approximately answer the query.\pause
 \end{itemize}
 \end{frame}
 
-\subsection{Types of Synopses: Wavelets}
+%%\subsection{Types of Synopses: Wavelets}
 \begin{frame}
 \frametitle{Types of Synopses: Wavelets}
 Transform the data to represent significant features in a “frequency” domain and can capture combinations of high and low frequency information.\pause
@@ -183,7 +183,7 @@ Transform the data to represent significant features in a “frequency” domain
 \end{itemize}
 \end{frame}
 
-\subsection{Types of Synopses: Sketches}
+%%\subsection{Types of Synopses: Sketches}
 \begin{frame}
 \frametitle{Types of Synopses: Sketches}
 \begin{itemize}
@@ -194,8 +194,28 @@ Transform the data to represent significant features in a “frequency” domain
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Types of Synopses: Sketches}
+\begin{itemize}
+\item{Transformation}
+%%A transformation that gives the input data stream the property of white noise, or a uniform distribution of values. Input distinct keys are hashed and then the result is normalized to a uniform random value between zero and one.
+\item{Data structure}
+%%A data structure that follows a set of rules for retaining a small bounded set of the hash values. This fixed upper bound on sketch size enables straightforward memory management.
+\item{Set of estimator algorithms}
+%%A set of estimator algorithms that examines the sketch data structure and returns a result value.
+\end{itemize}
+\vspace{0.1cm}
+The HyperLogLog is a famous sketch supporting count-distinct.
+\begin{figure}
+\includegraphics[scale=0.35]{img/distinct_count_sketches.png}
+\caption{Distinct Count Sketch. High-level View.}
+\end{figure}
+\footnote{\tiny Source: https://yahooeng.tumblr.com/post/135390948446/data-sketches}
+\end{frame}
+
+
 \begin{comment}
-\subsection{Types of Synopses: Others}
+%%\subsection{Types of Synopses: Others}
 \begin{frame}
 \frametitle{Types of Synopses: Others}
 Other types of synopses given the specific queries:
@@ -209,15 +229,15 @@ Other types of synopses given the specific queries:
 \end{frame}
 \end{comment}
 
-\section{Building a Blinktopus. Recall}
+\section{Building a Blinktopus}
 \begin{frame}
 \frametitle{Building a Blinktopus. Recall}
 First, the Octopus:
 \begin{itemize}
 \item{Store incoming data in logs.}
-\item{Query the logs (just a filter query)}
+\item{Query the logs (just a filter query).}
 \item{Allow users to create views (row, column) over certain logs.}
-\item{List all views and logs}
+\item{List all views and logs.}
 \item{Launch the query over views or over logs, see the changes in performance.}
 \end{itemize}
 \end{frame}
@@ -232,7 +252,13 @@ Enter AQP:
 \end{itemize}
 \end{frame}
 
-\section{Building a Blinktopus. Progress}
+
+\begin{frame}
+\frametitle{Building a Blinktopus. Workflow}
+\includegraphics[scale=0.5]{img/workflow.jpg}
+\end{frame}
+
+%%\section{Building a Blinktopus. Progress}
 \begin{frame}
 \frametitle{Building a Blinktopus. IDE}
 \begin{itemize}
@@ -262,32 +288,16 @@ http://honstain.com/new-dropwizard-1-0-5-java-service/}
 \hspace{0.3 cm} Gabriel Campero Durand \\
 \vspace{0.2 cm}
 Changing roles after each milestone.
+\\ \vspace{0.5 cm}
+\textbf{Meetings:} \\ 
+\hspace{0.5 cm} Team Meetings: Mo 14-15 \\
+\hspace{0.5 cm} Meetings with supervisor: We 10-11
 \end{frame}
 
 \subsection{Schedule}
 \begin{frame}
 \frametitle{Project Organisation.Schedule}
-\textbf{Milestones} \\
-\vspace{0.5 cm}
-\begin{tabular}{|c|c|c|}
-\hline
-Date & Phase & Status\\
-\hline 
-02.05.2017 & MS-I (Kick-Off) & done\\ 
-\hline 
-23.05.2017 & MS-II (Concepts) & done\\ 
-\hline 
-13.06.2017 & MS-III (Implementation) & \\ 
-\hline 
-04.07.2017 & MS-IV (Final) & \\ 
-\hline 
-\end{tabular}
-\\ \vspace{0.5 cm}
-\textbf{Meetings} \\ 
-\vspace{0.5 cm}
-\hspace{0.5 cm} Team Meetings: Mo 14-15 \\
-\hspace{0.5 cm} Meetings with supervisor: We 10-11
-
+\includegraphics[scale=0.4]{img/Team_Schedule.jpg}
 \end{frame}
 
 \begin{frame}
@@ -301,12 +311,10 @@ Date & Phase & Status\\
 \item{Jindal, Alekh. "The mimicking octopus: Towards a one-size-fits-all database architecture." VLDB PhD Workshop. 2010.}
 \item{Dittrich, Jens, and Alekh Jindal. "Towards a One Size Fits All Database Architecture." CIDR. 2011.}
 \item{Jindal, Alekh. "OctopusDB: flexible and scalable storage management for arbitrary database engines." (2012).}
-\item{Idreos, Stratos, Martin L. Kersten, and Stefan Manegold. "Database Cracking." In CIDR, vol. 7, pp. 68-78. 2007.}
 \item{Mozafari, Barzan. "Approximate query engines: Commercial challenges and research opportunities." SIGMOD, 2017.}
-\item{Cormode, Graham, Minos Garofalakis, Peter J. Haas, and Chris Jermaine. "Synopses for massive data:
-Samples, histograms, wavelets, sketches." Foundations and Trends in Databases 4, no. 1–3 (2012): 1-294.}
+\item{Cormode, Graham, Minos Garofalakis, Peter J. Haas, and Chris Jermaine. "Synopses for massive data: Samples, histograms, wavelets, sketches." Foundations and Trends in Databases 4, no. 1–3 (2012): 1-294.}
+\item{https://yahooeng.tumblr.com/post/135390948446/data-sketches}
 \end{enumerate}
 \end{frame}
-
 
 \end{document}
