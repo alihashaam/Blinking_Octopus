@@ -1,6 +1,6 @@
 \beamer@sectionintoc {1}{Blinktopus}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{Octopus + BlinkDB = Blinktopus}{3}{0}{1}
-\beamer@subsectionintoc {1}{2}{Our Goal}{4}{0}{1}
+\beamer@subsectionintoc {1}{1}{Our Goal}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Octopus + BlinkDB = Blinktopus}{4}{0}{1}
 \beamer@sectionintoc {2}{Concepts}{5}{0}{2}
 \beamer@subsectionintoc {2}{1}{OctopusDB}{5}{0}{2}
 \beamer@subsectionintoc {2}{2}{AQP.Architecture}{7}{0}{2}
