@@ -67,9 +67,20 @@ public final class SVManager {
 				return new SVResult(rowId, type, table, attr, lower, higher, System.nanoTime() - start, res.getSize(),
 						0, res);
 			} else if (type.toLowerCase().equals("col")) {
-				return null;
+				String colId = "Col" + (idSV++);
+				long start = System.nanoTime();
+				ColSV res = new ColSV(colId, table, attr, lower, higher);
+				this.allSV.add(res);
+				return new SVResult(colId, type, table, attr, lower, higher, System.nanoTime() - start, res.getSize(),
+						0, res);
 			} else {
-				return null;
+				String aqpId = "Aqp" + (idSV++);
+				long start = System.nanoTime();
+				// AqpSV res = new AqpSV(aqpId, table, attr, lower, higher);
+				AqpSV res = null;
+				this.allSV.add(res);
+				return new SVResult(aqpId, type, table, attr, lower, higher, System.nanoTime() - start, res.getSize(),
+						0, res);
 			}
 		} else {
 			SV sv = new SV();
@@ -78,7 +89,6 @@ public final class SVManager {
 						.collect(Collectors.toList()).get(0);
 
 			} catch (IndexOutOfBoundsException e) {
-
 				return maintain(SVId, type, table, attr, lower, higher, true);
 			}
 			if (sv == null)
@@ -88,7 +98,8 @@ public final class SVManager {
 				RowSV rowSV = (RowSV) sv;
 				return rowSV.query(table, attr, lower, higher);
 			} else if (sv.getType().toLowerCase().equals("col")) {
-				return null;
+				ColSV colSV = (ColSV) sv;
+				return colSV.query(table, attr, lower, higher);
 			} else {
 				return null;
 			}

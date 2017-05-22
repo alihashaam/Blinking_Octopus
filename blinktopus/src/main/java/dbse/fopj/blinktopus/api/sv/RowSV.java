@@ -65,7 +65,7 @@ public class RowSV extends SV {
 		this.setSize(rowData.size());
 	}
 
-	public RowSV(String id, String table, String attr, double lower, double higher, List<RowEntry> rowData) {
+	private RowSV(String id, String table, String attr, double lower, double higher, List<RowEntry> rowData) {
 		super(id, "Row", table, attr, lower, higher);
 		this.rowData = rowData;
 		this.setSize(rowData.size());
