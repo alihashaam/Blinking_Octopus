@@ -10,6 +10,8 @@
 \usepackage{wrapfig}
 \usepackage{verbatim}
 
+\setbeamertemplate{caption}[numbered]
+
 \title{MS-II. Concepts}
 \author{Ali Hashaam, Ali Memon, Guzel Mussilova, Pavlo Shevchenko}
 \date{May 23, 2017}
@@ -44,6 +46,7 @@ Add \textbf{Approximate Query Processing (AQP)} techniques\\
 \vspace{0.25 cm}
 \includegraphics[width=1.75cm]{img/Mozafaribarzan.JPG}
 \end{wrapfigure}
+
 Create a new type of database system without fixed store that will mimic several existing systems\\
 \vspace{2.2 cm}
 The goal is to provide approximate answers with acceptable accuracy in orders of magnitude less time than that for the exact query processing.\footnote{\tiny Liu, Qing. Approximate Query Processing (Reference work entry) in: Liu, Ling, and M. Tamer Özsu. Encyclopedia of database systems. Vol. 6. Berlin, Heidelberg, Germany: Springer, 2009.}\\
@@ -53,21 +56,30 @@ The goal is to provide approximate answers with acceptable accuracy in orders of
 \subsection{OctopusDB}
 \begin{frame}
 \frametitle{OctopusDB}
+\begin{figure}
 \includegraphics[scale=0.4]{img/octopus_arch.png}
+\caption{OctopusDB Architecture.}
+\end{figure}
 \footnote{A. Jindal. The Mimicking Octopus: Towards a one-size-fits-all Database Architecture, 2010}
 \end{frame}
 
 \begin{frame}
 \frametitle{Octopus in Blinktopus}
+\begin{figure}
 \includegraphics[scale=0.4]{img/SV_transformation.JPG}
+\caption{OctopusDB static optimizations for the Running Example(d).}
 \footnote{Jindal, Alekh. "OctopusDB: flexible and scalable storage management for arbitrary database engines." (2012).}
+\end{figure}
 \end{frame}
 
 \subsection{AQP.Architecture}
 \begin{frame}
 \frametitle{AQP.Architecture}
+\begin{figure}
 \includegraphics[scale=0.5]{img/blinkdb-workflow.png}
-\footnote{The general anatomy of approximate query processing system}
+\caption{The general anatomy of approximate query processing system.}
+\footnote{\tiny Mozafari, Barzan, and Ning Niu. "A Handbook for Building an Approximate Query Engine." IEEE Data Eng. Bull. 38, no. 3 (2015): 3-29.}
+\end{figure}
 \end{frame}
 
 \begin{comment}
@@ -122,7 +134,7 @@ Representative subset, chosen by stochastic sampling methods (e.g. Bernoulli, st
 \item{Unbiased estimators for SUM/AVG queries are straightforwardly built.}
 \item{Due to the immediate construction after issuing user query do not incur a delay.}
 \item{Collecting more samples incrementally enhance imprecise estimates of a query results.}
-\item{Without using the attribute value independence assumption allow high quality selectivity estimations.}
+%%\item{Without using the attribute value independence assumption allow high quality selectivity estimations.}
 \end{itemize}
 \end{frame}
 
@@ -172,9 +184,7 @@ Transform the data to represent significant features in a “frequency” domain
 \begin{itemize}
 \item{Useful for range-sum queries.}
 \item{Appropriately defined AQP algebra allows applying general SPJ (select, project, join) queries on relation summaries.}
-\item{The linearity of the basic Haar transform manages a better maintenance under dynamic data than histograms.}
-\item{Non-trivial to maintain wavelet coefficients under arbitrary update patterns.}
-\item{Large number of coefficients must be retained to guarantee an accurate reconstruction of the data distribution in the multi-dimensional wavelet.}
+%%\item{Large number of coefficients must be retained to guarantee an accurate reconstruction of the data distribution in the multi-dimensional wavelet.}
 \end{itemize}
 \end{frame}
 
@@ -183,7 +193,7 @@ Transform the data to represent significant features in a “frequency” domain
 \frametitle{Types of Synopses: Sketches}
 \begin{itemize}
 \item{Especially appropriate for streaming data.}
-\item{Process fasters and easily paralleliazed if each new piece of data is independent of the current state of the summary.}
+\item{Process fasters and easily parallelized if each new piece of data is independent of the current state of the summary.}
 \item{Can be used as primitives within more complex mining operations, and to extract wavelet and histogram representations of streaming data.}
 \end{itemize}
 \end{frame}
@@ -250,7 +260,7 @@ First, the Octopus:
 \frametitle{Building a Blinktopus. Recall}
 Enter AQP:
 \begin{itemize}
-\item{What synopsis can we easily support as a view for a specific query? Which will we choose to test? (Samples, histograms?)}
+\item{What synopsis can we easily support as a view for a specific query? Which will we choose to test? (Samples, histograms, sketches?)}
 \item{Do Octopuses and AQP match well together?}
 \item{How will we allow users to build this view?}
 \item{How will we support queries using this view?}\\
@@ -316,9 +326,9 @@ Changing roles after each milestone.
 \item{Jindal, Alekh. "The mimicking octopus: Towards a one-size-fits-all database architecture." VLDB PhD Workshop. 2010.}
 \item{Dittrich, Jens, and Alekh Jindal. "Towards a One Size Fits All Database Architecture." CIDR. 2011.}
 \item{Jindal, Alekh. "OctopusDB: flexible and scalable storage management for arbitrary database engines." (2012).}
-\item{Mozafari, Barzan. "Approximate query engines: Commercial challenges and research opportunities." SIGMOD, 2017.}
+\item{Mozafari, Barzan, and Ning Niu. "A Handbook for Building an Approximate Query Engine." IEEE Data Eng. Bull. 38, no. 3 (2015): 3-29.}
 \item{Cormode, Graham, Minos Garofalakis, Peter J. Haas, and Chris Jermaine. "Synopses for massive data: Samples, histograms, wavelets, sketches." Foundations and Trends in Databases 4, no. 1–3 (2012): 1-294.}
-\item{https://yahooeng.tumblr.com/post/135390948446/data-sketches}
+%%\item{https://yahooeng.tumblr.com/post/135390948446/data-sketches}
 \end{enumerate}
 \end{frame}
 
