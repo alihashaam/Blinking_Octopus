@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  22 MAY 2017 11:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  22 MAY 2017 12:24
 entering extended mode
 **./presentation.tex
 (presentation.tex
@@ -971,14 +971,14 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [2
 
- <./logo.jpg>] <img/jensdittrich.jpg, id=145, 235.88126pt x 320.19624pt>
+ <./logo.jpg>] <img/jensdittrich.jpg, id=150, 235.88126pt x 320.19624pt>
 File: img/jensdittrich.jpg Graphic file (type jpg)
 
 <use img/jensdittrich.jpg>
 Package pdftex.def Info: img/jensdittrich.jpg used on input line 43.
 (pdftex.def)             Requested size: 46.94687pt x 63.72542pt.
 
-<img/Mozafaribarzan.JPG, id=146, 413.545pt x 499.8675pt>
+<img/Mozafaribarzan.JPG, id=151, 413.545pt x 499.8675pt>
 File: img/Mozafaribarzan.JPG Graphic file (type jpg)
 
 <use img/Mozafaribarzan.JPG>
@@ -1026,12 +1026,12 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [4
 
-] <img/SV_transformation.JPG, id=198, 710.655pt x 232.61906pt>
-File: img/SV_transformation.JPG Graphic file (type jpg)
+] <img/octopus_arch.png, id=203, 579.16376pt x 346.29375pt>
+File: img/octopus_arch.png Graphic file (type png)
 
-<use img/SV_transformation.JPG>
-Package pdftex.def Info: img/SV_transformation.JPG used on input line 59.
-(pdftex.def)             Requested size: 284.25696pt x 93.04596pt.
+<use img/octopus_arch.png>
+Package pdftex.def Info: img/octopus_arch.png used on input line 59.
+(pdftex.def)             Requested size: 231.66139pt x 138.51503pt.
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1039,13 +1039,13 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [5
 
- <./img/SV_transformation.JPG>]
-<img/blinkdb-workflow.png, id=226, 572.1375pt x 228.10219pt>
-File: img/blinkdb-workflow.png Graphic file (type png)
+ <./img/octopus_arch.png>]
+<img/SV_transformation.JPG, id=234, 710.655pt x 232.61906pt>
+File: img/SV_transformation.JPG Graphic file (type jpg)
 
-<use img/blinkdb-workflow.png>
-Package pdftex.def Info: img/blinkdb-workflow.png used on input line 66.
-(pdftex.def)             Requested size: 286.06804pt x 114.0508pt.
+<use img/SV_transformation.JPG>
+Package pdftex.def Info: img/SV_transformation.JPG used on input line 65.
+(pdftex.def)             Requested size: 284.25696pt x 93.04596pt.
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1053,18 +1053,21 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [6
 
- <./img/blinkdb-workflow.png>]
+ <./img/SV_transformation.JPG>]
+<img/blinkdb-workflow.png, id=260, 572.1375pt x 228.10219pt>
+File: img/blinkdb-workflow.png Graphic file (type png)
+
+<use img/blinkdb-workflow.png>
+Package pdftex.def Info: img/blinkdb-workflow.png used on input line 72.
+(pdftex.def)             Requested size: 286.06804pt x 114.0508pt.
+
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
 [7
 
-]
-Missing character: There is no ‚ in font cmss8!
-Missing character: There is no Ä in font cmss8!
-Missing character: There is no ì in font cmss8!
-
+ <./img/blinkdb-workflow.png>]
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
@@ -1072,6 +1075,10 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 [8
 
 ]
+Missing character: There is no ‚ in font cmss8!
+Missing character: There is no Ä in font cmss8!
+Missing character: There is no ì in font cmss8!
+
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
@@ -1093,13 +1100,6 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 [11
 
 ]
-Missing character: There is no ‚ in font cmss10!
-Missing character: There is no Ä in font cmss10!
-Missing character: There is no ú in font cmss10!
-Missing character: There is no ‚ in font cmss10!
-Missing character: There is no Ä in font cmss10!
-Missing character: There is no ù in font cmss10!
-
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
@@ -1121,13 +1121,6 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 [13
 
 ]
-Overfull \hbox (101.22792pt too wide) has occurred while \output is active
- [][]    
- []
-
-[14
-
-]
 Missing character: There is no ‚ in font cmss10!
 Missing character: There is no Ä in font cmss10!
 Missing character: There is no ú in font cmss10!
@@ -1135,6 +1128,13 @@ Missing character: There is no ‚ in font cmss10!
 Missing character: There is no Ä in font cmss10!
 Missing character: There is no ù in font cmss10!
 
+Overfull \hbox (101.22792pt too wide) has occurred while \output is active
+ [][]    
+ []
+
+[14
+
+]
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
@@ -1156,6 +1156,13 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 [16
 
 ]
+Missing character: There is no ‚ in font cmss10!
+Missing character: There is no Ä in font cmss10!
+Missing character: There is no ú in font cmss10!
+Missing character: There is no ‚ in font cmss10!
+Missing character: There is no Ä in font cmss10!
+Missing character: There is no ù in font cmss10!
+
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
@@ -1169,11 +1176,18 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [18
 
-] <img/distinct_count_sketches.png, id=567, 501.875pt x 156.585pt>
+]
+Overfull \hbox (101.22792pt too wide) has occurred while \output is active
+ [][]    
+ []
+
+[19
+
+] <img/distinct_count_sketches.png, id=601, 501.875pt x 156.585pt>
 File: img/distinct_count_sketches.png Graphic file (type png)
 
 <use img/distinct_count_sketches.png>
-Package pdftex.def Info: img/distinct_count_sketches.png used on input line 214
+Package pdftex.def Info: img/distinct_count_sketches.png used on input line 220
 .
 (pdftex.def)             Requested size: 175.65887pt x 54.80556pt.
 
@@ -1181,56 +1195,37 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
-[19
+[20
 
  <./img/distinct_count_sketches.png>]
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
-[20
+[21
 
 ]
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
-[21
+[22
 
-] <img/workflow.jpg, id=648, 618.05907pt x 436.63126pt>
+] <img/workflow.jpg, id=681, 618.05907pt x 436.63126pt>
 File: img/workflow.jpg Graphic file (type jpg)
 
 <use img/workflow.jpg>
-Package pdftex.def Info: img/workflow.jpg used on input line 259.
+Package pdftex.def Info: img/workflow.jpg used on input line 265.
 (pdftex.def)             Requested size: 309.02878pt x 218.3151pt.
 
-Overfull \hbox (1.7389pt too wide) in paragraph at lines 259--259
+Overfull \hbox (1.7389pt too wide) in paragraph at lines 265--265
 [][]  
  []
 
 
-Overfull \vbox (18.43213pt too high) detected at line 259
+Overfull \vbox (18.43213pt too high) detected at line 265
  []
 
-
-Overfull \hbox (101.22792pt too wide) has occurred while \output is active
- [][]    
- []
-
-[22
-
- <./img/workflow.jpg>] <img/dropwizard.png, id=674, 434.62375pt x 232.87pt>
-File: img/dropwizard.png Graphic file (type png)
-
-<use img/dropwizard.png>
-Package pdftex.def Info: img/dropwizard.png used on input line 274.
-(pdftex.def)             Requested size: 130.38812pt x 69.86153pt.
- <img/jpnotebook.png, id=675, 347.2975pt x 347.2975pt>
-File: img/jpnotebook.png Graphic file (type png)
-
-<use img/jpnotebook.png>
-Package pdftex.def Info: img/jpnotebook.png used on input line 274.
-(pdftex.def)             Requested size: 69.45827pt x 69.45827pt.
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1238,39 +1233,58 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [23
 
- <./img/dropwizard.png> <./img/jpnotebook.png>]
+ <./img/workflow.jpg>] <img/dropwizard.png, id=707, 434.62375pt x 232.87pt>
+File: img/dropwizard.png Graphic file (type png)
+
+<use img/dropwizard.png>
+Package pdftex.def Info: img/dropwizard.png used on input line 280.
+(pdftex.def)             Requested size: 130.38812pt x 69.86153pt.
+ <img/jpnotebook.png, id=708, 347.2975pt x 347.2975pt>
+File: img/jpnotebook.png Graphic file (type png)
+
+<use img/jpnotebook.png>
+Package pdftex.def Info: img/jpnotebook.png used on input line 280.
+(pdftex.def)             Requested size: 69.45827pt x 69.45827pt.
+
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
 [24
 
-] <img/Team_Schedule.jpg, id=729, 578.16pt x 409.53pt>
-File: img/Team_Schedule.jpg Graphic file (type jpg)
-
-<use img/Team_Schedule.jpg>
-Package pdftex.def Info: img/Team_Schedule.jpg used on input line 301.
-(pdftex.def)             Requested size: 231.2599pt x 163.80908pt.
-
+ <./img/dropwizard.png> <./img/jpnotebook.png>]
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
 [25
 
- <./img/Team_Schedule.jpg>]
+] <img/Team_Schedule.jpg, id=763, 578.16pt x 409.53pt>
+File: img/Team_Schedule.jpg Graphic file (type jpg)
+
+<use img/Team_Schedule.jpg>
+Package pdftex.def Info: img/Team_Schedule.jpg used on input line 307.
+(pdftex.def)             Requested size: 231.2599pt x 163.80908pt.
+
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
 [26
 
+ <./img/Team_Schedule.jpg>]
+Overfull \hbox (101.22792pt too wide) has occurred while \output is active
+ [][]    
+ []
+
+[27
+
 ]
 Missing character: There is no ‚ in font cmss10!
 Missing character: There is no Ä in font cmss10!
 Missing character: There is no ì in font cmss10!
 
-Overfull \vbox (8.11713pt too high) detected at line 318
+Overfull \vbox (8.11713pt too high) detected at line 324
  []
 
 
@@ -1278,7 +1292,7 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
-[27
+[28
 
 ]
 \tf@nav=\write6
@@ -1290,13 +1304,13 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 320.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 320.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 326.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 326.
  (presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 320.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 320.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 326.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 326.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 705B810900C77C8D645179AFD500AD43;708.
+(rerunfilecheck)             Checksum: CE6865759D999A6FAAE5A7B6CED4D6DF;768.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1304,10 +1318,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 18860 strings out of 493328
- 353468 string characters out of 3139098
+ 18873 strings out of 493328
+ 353664 string characters out of 3139098
  432144 words of memory out of 3000000
- 21837 multiletter control sequences out of 15000+200000
+ 21846 multiletter control sequences out of 15000+200000
  15501 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,16n,55p,780b,579s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1317,9 +1331,9 @@ es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmsy8.pfb>
-Output written on presentation.pdf (27 pages, 827908 bytes).
+Output written on presentation.pdf (28 pages, 859914 bytes).
 PDF statistics:
- 843 PDF objects out of 1000 (max. 8388607)
- 67 named destinations out of 1000 (max. 500000)
- 219 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 876 PDF objects out of 1000 (max. 8388607)
+ 70 named destinations out of 1000 (max. 500000)
+ 232 words of extra memory for PDF output out of 10000 (max. 10000000)
 

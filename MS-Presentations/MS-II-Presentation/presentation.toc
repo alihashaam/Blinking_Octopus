@@ -2,11 +2,12 @@
 \beamer@subsectionintoc {1}{1}{Octopus + BlinkDB = Blinktopus}{3}{0}{1}
 \beamer@subsectionintoc {1}{2}{Our Goal}{4}{0}{1}
 \beamer@sectionintoc {2}{Concepts}{5}{0}{2}
-\beamer@subsectionintoc {2}{1}{AQP.Architecture}{6}{0}{2}
-\beamer@subsectionintoc {2}{2}{AQP.Synopses Manager}{7}{0}{2}
-\beamer@subsectionintoc {2}{3}{Types of Synopses}{8}{0}{2}
-\beamer@sectionintoc {3}{Building a Blinktopus}{20}{0}{3}
-\beamer@sectionintoc {4}{Project Organisation}{24}{0}{4}
-\beamer@subsectionintoc {4}{1}{Roles}{24}{0}{4}
-\beamer@subsectionintoc {4}{2}{Schedule}{25}{0}{4}
-\beamer@sectionintoc {5}{Literature}{27}{0}{5}
+\beamer@subsectionintoc {2}{1}{OctopusDB}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{AQP.Architecture}{7}{0}{2}
+\beamer@subsectionintoc {2}{3}{AQP.Synopses Manager}{8}{0}{2}
+\beamer@subsectionintoc {2}{4}{Types of Synopses}{9}{0}{2}
+\beamer@sectionintoc {3}{Building a Blinktopus}{21}{0}{3}
+\beamer@sectionintoc {4}{Project Organisation}{25}{0}{4}
+\beamer@subsectionintoc {4}{1}{Roles}{25}{0}{4}
+\beamer@subsectionintoc {4}{2}{Schedule}{26}{0}{4}
+\beamer@sectionintoc {5}{Literature}{28}{0}{5}
