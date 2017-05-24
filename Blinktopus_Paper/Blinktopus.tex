@@ -25,7 +25,13 @@ What is this paper about?
 \subsection{Background and Motivation}
 Over the last decades we are witnessing that modern enterprises need to pick only  specialized DBMSs(e.g. OLAP, OLTP, streaming systems and etc.) each tailored to their specific use-case. Consequently, it leads to additional costs in terms of licensing, maintenance, integration and DBA. Nevertheless, it is affordable for some companies, to adapt these integrated solutions to constantly changing workload and requirements. However, it may still be a challenging and non-trivial task to achieve. Thus, in order to cope with these problems an implementation of new all-purpose system will be a perfect solution. \\ Nowadays there exists a great variety of systems that claim to solve the aforementioned problems. One of the most radically departing from existing architectures solutions was proposed by Jens Dittrich and Alekh Jindal - a new type of database system, coined OctopusDB[1]. By mimicking several types of systems, OctopusDB shows a considerably better performance. Meanwhile, it became evident that a system performance can be further enhanced by applying techniques from completely different perspectives. As long as it is plausible for a system to retrieve results approximately rather than exactly, Approximate Query Processing(AQP) comes into play. Several successful examples(e.g. BlinkDB, SnappyData on Facebook's Presto) have already proved an efficiency of an implementation of approximation features into existing DBMSs[5]???. Therefore, we believe that combining OctopusDB and AQP techniques will improve the performance of our system by several orders of magnitude. 
 Thus, our goal is to provide a user a tool called Blinktopus, that will allow  to build his own prototype of OctopusDB with embedded AQP techniques.\\
-In Section 2 we start with the brief discussion of what is the idea behind OctopusDB and AQP. Moreover, in Section 2 we introduce the concepts of AQP main data synopses and explain why exactly one type of synopsis was chosen for our system. In Section 3 we discuss an experimental part of our project where we provide the results of the tests performed on the Storage Views(SVs) with the different physical layouts, namely LogSV, ColSV and RowSV. In Section 4 we present the related work. We conclude this paper in Section 5.
+In Section 2 we start with the brief discussion of what is the idea behind OctopusDB and AQP. Moreover, in Section 2 we introduce the concepts of AQP main data synopses and explain why exactly one type of synopsis was chosen for our system. We present our contributions as follows:
+\begin{itemize}
+\vspace{0.05 cm}
+\item{In Section 3 we propose a novel concept of new system called Blinktopus.}
+\item{In Section 4 we discuss an experimental part of our project. Here we provide an evidence on the benefits of Blinktopus's functionality based on the results of the tests performed on the Storage Views(SVs) with the different physical layouts, namely LogSV, ColSV and RowSV.}
+\end{itemize}
+In Section 5 we present the related work. We conclude this paper in Section 6 and propose future directions for our research in Section 7.
 
 \section{Fundamentals}
 \subsection{OctopusDB}
@@ -35,6 +41,8 @@ Main Idea. Architecture briefly.
 Main Idea. Synopses for Massive Data: Histograms. Sketches.
 More on histograms. 
 Probably something on HLL, if it's eventually included in Blinktopus.
+
+\section{Blinktopus}
 
 \section{Experimental Part}
 Evaluation of the test results:
