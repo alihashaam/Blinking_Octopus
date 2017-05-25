@@ -11,7 +11,8 @@ import dbse.fopj.blinktopus.api.datamodel.LineItem;
 import dbse.fopj.blinktopus.api.datamodel.Order;
 import dbse.fopj.blinktopus.api.datamodel.Tuple;
 import dbse.fopj.blinktopus.api.managers.LogManager;
-import dbse.fopj.blinktopus.api.managers.SVManager;
+import dbse.fopj.blinktopus.api.resultmodel.LogResult;
+import dbse.fopj.blinktopus.api.resultmodel.Result;
 import dbse.fopj.blinktopus.api.resultmodel.SVResult;
 import dbse.fopj.blinktopus.resources.QueryProcessor;
 
@@ -51,17 +52,19 @@ public class ColSV extends SV {
 	public ColSV(String id, String table, String attr, double lower, double higher) {
 		super(id, "Col", table, attr, lower, higher);
 		List<Tuple> all = LogManager.getLogManager().getAllLog().getResultTuples();
-		List<Tuple> lr = LogManager.getLogManager().scan(table, attr, lower, higher).getResultTuples();
+		LogResult res = LogManager.getLogManager().scan(table, attr, lower, higher, "");
+		List<Tuple> lr = res.getResultTuples();
 		if (table.toLowerCase().equals("orders")) {
 			switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
 			case 0:
 				this.colData = IntStream.range(0, lr.size())
-						.mapToObj(i -> new ColEntry(((Order) lr.get(i)).getTotalPrice(), all.indexOf(lr.get(i)) + 1))
+						.mapToObj(i -> new ColEntry(((Order) lr.get(i)).getTotalPrice(), all.indexOf(lr.get(i))))
 						.collect(Collectors.toList());
 				break;
 			case 1:
-				this.colData = IntStream.range(0, lr.size()).mapToObj(
-						i -> new ColEntry(((Order) lr.get(i)).getOrderDate().getTime(), all.indexOf(lr.get(i)) + 1))
+				this.colData = IntStream.range(0, lr.size())
+						.mapToObj(
+								i -> new ColEntry(((Order) lr.get(i)).getOrderDate().getTime(), all.indexOf(lr.get(i))))
 						.collect(Collectors.toList());
 				break;
 			default:
@@ -72,43 +75,42 @@ public class ColSV extends SV {
 			switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
 			case 0:
 				this.colData = IntStream.range(0, lr.size())
-						.mapToObj(i -> new ColEntry(((LineItem) lr.get(i)).getLineNumber(), all.indexOf(lr.get(i)) + 1))
+						.mapToObj(i -> new ColEntry(((LineItem) lr.get(i)).getLineNumber(), all.indexOf(lr.get(i))))
 						.collect(Collectors.toList());
 				break;
 			case 1:
 				this.colData = IntStream.range(0, lr.size())
-						.mapToObj(i -> new ColEntry(((LineItem) lr.get(i)).getQuantity(), all.indexOf(lr.get(i)) + 1))
+						.mapToObj(i -> new ColEntry(((LineItem) lr.get(i)).getQuantity(), all.indexOf(lr.get(i))))
 						.collect(Collectors.toList());
 				break;
 			case 2:
-				this.colData = IntStream.range(0, lr.size()).mapToObj(
-						i -> new ColEntry(((LineItem) lr.get(i)).getExtendedPrice(), all.indexOf(lr.get(i)) + 1))
+				this.colData = IntStream.range(0, lr.size())
+						.mapToObj(i -> new ColEntry(((LineItem) lr.get(i)).getExtendedPrice(), all.indexOf(lr.get(i))))
 						.collect(Collectors.toList());
 				break;
 			case 3:
 				this.colData = IntStream.range(0, lr.size())
-						.mapToObj(i -> new ColEntry(((LineItem) lr.get(i)).getDiscount(), all.indexOf(lr.get(i)) + 1))
+						.mapToObj(i -> new ColEntry(((LineItem) lr.get(i)).getDiscount(), all.indexOf(lr.get(i))))
 						.collect(Collectors.toList());
 				break;
 			case 4:
 				this.colData = IntStream.range(0, lr.size())
-						.mapToObj(i -> new ColEntry(((LineItem) lr.get(i)).getTax(), all.indexOf(lr.get(i)) + 1))
+						.mapToObj(i -> new ColEntry(((LineItem) lr.get(i)).getTax(), all.indexOf(lr.get(i))))
 						.collect(Collectors.toList());
 				break;
 			case 5:
 				this.colData = IntStream.range(0, lr.size()).mapToObj(
-						i -> new ColEntry(((LineItem) lr.get(i)).getShipDate().getTime(), all.indexOf(lr.get(i)) + 1))
+						i -> new ColEntry(((LineItem) lr.get(i)).getShipDate().getTime(), all.indexOf(lr.get(i))))
 						.collect(Collectors.toList());
 				break;
 			case 6:
 				this.colData = IntStream.range(0, lr.size()).mapToObj(
-						i -> new ColEntry(((LineItem) lr.get(i)).getCommitDate().getTime(), all.indexOf(lr.get(i)) + 1))
+						i -> new ColEntry(((LineItem) lr.get(i)).getCommitDate().getTime(), all.indexOf(lr.get(i))))
 						.collect(Collectors.toList());
 				break;
 			case 7:
-				this.colData = IntStream.range(0, lr.size())
-						.mapToObj(i -> new ColEntry(((LineItem) lr.get(i)).getReceiptDate().getTime(),
-								all.indexOf(lr.get(i)) + 1))
+				this.colData = IntStream.range(0, lr.size()).mapToObj(
+						i -> new ColEntry(((LineItem) lr.get(i)).getReceiptDate().getTime(), all.indexOf(lr.get(i))))
 						.collect(Collectors.toList());
 				break;
 			default:
@@ -116,7 +118,7 @@ public class ColSV extends SV {
 				break;
 			}
 		}
-
+		this.setTime(res.getTimeLog());
 		this.setSize(colData.size());
 	}
 
@@ -147,17 +149,27 @@ public class ColSV extends SV {
 	 *         return it as a result. 1.2 NO - create new RowSV and store it in
 	 *         SVManager
 	 */
-	public SVResult query(String table, String attr, double lower, double higher) {
-		long start = System.nanoTime();
+	public Result query(String table, String attr, double lower, double higher) {
 		List<ColEntry> res = new ArrayList<ColEntry>();
-		if (this.getTable().equals(table) && this.getAttr().equals(attr) && this.getLower() <= lower
+		if (this.getTable().toLowerCase().equals(table.toLowerCase())
+				&& this.getAttr().toLowerCase().equals(attr.toLowerCase()) && this.getLower() <= lower
 				&& this.getHigher() >= higher) {
+			long start = System.nanoTime();
 			res = this.colData.stream().filter((ColEntry e) -> (e.getValue() >= lower && e.getValue() <= higher))
 					.collect(Collectors.toList());
-			return new SVResult(this.getId() + "tmp", "Col", table, attr, lower, higher, System.nanoTime() - start,
-					res.size(), 0, new ColSV(this.getId() + "tmp", table, attr, lower, higher, res));
+			long timeSV = System.nanoTime() - start;
+			long timeLog = LogManager.getLogManager().getTime(table, attr, lower, higher, "");
+			return new SVResult(this.getId() + "tmp", "Col", table, attr, lower, higher, timeLog, timeSV, res.size(), 0,
+					"OK", new ColSV(this.getId() + "tmp", table, attr, lower, higher, res));
 		} else {
-			return SVManager.getSVManager().maintain(this.getId(), "Row", table, attr, lower, higher, true);
+			if (!this.getTable().toLowerCase().equals(table.toLowerCase()))
+				return LogManager.getLogManager().scan(table, attr, lower, higher,
+						"SV with Id: " + this.getId() + " is not for the table: " + table);
+			else if (!this.getAttr().toLowerCase().equals(attr.toLowerCase()))
+				return LogManager.getLogManager().scan(table, attr, lower, higher,
+						"SV with Id: " + this.getId() + " is not for attribute: " + attr);
+			else
+				return LogManager.getLogManager().scan(table, attr, lower, higher, "Random error");
 		}
 
 	}

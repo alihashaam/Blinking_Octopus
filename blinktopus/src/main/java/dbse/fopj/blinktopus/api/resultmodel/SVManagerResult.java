@@ -8,8 +8,8 @@ import dbse.fopj.blinktopus.api.sv.SV;
 
 /**
  * 
- * @author urmikl18
- * Class represents a JSON-file that is returned after QueryProcessor asks for all SVs.
+ * @author urmikl18 Class represents a JSON-file that is returned after
+ *         QueryProcessor asks for all SVs.
  */
 public class SVManagerResult extends Result {
 
@@ -18,9 +18,9 @@ public class SVManagerResult extends Result {
 	public SVManagerResult() {
 	}
 
-	public SVManagerResult(String SVid, String type, String table, String attr, double lower, double higher, long elapsedTime,
-			int size, double error, List<SV> allSV) {
-		super(SVid, type, table, attr, lower, higher, elapsedTime, size, error);
+	public SVManagerResult(String SVid, String type, String table, String attr, double lower, double higher,
+			long timeLog, long timeSV, int size, double error, String message, List<SV> allSV) {
+		super(SVid, type, table, attr, lower, higher, timeLog, timeSV, size, error, message);
 		this.allSV = allSV;
 	}
 

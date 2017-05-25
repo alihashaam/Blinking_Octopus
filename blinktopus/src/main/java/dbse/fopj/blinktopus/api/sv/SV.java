@@ -16,6 +16,8 @@ public class SV {
 	private double lower;
 	private double higher;
 	private int size;
+	
+	private long timeSV;
 
 	
 	public SV() {
@@ -28,6 +30,26 @@ public class SV {
 		this.attr = attr;
 		this.lower = lower;
 		this.higher = higher;
+	}
+	
+	public int getSize()
+	{
+		return size;
+	}
+	
+	protected void setSize(int size)
+	{
+		this.size=size;
+	}
+	
+	public long getTime()
+	{
+		return timeSV;
+	}
+	
+	protected void setTime(long timeSV)
+	{
+		this.timeSV=timeSV;
 	}
 	
 	@JsonProperty
@@ -66,14 +88,6 @@ public class SV {
 		return higher;
 	}
 	
-	public int getSize()
-	{
-		return size;
-	}
 	
-	protected void setSize(int size)
-	{
-		this.size=size;
-	}
 
 }

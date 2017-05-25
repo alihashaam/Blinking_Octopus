@@ -8,8 +8,8 @@ import dbse.fopj.blinktopus.api.datamodel.Tuple;
 
 /**
  * 
- * @author urmikl18
- * Represents JSON-file when QueryProcessor asks for all entries in a log.
+ * @author urmikl18 Represents JSON-file when QueryProcessor asks for all
+ *         entries in a log.
  */
 public class LogResult extends Result {
 
@@ -18,9 +18,9 @@ public class LogResult extends Result {
 	public LogResult() {
 	}
 
-	public LogResult(String SVid, String type, String table, String attr, double lower, double higher, long elapsedTime, int size,
-			double error, List<Tuple> resultTuples) {
-		super(SVid, type, table, attr, lower, higher, elapsedTime, size, error);
+	public LogResult(String SVid, String type, String table, String attr, double lower, double higher, long timeLog,
+			long timeSV, int size, double error, String message, List<Tuple> resultTuples) {
+		super(SVid, type, table, attr, lower, higher, timeLog, timeSV, size, error, message);
 		this.logResultTuples = resultTuples;
 	}
 

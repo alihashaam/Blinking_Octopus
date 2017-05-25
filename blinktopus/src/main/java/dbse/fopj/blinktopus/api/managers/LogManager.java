@@ -14,12 +14,13 @@ import dbse.fopj.blinktopus.resources.QueryProcessor;
 
 /**
  * 
- * @author urmikl18 Class that represents a primary log adapted from OctopusDB. Singleton.
+ * @author urmikl18 Class that represents a primary log adapted from OctopusDB.
+ *         Singleton.
  */
 public final class LogManager {
 	private static final LogManager INSTANCE = new LogManager();
 	private List<Tuple> dataLog = new ArrayList<Tuple>();
-
+	
 	private LogManager() {
 	}
 
@@ -75,7 +76,7 @@ public final class LogManager {
 	 */
 	public LogResult getAllLog() {
 		long start = System.nanoTime();
-		return new LogResult("Primary", "Log", "", "", 0, 0, System.nanoTime() - start, this.dataLog.size(), 0,
+		return new LogResult("Primary", "Log", "", "", 0, 0, System.nanoTime() - start, 0, this.dataLog.size(), 0, "OK",
 				this.dataLog);
 	}
 
@@ -91,10 +92,10 @@ public final class LogManager {
 	 *            - right border of an interval
 	 * @return Sublog with relevant data.
 	 */
-	public LogResult scan(String table, String attr, double lower, double higher) {
-		long start = System.nanoTime();
+	public LogResult scan(String table, String attr, double lower, double higher, String message) {
 		List<Tuple> res = new ArrayList<Tuple>();
 
+		long start = System.nanoTime();
 		if (table.toLowerCase().equals("orders")) {
 			switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
 			case 0:
@@ -173,9 +174,14 @@ public final class LogManager {
 				break;
 			}
 		}
-		return new LogResult("Primary", "Log", table, attr, lower, higher, System.nanoTime() - start, res.size(), 0,
-				res);
-
+		return new LogResult("Primary", "Log", table, attr, lower, higher, System.nanoTime() - start, 0, res.size(), 0,
+				message, res);
+	}
+	
+	public long getTime(String table, String attr, double lower, double higher, String message)
+	{
+		LogResult r = this.scan(table, attr, lower, higher, message);
+		return r.getTimeLog();
 	}
 
 }

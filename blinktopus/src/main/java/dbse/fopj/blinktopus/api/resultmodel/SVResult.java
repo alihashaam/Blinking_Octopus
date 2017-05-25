@@ -6,8 +6,8 @@ import dbse.fopj.blinktopus.api.sv.*;
 
 /**
  * 
- * @author urmikl18
- * Class represents a JSON that should be created as a result of query processing on SV.
+ * @author urmikl18 Class represents a JSON that should be created as a result
+ *         of query processing on SV.
  */
 public class SVResult extends Result {
 
@@ -16,9 +16,9 @@ public class SVResult extends Result {
 	public SVResult() {
 	}
 
-	public SVResult(String SVid, String type, String table, String attr, double lower, double higher, long elapsedTime, int size,
-			double error, SV svResult) {
-		super(SVid, type, table, attr, lower, higher, elapsedTime, size, error);
+	public SVResult(String SVid, String type, String table, String attr, double lower, double higher, long timeLog,
+			long timeSV, int size, double error, String message, SV svResult) {
+		super(SVid, type, table, attr, lower, higher, timeLog, timeSV, size, error, message);
 		this.svResult = svResult;
 	}
 

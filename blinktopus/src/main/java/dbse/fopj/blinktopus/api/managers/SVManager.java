@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import dbse.fopj.blinktopus.api.resultmodel.Result;
 import dbse.fopj.blinktopus.api.resultmodel.SVManagerResult;
 import dbse.fopj.blinktopus.api.resultmodel.SVResult;
 import dbse.fopj.blinktopus.api.sv.*;
@@ -30,7 +31,14 @@ public final class SVManager {
 	 */
 	public SVManagerResult getAllSV() {
 		long start = System.nanoTime();
-		return new SVManagerResult("SV", "Manager", "", "", 0, 0, System.nanoTime() - start, allSV.size(), 0, allSV);
+		return new SVManagerResult("SV", "Manager", "", "", 0, 0, 0, System.nanoTime() - start, allSV.size(), 0, "OK",
+				allSV);
+	}
+	
+	public void clear()
+	{
+		this.allSV.clear();
+		this.idSV=1;
 	}
 
 	/**
@@ -56,31 +64,31 @@ public final class SVManager {
 	 *         found - Create new SV with given parameters.
 	 * 
 	 */
-	public SVResult maintain(String SVId, String type, String table, String attr, double lower, double higher,
+	public Result maintain(String SVId, String type, String table, String attr, double lower, double higher,
 			boolean createSV) {
 		if (createSV) {
 			if (type.toLowerCase().equals("row")) {
 				String rowId = "Row" + (idSV++);
-				long start = System.nanoTime();
 				RowSV res = new RowSV(rowId, table, attr, lower, higher);
 				this.allSV.add(res);
-				return new SVResult(rowId, type, table, attr, lower, higher, System.nanoTime() - start, res.getSize(),
-						0, res);
+				long timeSV = res.getTime();
+				return new SVResult(rowId, type, table, attr, lower, higher, 0, timeSV, res.getSize(), 0, "OK",
+						res);
 			} else if (type.toLowerCase().equals("col")) {
 				String colId = "Col" + (idSV++);
-				long start = System.nanoTime();
 				ColSV res = new ColSV(colId, table, attr, lower, higher);
 				this.allSV.add(res);
-				return new SVResult(colId, type, table, attr, lower, higher, System.nanoTime() - start, res.getSize(),
-						0, res);
+				long timeSV = res.getTime();
+				return new SVResult(colId, type, table, attr, lower, higher, 0, timeSV, res.getSize(), 0, "OK",
+						res);
 			} else {
 				String aqpId = "Aqp" + (idSV++);
 				long start = System.nanoTime();
 				// AqpSV res = new AqpSV(aqpId, table, attr, lower, higher);
 				AqpSV res = null;
 				this.allSV.add(res);
-				return new SVResult(aqpId, type, table, attr, lower, higher, System.nanoTime() - start, res.getSize(),
-						0, res);
+				return new SVResult(aqpId, type, table, attr, lower, higher, System.nanoTime() - start, 0,
+						res.getSize(), 0, "OK", res);
 			}
 		} else {
 			SV sv = new SV();
@@ -89,10 +97,12 @@ public final class SVManager {
 						.collect(Collectors.toList()).get(0);
 
 			} catch (IndexOutOfBoundsException e) {
-				return maintain(SVId, type, table, attr, lower, higher, true);
+				return LogManager.getLogManager().scan(table, attr, lower, higher, "SV with Id: "+SVId+" doesn't exist");
 			}
 			if (sv == null)
-				return maintain(SVId, type, table, attr, lower, higher, true);
+				return LogManager.getLogManager().scan(table, attr, lower, higher, "SV with Id: "+SVId+" doesn't exist");
+			if (!sv.getType().toLowerCase().equals(type.toLowerCase()))
+				return LogManager.getLogManager().scan(table, attr, lower, higher, "SV with Id: "+SVId+" doesn't have type: "+type);
 
 			if (sv.getType().toLowerCase().equals("row")) {
 				RowSV rowSV = (RowSV) sv;

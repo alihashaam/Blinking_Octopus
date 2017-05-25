@@ -50,11 +50,18 @@ public class QueryProcessor {
 	 * 
 	 * @return List of stored Storage Views
 	 */
-	@Path("/sv")
+	@Path("/sv/all")
 	@GET
 	@Timed
 	public SVManagerResult getAllSVs() {
 		return SVManager.getSVManager().getAllSV();
+	}
+	
+	@Path("/sv/clear")
+	@GET
+	@Timed
+	public void removeAllSVs() {
+		SVManager.getSVManager().clear();
 	}
 
 	/**
@@ -93,7 +100,7 @@ public class QueryProcessor {
 			@QueryParam("table") String table, @QueryParam("attr") String attr, @QueryParam("lower") String lower,
 			@QueryParam("higher") String higher, @QueryParam("create") String createSV) {
 		if (type.toLowerCase().equals("log"))
-			return LogManager.getLogManager().scan(table, attr, Double.parseDouble(lower), Double.parseDouble(higher));
+			return LogManager.getLogManager().scan(table, attr, Double.parseDouble(lower), Double.parseDouble(higher),"OK");
 		else
 			return SVManager.getSVManager().maintain(SVId, type, table, attr, Double.parseDouble(lower),
 					Double.parseDouble(higher), Boolean.parseBoolean(createSV));
