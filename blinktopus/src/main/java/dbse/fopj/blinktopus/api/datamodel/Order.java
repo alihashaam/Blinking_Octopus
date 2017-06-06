@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Order extends Tuple {
 	private long orderKey;
+	private long custKey;
 	private char orderStatus;
 	private double totalPrice;
 	private Date orderDate;
@@ -25,10 +26,11 @@ public class Order extends Tuple {
 	public Order() {
 	}
 
-	public Order(long orderKey, char orderStatus, double totalPrice, Date orderDate, String orderPriority, String clerk,
+	public Order(long orderKey, long custKey, char orderStatus, double totalPrice, Date orderDate, String orderPriority, String clerk,
 			int shipPriority, String comment) {
 		this.table = "Order";
 		this.orderKey = orderKey;
+		this.custKey=custKey;
 		this.orderStatus = orderStatus;
 		this.totalPrice = totalPrice;
 		this.orderDate = orderDate;
@@ -41,6 +43,11 @@ public class Order extends Tuple {
 	@JsonProperty
 	public long getOrderKey() {
 		return orderKey;
+	}
+	
+	@JsonProperty
+	public long getCustKey() {
+		return custKey;
 	}
 
 	@JsonProperty

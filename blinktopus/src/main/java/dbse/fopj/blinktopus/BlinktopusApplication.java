@@ -34,8 +34,8 @@ public class BlinktopusApplication extends Application<BlinktopusConfiguration> 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        LogManager.getLogManager().loadData(baseDir+"/src/main/resources/dataset/orders1.csv");
-        LogManager.getLogManager().loadData(baseDir+"/src/main/resources/dataset/lineitems1.csv");
+        LogManager.getLogManager().loadData(baseDir+"/src/main/resources/dataset/O_T_0.1.tbl");
+        LogManager.getLogManager().loadData(baseDir+"/src/main/resources/dataset/LI_T_0.1.tbl");
     }
 
     @Override

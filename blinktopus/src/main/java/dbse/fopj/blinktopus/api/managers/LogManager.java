@@ -20,7 +20,7 @@ import dbse.fopj.blinktopus.resources.QueryProcessor;
 public final class LogManager {
 	private static final LogManager INSTANCE = new LogManager();
 	private List<Tuple> dataLog = new ArrayList<Tuple>();
-	
+
 	private LogManager() {
 	}
 
@@ -31,31 +31,32 @@ public final class LogManager {
 	/**
 	 * 
 	 * @param pathname
-	 *            - path to .csv
+	 *            - path to .tbl
 	 */
 	public void loadData(String pathname) {
-		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String csvFile = pathname;
 		BufferedReader br = null;
 		String l = "";
-		String csvSplitBy = ",";
+		String csvSplitBy = "\\|";
 
 		try {
 
 			br = new BufferedReader(new FileReader(csvFile));
 			while ((l = br.readLine()) != null) {
 				String[] line = l.split(csvSplitBy);
-				if (line.length == 8)
-					this.dataLog.add(new Order(Integer.parseInt(line[0].trim()), line[1].trim().charAt(0),
-							Double.parseDouble(line[2].trim()), format.parse(line[3].trim()), line[4].trim(),
-							line[5].trim(), Integer.parseInt(line[6].trim()), line[7].trim()));
-				else if (line.length == 14)
-					this.dataLog.add(new LineItem(Long.parseLong(line[0].trim()), Integer.parseInt(line[1].trim()),
-							Double.parseDouble(line[2].trim()), Double.parseDouble(line[3].trim()),
+				if (line.length == 9)
+					this.dataLog.add(new Order(Long.parseLong(line[0].trim()), Long.parseLong(line[1].trim()),
+							line[2].trim().charAt(0), Double.parseDouble(line[3].trim()), format.parse(line[4].trim()),
+							line[5].trim(), line[6].trim(), Integer.parseInt(line[7].trim()), line[8].trim()));
+				else if (line.length == 16)
+					this.dataLog.add(new LineItem(Long.parseLong(line[0].trim()), Long.parseLong(line[1].trim()),
+							Long.parseLong(line[2].trim()), Integer.parseInt(line[3].trim()),
 							Double.parseDouble(line[4].trim()), Double.parseDouble(line[5].trim()),
-							line[6].trim().charAt(0), line[7].trim().charAt(0), format.parse(line[8].trim()),
-							format.parse(line[9].trim()), format.parse(line[10].trim()), line[11].trim(),
-							line[12].trim(), line[13].trim()));
+							Double.parseDouble(line[6].trim()), Double.parseDouble(line[7].trim()),
+							line[8].trim().charAt(0), line[9].trim().charAt(0), format.parse(line[10].trim()),
+							format.parse(line[11].trim()), format.parse(line[12].trim()), line[13].trim(),
+							line[14].trim(), line[15].trim()));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -177,9 +178,8 @@ public final class LogManager {
 		return new LogResult("Primary", "Log", table, attr, lower, higher, System.nanoTime() - start, 0, res.size(), 0,
 				message, res);
 	}
-	
-	public long getTime(String table, String attr, double lower, double higher, String message)
-	{
+
+	public long getTime(String table, String attr, double lower, double higher, String message) {
 		LogResult r = this.scan(table, attr, lower, higher, message);
 		return r.getTimeLog();
 	}

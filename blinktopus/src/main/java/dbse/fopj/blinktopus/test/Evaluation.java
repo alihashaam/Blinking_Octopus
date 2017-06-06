@@ -17,8 +17,8 @@ public class Evaluation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/orders1.csv");
-		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/lineitems1.csv");
+		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/O_T_0.1.tbl");
+		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/LI_T_0.1.tbl");
 	}
 
 	private static void createSV(String table, String attr, double lower, double higher) {
@@ -99,16 +99,22 @@ public class Evaluation {
 	}
 
 	public static void main(String[] args) {
-		String table = "orders";
-		String attr = "totalPrice";
-		double lower = 100;
-		double higher = 5000;
-
-		loadData();
-		createSV(table, attr, lower, higher);
-		long[] resLog = queryLog(100, table, attr, lower, higher);
-		long[] resRow = queryRow(100, table, attr, lower, higher);
-		long[] resCol = queryCol(100, table, attr, lower, higher);
-		exportData(resLog, resRow, resCol);
+//		String table = "orders";
+//		String attr = "totalPrice";
+//		double lower = 50000;
+//		double higher = 200000;
+//		int nQuery = 100;
+//
+//		loadData();
+//		createSV(table, attr, lower, higher);
+//		long[] resLog = queryLog(nQuery, table, attr, lower, higher);
+//		long[] resRow = queryRow(nQuery, table, attr, lower, higher);
+//		long[] resCol = queryCol(nQuery, table, attr, lower, higher);
+//		exportData(resLog, resRow, resCol);
+		
+		String d ="1|15519|785|1|17|24386.67|0.04|0.02|N|O|1996-03-13|1996-02-12|1996-03-22|DELIVER IN PERSON|TRUCK|egular courts above the|";
+		String[] darr=d.split("\\|");
+		System.out.println("S)");
+		
 	}
 }

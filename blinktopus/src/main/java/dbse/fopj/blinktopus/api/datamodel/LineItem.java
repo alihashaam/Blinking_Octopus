@@ -12,6 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class LineItem extends Tuple {
 	private long orderKey;
+	private long partKey;
+	private long suppKey;
 	private int lineNumber;
 	private double quantity;
 	private double extendedPrice;
@@ -32,11 +34,13 @@ public class LineItem extends Tuple {
 	public LineItem() {
 	}
 
-	public LineItem(long orderKey, int lineNumber, double quantity, double extendedPrice, double discount, double tax,
-			char returnFlag, char lineStatus, Date shipDate, Date commitDate, Date receiptDate, String shipInstruct,
-			String shipMode, String comment) {
+	public LineItem(long orderKey, long partKey, long suppKey, int lineNumber, double quantity, double extendedPrice,
+			double discount, double tax, char returnFlag, char lineStatus, Date shipDate, Date commitDate,
+			Date receiptDate, String shipInstruct, String shipMode, String comment) {
 		this.table = "LineItem";
 		this.orderKey = orderKey;
+		this.partKey = partKey;
+		this.suppKey = suppKey;
 		this.lineNumber = lineNumber;
 		this.quantity = quantity;
 		this.extendedPrice = extendedPrice;
@@ -57,6 +61,16 @@ public class LineItem extends Tuple {
 		return orderKey;
 	}
 
+	@JsonProperty
+	public long getPartKey() {
+		return partKey;
+	}
+	
+	@JsonProperty
+	public long getSuppKey() {
+		return suppKey;
+	}
+	
 	@JsonProperty
 	public int getLineNumber() {
 		return lineNumber;
