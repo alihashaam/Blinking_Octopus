@@ -99,22 +99,18 @@ public class Evaluation {
 	}
 
 	public static void main(String[] args) {
-//		String table = "orders";
-//		String attr = "totalPrice";
-//		double lower = 50000;
-//		double higher = 200000;
-//		int nQuery = 100;
-//
-//		loadData();
-//		createSV(table, attr, lower, higher);
-//		long[] resLog = queryLog(nQuery, table, attr, lower, higher);
-//		long[] resRow = queryRow(nQuery, table, attr, lower, higher);
-//		long[] resCol = queryCol(nQuery, table, attr, lower, higher);
-//		exportData(resLog, resRow, resCol);
-		
-		String d ="1|15519|785|1|17|24386.67|0.04|0.02|N|O|1996-03-13|1996-02-12|1996-03-22|DELIVER IN PERSON|TRUCK|egular courts above the|";
-		String[] darr=d.split("\\|");
-		System.out.println("S)");
+		String table = "orders";
+		String attr = "totalPrice";
+		double lower = 50000;
+		double higher = 200000;
+		int nQuery = 100;
+
+		loadData();
+		createSV(table, attr, lower, higher);
+		long[] resLog = queryLog(nQuery, table, attr, lower, higher);
+		long[] resRow = queryRow(nQuery, table, attr, lower, higher);
+		long[] resCol = queryCol(nQuery, table, attr, lower, higher);
+		exportData(resLog, resRow, resCol);
 		
 	}
 }
