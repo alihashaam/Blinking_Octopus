@@ -1,0 +1,11 @@
+\beamer@sectionintoc {1}{Blinktopus}{3}{0}{1}
+\beamer@sectionintoc {2}{Recall}{4}{0}{2}
+\beamer@sectionintoc {3}{Implementation}{6}{0}{3}
+\beamer@subsectionintoc {3}{1}{Schema}{7}{0}{3}
+\beamer@subsectionintoc {3}{2}{OctopusDB}{8}{0}{3}
+\beamer@subsectionintoc {3}{3}{Approximate Query Processing}{11}{0}{3}
+\beamer@subsubsectionintoc {3}{3}{1}{Histograms}{12}{0}{3}
+\beamer@subsubsectionintoc {3}{3}{2}{Sketches}{18}{0}{3}
+\beamer@sectionintoc {4}{Project Organisation}{21}{0}{4}
+\beamer@subsectionintoc {4}{1}{Roles}{21}{0}{4}
+\beamer@sectionintoc {5}{Literature}{23}{0}{5}
