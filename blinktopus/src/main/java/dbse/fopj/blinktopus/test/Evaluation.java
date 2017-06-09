@@ -3,6 +3,8 @@ package dbse.fopj.blinktopus.test;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import dbse.fopj.blinktopus.api.managers.LogManager;
 import dbse.fopj.blinktopus.api.managers.SVManager;
@@ -17,8 +19,8 @@ public class Evaluation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/O_T_0.1.tbl");
-		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/LI_T_0.1.tbl");
+		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/O_1.tbl",
+				baseDir+"/src/main/resources/dataset/LI_1.tbl");
 	}
 
 	private static void createSV(String table, String attr, double lower, double higher) {
@@ -65,9 +67,9 @@ public class Evaluation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		String filepath = baseDir+"/evaluation.csv";
-		
+
+		String filepath = baseDir + "/evaluation.csv";
+
 		try {
 			fileWriter = new FileWriter(filepath);
 
@@ -104,6 +106,10 @@ public class Evaluation {
 		double lower = 50000;
 		double higher = 200000;
 		int nQuery = 100;
+		
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		System.out.println(sdf.format(cal.getTime()));
 
 		loadData();
 		createSV(table, attr, lower, higher);
@@ -112,5 +118,7 @@ public class Evaluation {
 		long[] resCol = queryCol(nQuery, table, attr, lower, higher);
 		exportData(resLog, resRow, resCol);
 		
+		System.out.println(sdf.format(cal.getTime()));
+
 	}
 }

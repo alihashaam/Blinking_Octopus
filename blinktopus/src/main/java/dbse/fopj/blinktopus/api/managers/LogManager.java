@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,27 +31,45 @@ public final class LogManager {
 
 	/**
 	 * 
-	 * @param pathname
-	 *            - path to .tbl
+	 * @param pathOrders - path to orders
+	 * @param pathLineItems - path to lineitems
 	 */
-	public void loadData(String pathname) {
+	public void loadData(String pathOrders, String pathLineItems) {
+		ArrayList<Order> orders = new ArrayList<>();
+		ArrayList<LineItem> lineitems = new ArrayList<>();
+
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		String csvFile = pathname;
 		BufferedReader br = null;
 		String l = "";
 		String csvSplitBy = "\\|";
 
 		try {
-
-			br = new BufferedReader(new FileReader(csvFile));
+			br = new BufferedReader(new FileReader(pathOrders));
 			while ((l = br.readLine()) != null) {
 				String[] line = l.split(csvSplitBy);
 				if (line.length == 9)
-					this.dataLog.add(new Order(Long.parseLong(line[0].trim()), Long.parseLong(line[1].trim()),
+					orders.add(new Order(Long.parseLong(line[0].trim()), Long.parseLong(line[1].trim()),
 							line[2].trim().charAt(0), Double.parseDouble(line[3].trim()), format.parse(line[4].trim()),
 							line[5].trim(), line[6].trim(), Integer.parseInt(line[7].trim()), line[8].trim()));
-				else if (line.length == 16)
-					this.dataLog.add(new LineItem(Long.parseLong(line[0].trim()), Long.parseLong(line[1].trim()),
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		try {
+			br = new BufferedReader(new FileReader(pathLineItems));
+			while ((l = br.readLine()) != null) {
+				String[] line = l.split(csvSplitBy);
+				if (line.length == 16)
+					lineitems.add(new LineItem(Long.parseLong(line[0].trim()), Long.parseLong(line[1].trim()),
 							Long.parseLong(line[2].trim()), Integer.parseInt(line[3].trim()),
 							Double.parseDouble(line[4].trim()), Double.parseDouble(line[5].trim()),
 							Double.parseDouble(line[6].trim()), Double.parseDouble(line[7].trim()),
@@ -67,6 +86,30 @@ public final class LogManager {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+			}
+		}
+
+		interleave(orders, lineitems);
+	}
+
+	private void interleave(ArrayList<Order> orders, ArrayList<LineItem> lineitems) {
+		Iterator<Order> it1 = orders.iterator();
+		Iterator<LineItem> it2 = lineitems.iterator();
+		int expectedSize = orders.size() + lineitems.size();
+		int coin = 0;
+
+		while (this.dataLog.size() != expectedSize) {
+			coin = (Math.random() < 0.5) ? 0 : 1;
+			if (coin == 0) {
+				if (it1.hasNext())
+					this.dataLog.add(it1.next());
+				else
+					this.dataLog.add(it2.next());
+			} else {
+				if (it2.hasNext())
+					this.dataLog.add(it2.next());
+				else
+					this.dataLog.add(it1.next());
 			}
 		}
 	}
