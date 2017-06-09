@@ -8,6 +8,7 @@ import java.util.Calendar;
 
 import dbse.fopj.blinktopus.api.managers.LogManager;
 import dbse.fopj.blinktopus.api.managers.SVManager;
+import dbse.fopj.blinktopus.api.resultmodel.Result;
 
 public class Evaluation {
 
@@ -19,8 +20,8 @@ public class Evaluation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/O_1.tbl",
-				baseDir+"/src/main/resources/dataset/LI_1.tbl");
+		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/O_0.1.tbl",
+				baseDir+"/src/main/resources/dataset/LI_0.1.tbl");
 	}
 
 	private static void createSV(String table, String attr, double lower, double higher) {
@@ -29,28 +30,35 @@ public class Evaluation {
 	}
 
 	private static long[] queryLog(int n, String table, String attr, double lower, double higher) {
+		Result res = null;
 		long[] resTime = new long[n];
 		for (int i = 0; i < n; ++i) {
-			resTime[i] = LogManager.getLogManager().getTime(table, attr, lower, higher, "TEST");
+			res = LogManager.getLogManager().scan(table, attr, lower, higher, "TEST");
+			resTime[i] = res.getTimeLog();
 		}
+		res=null;
 		return resTime;
 	}
 
 	private static long[] queryRow(int n, String table, String attr, double lower, double higher) {
+		Result res = null;
 		long[] resTime = new long[n];
 		for (int i = 0; i < n; ++i) {
-			resTime[i] = SVManager.getSVManager().maintain("Row1", "Row", table, attr, lower, higher, false)
-					.getTimeSV();
+			res = SVManager.getSVManager().maintain("Row1", "Row", table, attr, lower, higher, false);
+			resTime[i] = res.getTimeSV();
 		}
+		res = null;
 		return resTime;
 	}
 
 	private static long[] queryCol(int n, String table, String attr, double lower, double higher) {
+		Result res = null;
 		long[] resTime = new long[n];
 		for (int i = 0; i < n; ++i) {
-			resTime[i] = SVManager.getSVManager().maintain("Col2", "Col", table, attr, lower, higher, false)
-					.getTimeSV();
+			res = SVManager.getSVManager().maintain("Col2", "Col", table, attr, lower, higher, false);
+			resTime[i] = res.getTimeSV();
 		}
+		res = null;
 		return resTime;
 	}
 
