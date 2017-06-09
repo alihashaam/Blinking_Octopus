@@ -90,6 +90,10 @@ public final class LogManager {
 		}
 
 		interleave(orders, lineitems);
+		orders.clear();
+		lineitems.clear();
+		orders = null;
+		lineitems = null;
 	}
 
 	private void interleave(ArrayList<Order> orders, ArrayList<LineItem> lineitems) {
