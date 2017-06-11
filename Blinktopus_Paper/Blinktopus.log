@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  9 JUN 2017 19:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  11 JUN 2017 17:15
 entering extended mode
 **./Blinktopus.tex
 (Blinktopus.tex
@@ -276,36 +276,28 @@ G,.JBIG2,.JB2,.eps]
 File: img/blinktopus_architecture.jpeg Graphic file (type jpg)
 
 <use img/blinktopus_architecture.jpeg>
-Package pdftex.def Info: img/blinktopus_architecture.jpeg used on input line 29
+Package pdftex.def Info: img/blinktopus_architecture.jpeg used on input line 32
 .
 (pdftex.def)             Requested size: 206.39685pt x 138.2169pt.
 
-Underfull \hbox (badness 3000) in paragraph at lines 26--36
-\OT1/ptm/m/n/10 for new memory-rich ar-chi-tec-tures. As a con-se-quence,
+Underfull \hbox (badness 1803) in paragraph at lines 37--41
+[]\OT1/ptm/m/n/10 Another im-por-tant goal of HTAP sys-tems(aside from
  []
 
 
-Underfull \hbox (badness 5203) in paragraph at lines 26--36
-\OT1/ptm/m/n/10 Another im-por-tant goal of HTAP sys-tems(aside from
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 26--36
+Underfull \hbox (badness 10000) in paragraph at lines 37--41
 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
+[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
  <./img/blinktopus_architecture.jpeg>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 39.
+(Font)              <7> on input line 44.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 39.
- [2]
+(Font)              <5> on input line 44.
+ [2] [3]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
@@ -339,16 +331,25 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 []\OT1/ptm/m/n/8 https://www.gartner.com/doc/3179439/predicts--inmemory-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
 []\OT1/ptm/m/n/8 https://www.confluent.io/blog/turning-the-database-inside-out-
 with-
  []
 
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ì in font ptmr7t!
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -360,26 +361,24 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3
-
-] (Blinktopus.aux) ) 
+[4] (Blinktopus.aux) ) 
 Here is how much of TeX's memory you used:
- 3053 strings out of 493328
- 49642 string characters out of 3139098
- 123104 words of memory out of 3000000
- 6559 multiletter control sequences out of 15000+200000
- 33007 words of font info for 62 fonts, out of 3000000 for 9000
+ 3057 strings out of 493328
+ 49703 string characters out of 3139098
+ 123116 words of memory out of 3000000
+ 6562 multiletter control sequences out of 15000+200000
+ 34114 words of font info for 63 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,8n,37p,1679b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
-/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pf
-b>
-Output written on Blinktopus.pdf (3 pages, 121060 bytes).
+ 39i,8n,37p,1400b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
+rw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.
+pfb>
+Output written on Blinktopus.pdf (4 pages, 130633 bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
+ 37 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
