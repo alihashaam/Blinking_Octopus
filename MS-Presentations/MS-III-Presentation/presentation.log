@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.24)  6 JUN 2017 17:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.24)  11 JUN 2017 05:57
 entering extended mode
 **./presentation.tex
 (presentation.tex
@@ -1363,16 +1363,18 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [6
 
-] <img/Blinktopus-Schema.jpg, id=237, 448.67625pt x 625.33624pt>
-File: img/Blinktopus-Schema.jpg Graphic file (type jpg)
+] <img/dropwizard.png, id=238, 434.62375pt x 232.87pt>
+File: img/dropwizard.png Graphic file (type png)
 
-<use img/Blinktopus-Schema.jpg>
-Package pdftex.def Info: img/Blinktopus-Schema.jpg used on input line 82.
-(pdftex.def)             Requested size: 148.06361pt x 206.36159pt.
+<use img/dropwizard.png>
+Package pdftex.def Info: img/dropwizard.png used on input line 86.
+(pdftex.def)             Requested size: 130.38812pt x 69.86153pt.
+ <img/jpnotebook.png, id=239, 347.2975pt x 347.2975pt>
+File: img/jpnotebook.png Graphic file (type png)
 
-Overfull \vbox (48.02307pt too high) detected at line 82
- []
-
+<use img/jpnotebook.png>
+Package pdftex.def Info: img/jpnotebook.png used on input line 86.
+(pdftex.def)             Requested size: 69.45827pt x 69.45827pt.
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1380,21 +1382,17 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [7
 
- <./img/Blinktopus-Schema.jpg>]
-<img/octopus_arch.png, id=264, 616.3025pt x 462.72874pt>
-File: img/octopus_arch.png Graphic file (type png)
+ <./img/dropwizard.png> <./img/jpnotebook.png>]
+<img/Blinktopus-Schema.jpg, id=269, 448.67625pt x 625.33624pt>
+File: img/Blinktopus-Schema.jpg Graphic file (type jpg)
 
-<use img/octopus_arch.png>
-Package pdftex.def Info: img/octopus_arch.png used on input line 101.
-(pdftex.def)             Requested size: 154.07524pt x 115.6819pt.
+<use img/Blinktopus-Schema.jpg>
+Package pdftex.def Info: img/Blinktopus-Schema.jpg used on input line 103.
+(pdftex.def)             Requested size: 148.06361pt x 206.36159pt.
 
-<img/Blinktopus-OctopusPart.jpg, id=266, 616.3025pt x 462.72874pt>
-File: img/Blinktopus-OctopusPart.jpg Graphic file (type jpg)
+Overfull \vbox (48.02307pt too high) detected at line 103
+ []
 
-<use img/Blinktopus-OctopusPart.jpg>
-Package pdftex.def Info: img/Blinktopus-OctopusPart.jpg used on input line 101.
-
-(pdftex.def)             Requested size: 154.07524pt x 115.6819pt.
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1402,17 +1400,21 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [8
 
- <./img/octopus_arch.png> <./img/Blinktopus-OctopusPart.jpg>]
+ <./img/Blinktopus-Schema.jpg>]
+<img/octopus_arch.png, id=295, 555.07375pt x 282.05376pt>
 File: img/octopus_arch.png Graphic file (type png)
 
 <use img/octopus_arch.png>
-Package pdftex.def Info: img/octopus_arch.png used on input line 101.
-(pdftex.def)             Requested size: 154.07524pt x 115.6819pt.
-File: img/Blinktopus-OctopusPart.jpg Graphic file (type jpg)
- <use img/Blinktopus-OctopusPart.jpg>
-Package pdftex.def Info: img/Blinktopus-OctopusPart.jpg used on input line 101.
+Package pdftex.def Info: img/octopus_arch.png used on input line 124.
+(pdftex.def)             Requested size: 138.76808pt x 70.51326pt.
 
-(pdftex.def)             Requested size: 154.07524pt x 115.6819pt.
+<img/Blinktopus-OctopusPart.jpg, id=296, 555.07375pt x 282.05376pt>
+File: img/Blinktopus-OctopusPart.jpg Graphic file (type jpg)
+
+<use img/Blinktopus-OctopusPart.jpg>
+Package pdftex.def Info: img/Blinktopus-OctopusPart.jpg used on input line 124.
+
+(pdftex.def)             Requested size: 138.76808pt x 70.51326pt.
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1420,17 +1422,17 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [9
 
-] <img/Blinktopus-Evaluations.png, id=320, 456.95718pt x 313.9228pt>
-File: img/Blinktopus-Evaluations.png Graphic file (type png)
+ <./img/octopus_arch.png> <./img/Blinktopus-OctopusPart.jpg>]
+File: img/octopus_arch.png Graphic file (type png)
 
-<use img/Blinktopus-Evaluations.png>
-Package pdftex.def Info: img/Blinktopus-Evaluations.png used on input line 110.
+<use img/octopus_arch.png>
+Package pdftex.def Info: img/octopus_arch.png used on input line 124.
+(pdftex.def)             Requested size: 138.76808pt x 70.51326pt.
+File: img/Blinktopus-OctopusPart.jpg Graphic file (type jpg)
+ <use img/Blinktopus-OctopusPart.jpg>
+Package pdftex.def Info: img/Blinktopus-OctopusPart.jpg used on input line 124.
 
-(pdftex.def)             Requested size: 228.47803pt x 156.96101pt.
-
-Overfull \vbox (9.02249pt too high) detected at line 110
- []
-
+(pdftex.def)             Requested size: 138.76808pt x 70.51326pt.
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1438,7 +1440,43 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [10
 
- <./img/Blinktopus-Evaluations.png>]
+] <img/Blinktopus-Evaluations3.png, id=350, 160.34906pt x 36.88782pt>
+File: img/Blinktopus-Evaluations3.png Graphic file (type png)
+
+<use img/Blinktopus-Evaluations3.png>
+Package pdftex.def Info: img/Blinktopus-Evaluations3.png used on input line 146
+.
+(pdftex.def)             Requested size: 96.21017pt x 22.13284pt.
+
+<img/Blinktopus-Evaluations1.png, id=351, 293.59688pt x 186.6975pt>
+File: img/Blinktopus-Evaluations1.png Graphic file (type png)
+
+<use img/Blinktopus-Evaluations1.png>
+Package pdftex.def Info: img/Blinktopus-Evaluations1.png used on input line 146
+.
+(pdftex.def)             Requested size: 146.79807pt x 93.34851pt.
+
+<img/Blinktopus-Evaluations2.png, id=352, 319.94531pt x 185.94469pt>
+File: img/Blinktopus-Evaluations2.png Graphic file (type png)
+
+<use img/Blinktopus-Evaluations2.png>
+Package pdftex.def Info: img/Blinktopus-Evaluations2.png used on input line 146
+.
+(pdftex.def)             Requested size: 159.97226pt x 92.9721pt.
+
+Overfull \hbox (6.32733pt too wide) in paragraph at lines 146--146
+ [][] 
+ []
+
+
+Overfull \hbox (101.22792pt too wide) has occurred while \output is active
+ [][]    
+ []
+
+[11
+
+ <./img/Blinktopus-Evaluations3.png> <./img/Blinktopus-Evaluations1.png> <./img
+/Blinktopus-Evaluations2.png>]
 Missing character: There is no â in font cmss8!
 Missing character: There is no € in font cmss8!
 Missing character: There is no “ in font cmss8!
@@ -1447,61 +1485,59 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
-[11
-
-]
-Overfull \hbox (101.22792pt too wide) has occurred while \output is active
- [][]    
- []
-
 [12
 
 ]
+LaTeX Font Info:    Calculating math sizes for size <7.66495> on input line 173
+.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <3.83247> not available
+(Font)              size <5> substituted on input line 173.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.83247> not available
+(Font)              size <5> substituted on input line 173.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.83247> not available
+(Font)              size <5> substituted on input line 173.
+
+
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
 [13
 
-] <img/Blinktopus-EquiDepth.png, id=427, 411.78844pt x 349.305pt>
-File: img/Blinktopus-EquiDepth.png Graphic file (type png)
-
-<use img/Blinktopus-EquiDepth.png>
-Package pdftex.def Info: img/Blinktopus-EquiDepth.png used on input line 164.
-(pdftex.def)             Requested size: 123.53748pt x 104.7923pt.
-LaTeX Font Info:    Calculating math sizes for size <7.66495> on input line 164
-.
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <3.83247> not available
-(Font)              size <5> substituted on input line 164.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.83247> not available
-(Font)              size <5> substituted on input line 164.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.83247> not available
-(Font)              size <5> substituted on input line 164.
-
-
+]
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
 [14
 
- <./img/Blinktopus-EquiDepth.png>]
+]
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 198
+.
+LaTeX Font Info:    No file OMScmss.fd. on input line 198.
+
+
+LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 198.
+
+<img/Blinktopus-EquiDepth.png, id=463, 411.78844pt x 349.305pt>
 File: img/Blinktopus-EquiDepth.png Graphic file (type png)
- <use img/Blinktopus-EquiDepth.png>
-Package pdftex.def Info: img/Blinktopus-EquiDepth.png used on input line 176.
+
+<use img/Blinktopus-EquiDepth.png>
+Package pdftex.def Info: img/Blinktopus-EquiDepth.png used on input line 198.
 (pdftex.def)             Requested size: 123.53748pt x 104.7923pt.
-Missing character: There is no â in font cmss10!
-Missing character: There is no ˆ in font cmss10!
-Missing character: There is no ’ in font cmss10!
-Missing character: There is no â in font cmss10!
-Missing character: There is no ˆ in font cmss10!
-Missing character: There is no ’ in font cmss10!
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <3> not available
+(Font)              size <5> substituted on input line 198.
+
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1509,7 +1545,18 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [15
 
-]
+ <./img/Blinktopus-EquiDepth.png>]
+File: img/Blinktopus-EquiDepth.png Graphic file (type png)
+ <use img/Blinktopus-EquiDepth.png>
+Package pdftex.def Info: img/Blinktopus-EquiDepth.png used on input line 210.
+(pdftex.def)             Requested size: 123.53748pt x 104.7923pt.
+Missing character: There is no â in font cmss10!
+Missing character: There is no ˆ in font cmss10!
+Missing character: There is no ’ in font cmss10!
+Missing character: There is no â in font cmss10!
+Missing character: There is no ˆ in font cmss10!
+Missing character: There is no ’ in font cmss10!
+
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
@@ -1523,32 +1570,32 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [17
 
-]
+] <img/distinct_count_sketches.png, id=545, 501.875pt x 156.585pt>
+File: img/distinct_count_sketches.png Graphic file (type png)
+
+<use img/distinct_count_sketches.png>
+Package pdftex.def Info: img/distinct_count_sketches.png used on input line 232
+.
+(pdftex.def)             Requested size: 150.56366pt x 46.97586pt.
+
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
 [18
 
-]
+ <./img/distinct_count_sketches.png>]
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
 [19
 
-] <img/dropwizard.png, id=588, 434.62375pt x 232.87pt>
-File: img/dropwizard.png Graphic file (type png)
-
-<use img/dropwizard.png>
-Package pdftex.def Info: img/dropwizard.png used on input line 220.
-(pdftex.def)             Requested size: 130.38812pt x 69.86153pt.
- <img/jpnotebook.png, id=589, 347.2975pt x 347.2975pt>
-File: img/jpnotebook.png Graphic file (type png)
-
-<use img/jpnotebook.png>
-Package pdftex.def Info: img/jpnotebook.png used on input line 220.
-(pdftex.def)             Requested size: 69.45827pt x 69.45827pt.
+] <img/HLL.png, id=600, 771.63281pt x 356.83313pt>
+File: img/HLL.png Graphic file (type png)
+ <use img/HLL.png>
+Package pdftex.def Info: img/HLL.png used on input line 248.
+(pdftex.def)             Requested size: 293.22351pt x 135.59799pt.
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1556,7 +1603,14 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [20
 
- <./img/dropwizard.png> <./img/jpnotebook.png>]
+ <./img/HLL.png>]
+Missing character: There is no â in font cmss10!
+Missing character: There is no € in font cmss10!
+Missing character: There is no ™ in font cmss10!
+Missing character: There is no â in font cmss10!
+Missing character: There is no € in font cmss10!
+Missing character: There is no ™ in font cmss10!
+
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
@@ -1570,6 +1624,32 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 
 [22
 
+] <img/HLL2.png, id=680, 571.38469pt x 351.56343pt>
+File: img/HLL2.png Graphic file (type png)
+ <use img/HLL2.png>
+Package pdftex.def Info: img/HLL2.png used on input line 280.
+(pdftex.def)             Requested size: 217.12843pt x 133.59549pt.
+
+Overfull \hbox (101.22792pt too wide) has occurred while \output is active
+ [][]    
+ []
+
+[23
+
+ <./img/HLL2.png>]
+Overfull \hbox (101.22792pt too wide) has occurred while \output is active
+ [][]    
+ []
+
+[24
+
+]
+Overfull \hbox (101.22792pt too wide) has occurred while \output is active
+ [][]    
+ []
+
+[25
+
 ]
 Missing character: There is no â in font cmss10!
 Missing character: There is no € in font cmss10!
@@ -1579,7 +1659,7 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
  []
 
-[23
+[26
 
 ]
 \tf@nav=\write6
@@ -1591,27 +1671,30 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 260.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 260.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 320.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 320.
  (presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 260.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 260.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 320.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 320.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
-(rerunfilecheck)             Checksum: A67FCBA7159BA3749F11DA88C92A9F2C;490.
+(rerunfilecheck)             Checksum: DADE75F84677E33169D950FBAA5A28B2;490.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 2.90001pt have occurred.
 
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
  ) 
 Here is how much of TeX's memory you used:
- 27606 strings out of 493334
- 543272 string characters out of 3139231
- 591490 words of memory out of 3000000
- 30554 multiletter control sequences out of 15000+200000
- 551490 words of font info for 100 fonts, out of 3000000 for 9000
+ 27659 strings out of 493334
+ 544256 string characters out of 3139231
+ 591489 words of memory out of 3000000
+ 30594 multiletter control sequences out of 15000+200000
+ 553639 words of font info for 108 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,16n,55p,10395b,579s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,16n,55p,10395b,587s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTe
@@ -1619,11 +1702,12 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmss9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmssi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbol
-s/msam10.pfb>
-Output written on presentation.pdf (23 pages, 641478 bytes).
+ts/cm/cmssi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on presentation.pdf (26 pages, 1407780 bytes).
 PDF statistics:
- 738 PDF objects out of 1000 (max. 8388607)
- 58 named destinations out of 1000 (max. 500000)
- 185 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 836 PDF objects out of 1000 (max. 8388607)
+ 64 named destinations out of 1000 (max. 500000)
+ 210 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -19,52 +19,58 @@
 \headcommand {\beamer@subsectionpages {4}{5}}
 \headcommand {\slideentry {3}{0}{1}{6/6}{}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{7}{Schema}}\headcommand {\beamer@subsectionpages {6}{6}}
-\headcommand {\slideentry {3}{1}{1}{7/7}{Schema}{0}}
+\headcommand {\slideentry {3}{0}{2}{7/7}{}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{8}{OctopusDB}}\headcommand {\beamer@subsectionpages {7}{7}}
-\headcommand {\slideentry {3}{2}{1}{8/9}{OctopusDB}{0}}
-\headcommand {\beamer@framepages {8}{9}}
-\headcommand {\slideentry {3}{2}{2}{10/10}{OctopusDB}{0}}
-\headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@subsectionentry {0}{3}{3}{11}{Approximate Query Processing}}\headcommand {\beamer@subsectionpages {8}{10}}
-\headcommand {\slideentry {3}{3}{1}{11/11}{Approximate Query Processing}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{8}{Schema}}\headcommand {\beamer@subsectionpages {6}{7}}
+\headcommand {\slideentry {3}{1}{1}{8/8}{Schema}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{9}{OctopusDB}}\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\slideentry {3}{2}{1}{9/10}{OctopusDB}{0}}
+\headcommand {\beamer@framepages {9}{10}}
+\headcommand {\slideentry {3}{2}{2}{11/11}{OctopusDB}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\beamer@subsubsectionentry {0}{3}{3}{1}{12}{Histograms}}
-\headcommand {\slideentry {3}{3}{2}{12/12}{Approximate Query Processing}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{12}{Approximate Query Processing}}\headcommand {\beamer@subsectionpages {9}{11}}
+\headcommand {\slideentry {3}{3}{1}{12/12}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {3}{3}{3}{13/13}{Approximate Query Processing}{0}}
+\headcommand {\beamer@subsubsectionentry {0}{3}{3}{1}{13}{Histograms}}
+\headcommand {\slideentry {3}{3}{2}{13/13}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {3}{3}{4}{14/14}{Approximate Query Processing}{0}}
+\headcommand {\slideentry {3}{3}{3}{14/14}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {3}{3}{5}{15/15}{Approximate Query Processing}{0}}
+\headcommand {\slideentry {3}{3}{4}{15/15}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {3}{3}{6}{16/16}{Approximate Query Processing}{0}}
+\headcommand {\slideentry {3}{3}{5}{16/16}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {3}{3}{7}{17/17}{Approximate Query Processing}{0}}
+\headcommand {\beamer@subsubsectionentry {0}{3}{3}{2}{17}{Sketches}}
+\headcommand {\slideentry {3}{3}{6}{17/17}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {17}{17}}
-\headcommand {\beamer@subsubsectionentry {0}{3}{3}{2}{18}{Sketches}}
-\headcommand {\slideentry {3}{3}{8}{18/18}{Approximate Query Processing}{0}}
+\headcommand {\slideentry {3}{3}{7}{18/18}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\slideentry {3}{3}{9}{19/19}{Approximate Query Processing}{0}}
+\headcommand {\slideentry {3}{3}{8}{19/19}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\slideentry {3}{3}{10}{20/20}{Approximate Query Processing}{0}}
+\headcommand {\slideentry {3}{3}{9}{20/20}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {20}{20}}
-\headcommand {\sectionentry {4}{Project Organisation}{21}{Project Organisation}{0}}
-\headcommand {\beamer@sectionpages {6}{20}}
-\headcommand {\beamer@subsectionpages {11}{20}}
-\headcommand {\beamer@subsectionentry {0}{4}{1}{21}{Roles}}\headcommand {\beamer@subsectionpages {21}{20}}
-\headcommand {\slideentry {4}{1}{1}{21/21}{Roles}{0}}
+\headcommand {\slideentry {3}{3}{10}{21/21}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\slideentry {4}{1}{2}{22/22}{Roles}{0}}
+\headcommand {\slideentry {3}{3}{11}{22/22}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {22}{22}}
-\headcommand {\sectionentry {5}{Literature}{23}{Literature}{0}}
-\headcommand {\beamer@sectionpages {21}{22}}
-\headcommand {\beamer@subsectionpages {21}{22}}
-\headcommand {\slideentry {5}{0}{1}{23/23}{}{0}}
+\headcommand {\slideentry {3}{3}{12}{23/23}{Approximate Query Processing}{0}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\beamer@partpages {1}{23}}
-\headcommand {\beamer@subsectionpages {23}{23}}
-\headcommand {\beamer@sectionpages {23}{23}}
-\headcommand {\beamer@documentpages {23}}
-\headcommand {\def \inserttotalframenumber {22}}
+\headcommand {\sectionentry {4}{Project Organisation}{24}{Project Organisation}{0}}
+\headcommand {\beamer@sectionpages {6}{23}}
+\headcommand {\beamer@subsectionpages {12}{23}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{24}{Roles}}\headcommand {\beamer@subsectionpages {24}{23}}
+\headcommand {\slideentry {4}{1}{1}{24/24}{Roles}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\slideentry {4}{1}{2}{25/25}{Roles}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\sectionentry {5}{Literature}{26}{Literature}{0}}
+\headcommand {\beamer@sectionpages {24}{25}}
+\headcommand {\beamer@subsectionpages {24}{25}}
+\headcommand {\slideentry {5}{0}{1}{26/26}{}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\beamer@partpages {1}{26}}
+\headcommand {\beamer@subsectionpages {26}{26}}
+\headcommand {\beamer@sectionpages {26}{26}}
+\headcommand {\beamer@documentpages {26}}
+\headcommand {\def \inserttotalframenumber {25}}
