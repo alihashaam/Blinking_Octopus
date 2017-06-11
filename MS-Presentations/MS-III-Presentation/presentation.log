@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.24)  11 JUN 2017 05:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.24)  11 JUN 2017 14:29
 entering extended mode
 **./presentation.tex
 (presentation.tex
@@ -1550,12 +1550,6 @@ File: img/Blinktopus-EquiDepth.png Graphic file (type png)
  <use img/Blinktopus-EquiDepth.png>
 Package pdftex.def Info: img/Blinktopus-EquiDepth.png used on input line 210.
 (pdftex.def)             Requested size: 123.53748pt x 104.7923pt.
-Missing character: There is no â in font cmss10!
-Missing character: There is no ˆ in font cmss10!
-Missing character: There is no ’ in font cmss10!
-Missing character: There is no â in font cmss10!
-Missing character: There is no ˆ in font cmss10!
-Missing character: There is no ’ in font cmss10!
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1651,9 +1645,9 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 [25
 
 ]
-Missing character: There is no â in font cmss10!
-Missing character: There is no € in font cmss10!
-Missing character: There is no “ in font cmss10!
+Missing character: There is no â in font cmss8!
+Missing character: There is no € in font cmss8!
+Missing character: There is no “ in font cmss8!
 
 Overfull \hbox (101.22792pt too wide) has occurred while \output is active
  [][]    
@@ -1671,11 +1665,11 @@ Overfull \hbox (101.22792pt too wide) has occurred while \output is active
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 320.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 320.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 322.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 322.
  (presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 320.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 320.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 322.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 322.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: DADE75F84677E33169D950FBAA5A28B2;490.
 
@@ -1690,7 +1684,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  27659 strings out of 493334
  544256 string characters out of 3139231
- 591489 words of memory out of 3000000
+ 592490 words of memory out of 3000000
  30594 multiletter control sequences out of 15000+200000
  553639 words of font info for 108 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1705,7 +1699,7 @@ public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 ts/cm/cmssi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on presentation.pdf (26 pages, 1407780 bytes).
+Output written on presentation.pdf (26 pages, 1408861 bytes).
 PDF statistics:
  836 PDF objects out of 1000 (max. 8388607)
  64 named destinations out of 1000 (max. 500000)
