@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  14 JUN 2017 13:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  17 JUN 2017 14:52
 entering extended mode
 **./Blinktopus.tex
 (Blinktopus.tex
@@ -337,6 +337,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--83
 [3]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+ [4]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
 Missing character: There is no À in font ptmr7t!
 Missing character: There is no ö in font ptmr7t!
@@ -368,12 +375,12 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
 []\OT1/ptm/m/n/8 https://www.gartner.com/doc/3179439/predicts--inmemory-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
 []\OT1/ptm/m/n/8 https://www.confluent.io/blog/turning-the-database-inside-out-
 with-
  []
@@ -406,24 +413,26 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4] (Blinktopus.aux) ) 
+[5
+
+] (Blinktopus.aux) ) 
 Here is how much of TeX's memory you used:
- 3059 strings out of 493328
- 49726 string characters out of 3139098
- 123124 words of memory out of 3000000
- 6564 multiletter control sequences out of 15000+200000
+ 3061 strings out of 493328
+ 49779 string characters out of 3139098
+ 123132 words of memory out of 3000000
+ 6566 multiletter control sequences out of 15000+200000
  34114 words of font info for 63 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,8n,37p,1137b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
-rw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.
-pfb>
-Output written on Blinktopus.pdf (4 pages, 129678 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
+/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pf
+b>
+Output written on Blinktopus.pdf (5 pages, 135043 bytes).
 PDF statistics:
- 37 PDF objects out of 1000 (max. 8388607)
+ 40 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

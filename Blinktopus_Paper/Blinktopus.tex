@@ -81,13 +81,15 @@ Finally, adding the estimation from several samples can incrementally enhance an
 
 As an example of the wavelet synopsis \textit{Haar Wavelet Transform(HWT)} is probably conceptually the easiest and therefore the most widely implemented wavelet transformation. Based on recursive pairwise averaging and differencing the resulting wavelets are straightforwardly computed and have been observed to show practically acceptable performance for numerous number of applications(e.g., image editing, querying to OLAP and streaming-data).\\
 
-\textbf{Histograms} are another type of data synopses for summarizing the frequency distribution of an attribute or sets of attributes. Basically, a histogram groups input data values into subsets(i.e., "buckets") for each bucket it computes a small summary statistics in order to use it further for approximate reconstruction of the data in the bucket. In designing histograms the following aspects such as partition rule, construction algorithm, value approximation, frequency approximation, error guarantees are to be carefully considered[20]. Besides, there are other important aspects that also need to be taken into account while building the histograms.  \\
-- \textit{Bucketing scheme}. \\
-- \textit{statistics stored per bucket}.\\ 
-- \textit{intra-bucket approximation scheme}.\\ 
-- \textit{class of queries answered}.\\ 
-- \textit{efficiency}.\\
-- \textit{accuracy}.
+\textbf{Histograms} are another type of data synopses for summarizing the frequency distribution of an attribute or sets of attributes. Basically, a histogram groups input data values into subsets(i.e., "buckets") for each bucket it computes a small summary statistics in order to use it further for approximate reconstruction of the data in the bucket. In designing histograms the following aspects are to be carefully considered.  \\
+- \textit{Bucketing scheme}. Data items must be distributed within the buckets in order to better represent its structure. It can be decided depending on some local criteria(e.g., value frequencies or similarities etc.) or some global "optimality" criteria of the histogram according to a workload or a query class.\\
+- \textit{Intra-bucket approximation scheme}. In essence, there have been used two methods(e.g.,\textit{continuous value assumption} approach and  approach of \textit{uniform spread assumption}[24]) for intra-bucket approximation scheme of one-dimensional histogram. Both of them assume that values are uniformly distributed within the bucket range, with the first neglecting the number of the values and the second storing that number in the bucket. For the multi-dimensional histograms these approaches are to be extended. The choice of approximation scheme can also depend on the class of queries that histograms answer.\\
+- \textit{Statistics stored per bucket} can contain the number of items in each bucket along with the subset boundaries. The method chosen for the data approximation usually defines what information will be stored.\\ 
+- \textit{Class of queries answered}. Even though histograms can answer a wide spectrum of queries(e.g., queries related to "selectivity estimation", range-count queries etc.), class of queries answered still needs to be carefully considered while building a histogram.\\ 
+- \textit{Efficiency}. The cost of utilizing the histogram to provide query approximations, together with the time and space requirements can define the histogram from its efficiency perspective.\\
+- \textit{Accuracy} in answering queries to a given size constraint is one of the most significant aspects when constructing an "optimal" histogram. \\
+- \textit{Error estimates}. Many histogram construction approaches claim to provide some "average" or "maximum" error estimates over a set of queries, which however might not hold for a specific query, or even class of queries. As long as histograms answer queries approximately, it is a question of demand to determine exact error boundaries possible for an each query issued. At the same time, mostly when these error estimates are provided, there is no other details on the errors. Hence, some works propose to store the maximum difference between the actual and the approximate frequency of a value within the bucket and by exploiting that to provide upper bounds on the error estimates produced by the histogram for range and other queries.\\
+- \textit{Incremental maintenance}. This aspect is particularly significant when the values in the dataset are constantly and rapidly updated.
 %%\textit{Partition rule} contains: \\
 %%- \textit{Partition class} displays whether any restrictions on the buckets exist. For a serial class depending on some parameter(the next characteristic) the buckets are needed to be non-overlapping, while end-biased subclass needs only one non-singleton bucket. \\
 %%- \textit{Sort parameter} is a parameter whose value for every element in the data distribution is obtained from the corresponding attribute value and frequencies. Attribute value(\textit{V}), frequency (\textit{F}) and area (\textit{A}) are some examples of sort parameters.\\
@@ -100,12 +102,25 @@ As an example of the wavelet synopsis \textit{Haar Wavelet Transform(HWT)} is pr
 
 As a result of an active research in the area of histograms over the last decades, a great diversity of histograms schemes have been proposed. %They vary in the choice of the buckets, statistics stored per bucket, intra-bucket approximation scheme, classes of queries to be supported and how estimations are extracted. 
 As long as they also barely support more than one data dimensions, one-dimensional histogram is the most preferable type. \\The simplicity in implementation and interpretation contributed to the popularity of \textit{equi-width} and \textit{equi-depth} histograms. Equi-width histograms do not overlap among the ranges of attribute values within the bucket and independent of their value frequencies have the same range size (or the number) of values in every bucket[21]. Since they store a greater amount of information than trivial ones, therefore often demonstrate better estimations. The reverse of equi-width histograms - equi-depth (or \textit{equi-height}) class of histograms has the same the sum of the frequencies of the attribute values with respect to each bucket, independent of the range size(i.e., the number) of these values. According to the studies of Piatetsky-Shapiro and Connell who also gave this class of histograms its name, equi-depth histograms have lower worst-case and average error values for a diverse set of selection queries than equi-width histograms.
-Beyond aforementioned types, more others have been introduced such as \textit{serial}[21], \textit{end biased} and \textit{high biased}, \textit{maxdiff} and other generalizations.  
+Beyond aforementioned types, more others have been introduced such as \textit{serial}[21], \textit{end biased} and \textit{high biased}, \textit{maxdiff} and other generalizations. 
+
+Another aspect which also worth taking into consideration is a construction cost. With regard to it, histograms can be divided into two groups: \textit{static} and \textit{dynamic}or \textit{adaptive} histograms[20]. Static histograms are commonly used in DBMSs. After they are built, even when the data is being changed, they remain unaltered. Hence, with the time a static histogram drifts away from its "up-to-date" state and its estimations may deteriorate from progressively larger errors. When this occurs, these histograms are recalculated and the old histograms are replaced with the "fresher" versions. 
+Despite of the fact that there have been proposed some efficient calculation algorithms for static histograms, adaptive histograms are the only viable option in a data stream environment. The most known examples of dynamic histograms are \textit{equi-depth and compressed} histograms[25], \textit{v-optimal} and \textit{spline-based} histograms. 
 
 Histograms efficiently answer range-sum queries and their variations. Furthermore, they can be utilized to approximate more general classes of queries(e.g., aggregations over joins), as well as real-valued data and set-valued queries.
   
-Since histograms can be incorporated into existing database system without obtaining an additional storage overhead, they are mainly exploited by query optimizers of almost all DBMSs to produce cost and selectivity estimations of various query plans. However, wrong estimations in query optimizers continue to be an important problem in database systems.
- 
+As it is already known histograms are one of the most implemented data summaries. Since they can be incorporated into existing database system without obtaining an additional storage overhead, they are mainly exploited by query optimizers of almost all DBMSs to produce cost and selectivity estimations of various query plans. However, wrong estimations in query optimizers continue to be an important problem in database systems.
+
+\textbf{Sketches} are especially germane for the streaming data, where the data in a large scale is being processed and the sketch synopsis must be updated promptly and effectively without exploiting huge compute resources. Sketching algorithms use hash functions with defined mathematical properties that provide their guarantees, but in practice these hash functions are rather simple and rapid, with reference implementations that are broadly available.  
+
+Sketch summaries can be designed so that each new update will be independent of the latest state of synopsis. For instance, linear sketches consider a numerical dataset as a matrix or vector, and multiply the data by another fixed matrix. These types of sketches are easily parallelizable. Moreover, for the some queries(e.g., count distinct, most frequent items, joins, graph analysis and matrix computations), sketches may be the only viable solution.
+
+"Frequency based sketches" summarize a dataset frequency distribution and provide accurate estimates of individual frequencies. This results in algorithms for calculating "heavy hitters" - items that account for a large portion of the frequency mass - and quantiles like median and its generalizations. These sketch summaries can similarly be utilized to approximate range queries, the sizes of (equi)joins between relations and self-join sizes. Moreover, such sketches may be exploited to extract histogram and wavelet representations of streaming data and as elements of more complex mining operations.
+
+Another approach of sketch building leads to sketches for “distinct-value” queries that count the number of distinct values in a given multiset. Sketching methods by passing over the entire dataset can provide acceptable accuracy. Once built, these sketches estimate not only the cardinality of a given attribute or combination of attributes, but also the cardinality of various operations performed on them, such as set operations (union and difference), and selections based on arbitrary predicates.
+
+Finally, although, the sketching techniques can answer a considerable number of query types. However, they do not observed to scale well to more complex queries that imply sub-queries. Thus, the main drawback of sketches, especially in comparison with all-purpose sampling approaches, that they tend to answer a single type of query. 
+
 \section{Blinktopus}
 In this section we introduce a novel concept of our system called Blinktopus and give an explanation for the chosen type AQP data synopsis implemented in Blinktopus.  
 \subsection{Architecture}
@@ -175,6 +190,10 @@ Diverse Database Estimation Problems." IEEE Data Eng. Bull. 18 (1995) 10-18.
 S. Guha and B. Harb. Wavelet synopsis for data streams: minimizing non-euclidean error. In KDD, 2005.
 \bibitem{rodentstore}
 Philippe Cudré-Mauroux, Eugene Wu, and Samuel Madden. “The Case for RodentStore: An Adaptive, Declarative Storage System.” In CIDR. www.cidrdb.org, 2009.
+\bibitem{improved_histogram_ioannidis}
+Poosala V., Ioannidis Y., Haas P., Shekita E.: Improved Histograms for Selectivity Estimation of Range Predicates. SIGMOD Conf. (1996) 294-305
+\bibitem{equi-depth_compressed}
+Gibbons P., Matias Y., Poosala V.: Fast Incremental Maintenance of Approximate Histograms. VLDB Conf. (1997) 466-475
 \end{thebibliography}
 
 \end{document}
