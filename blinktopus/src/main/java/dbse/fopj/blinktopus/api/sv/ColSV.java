@@ -1,6 +1,7 @@
 package dbse.fopj.blinktopus.api.sv;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -21,7 +22,7 @@ import dbse.fopj.blinktopus.resources.QueryProcessor;
  * @author urmikl18 Class represents column-oriented db.
  */
 public class ColSV extends SV {
-	class ColEntry {
+	public class ColEntry {
 		private double value;
 		private int pos;
 
@@ -160,7 +161,7 @@ public class ColSV extends SV {
 			long timeSV = System.nanoTime() - start;
 			long timeLog = LogManager.getLogManager().getTime(table, attr, lower, higher, "");
 			return new SVResult(this.getId() + "tmp", "Col", table, attr, lower, higher, timeLog, timeSV, res.size(), 0,
-					"OK", new ColSV(this.getId() + "tmp", table, attr, lower, higher, res));
+					0, "OK", new ColSV(this.getId() + "tmp", table, attr, lower, higher, res));
 		} else {
 			if (!this.getTable().toLowerCase().equals(table.toLowerCase()))
 				return LogManager.getLogManager().scan(table, attr, lower, higher,
@@ -171,6 +172,21 @@ public class ColSV extends SV {
 			else
 				return LogManager.getLogManager().scan(table, attr, lower, higher, "Random error");
 		}
+	}
 
+	public double getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
+		if (this.getTable().toLowerCase().equals(table.toLowerCase())
+				&& this.getAttr().toLowerCase().equals(attr.toLowerCase()) && this.getLower() <= lower
+				&& this.getHigher() >= higher) {
+			if (!distinct) {
+				return (double) this.getSize();
+			} else {
+				HashSet<Double> hs = new HashSet<>();
+				for (ColEntry v : this.colData)
+					hs.add(v.getValue());
+				return hs.size();
+			}
+		} else
+			return LogManager.getLogManager().getCount(table, attr, lower, higher, distinct, message);
 	}
 }

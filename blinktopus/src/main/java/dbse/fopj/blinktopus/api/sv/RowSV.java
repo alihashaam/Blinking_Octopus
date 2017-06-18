@@ -1,6 +1,7 @@
 package dbse.fopj.blinktopus.api.sv;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -97,9 +98,10 @@ public class RowSV extends SV {
 	 */
 	public Result query(String table, String attr, double lower, double higher) {
 		long start = 0;
-		long timeSV  = 0;
-		if (this.getTable().toLowerCase().equals(table.toLowerCase()) && this.getAttr().toLowerCase().equals(attr.toLowerCase())
-				&& this.getLower() <= lower && this.getHigher() >= higher) {
+		long timeSV = 0;
+		if (this.getTable().toLowerCase().equals(table.toLowerCase())
+				&& this.getAttr().toLowerCase().equals(attr.toLowerCase()) && this.getLower() <= lower
+				&& this.getHigher() >= higher) {
 			List<RowEntry> res = new ArrayList<RowEntry>();
 			if (table.toLowerCase().equals("orders")) {
 				switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
@@ -107,7 +109,7 @@ public class RowSV extends SV {
 					start = System.nanoTime();
 					res = this.rowData.stream().filter((RowEntry e) -> ((Order) e.getValue()).getTotalPrice() >= lower
 							&& ((Order) e.getValue()).getTotalPrice() <= higher).collect(Collectors.toList());
-					timeSV = System.nanoTime()-start;
+					timeSV = System.nanoTime() - start;
 					break;
 				case 1:
 					start = System.nanoTime();
@@ -115,7 +117,7 @@ public class RowSV extends SV {
 							.filter((RowEntry e) -> ((Order) e.getValue()).getOrderDate().getTime() >= lower
 									&& ((Order) e.getValue()).getOrderDate().getTime() <= higher)
 							.collect(Collectors.toList());
-					timeSV = System.nanoTime()-start;
+					timeSV = System.nanoTime() - start;
 					break;
 				default:
 					res = null;
@@ -129,13 +131,13 @@ public class RowSV extends SV {
 							.filter((RowEntry e) -> ((LineItem) e.getValue()).getLineNumber() >= lower
 									&& ((LineItem) e.getValue()).getLineNumber() <= higher)
 							.collect(Collectors.toList());
-					timeSV = System.nanoTime()-start;
+					timeSV = System.nanoTime() - start;
 					break;
 				case 1:
 					start = System.nanoTime();
 					res = this.rowData.stream().filter((RowEntry e) -> ((LineItem) e.getValue()).getQuantity() >= lower
 							&& ((LineItem) e.getValue()).getQuantity() <= higher).collect(Collectors.toList());
-					timeSV = System.nanoTime()-start;
+					timeSV = System.nanoTime() - start;
 					break;
 				case 2:
 					start = System.nanoTime();
@@ -143,19 +145,19 @@ public class RowSV extends SV {
 							.filter((RowEntry e) -> ((LineItem) e.getValue()).getExtendedPrice() >= lower
 									&& ((LineItem) e.getValue()).getExtendedPrice() <= higher)
 							.collect(Collectors.toList());
-					timeSV = System.nanoTime()-start;
+					timeSV = System.nanoTime() - start;
 					break;
 				case 3:
 					start = System.nanoTime();
 					res = this.rowData.stream().filter((RowEntry e) -> ((LineItem) e.getValue()).getDiscount() >= lower
 							&& ((LineItem) e.getValue()).getDiscount() <= higher).collect(Collectors.toList());
-					timeSV = System.nanoTime()-start;
+					timeSV = System.nanoTime() - start;
 					break;
 				case 4:
 					start = System.nanoTime();
 					res = this.rowData.stream().filter((RowEntry e) -> ((LineItem) e.getValue()).getTax() >= lower
 							&& ((LineItem) e.getValue()).getTax() <= higher).collect(Collectors.toList());
-					timeSV = System.nanoTime()-start;
+					timeSV = System.nanoTime() - start;
 					break;
 				case 5:
 					start = System.nanoTime();
@@ -163,7 +165,7 @@ public class RowSV extends SV {
 							.filter((RowEntry e) -> ((LineItem) e.getValue()).getShipDate().getTime() >= lower
 									&& ((LineItem) e.getValue()).getShipDate().getTime() <= higher)
 							.collect(Collectors.toList());
-					timeSV = System.nanoTime()-start;
+					timeSV = System.nanoTime() - start;
 					break;
 				case 6:
 					start = System.nanoTime();
@@ -171,7 +173,7 @@ public class RowSV extends SV {
 							.filter((RowEntry e) -> ((LineItem) e.getValue()).getCommitDate().getTime() >= lower
 									&& ((LineItem) e.getValue()).getCommitDate().getTime() <= higher)
 							.collect(Collectors.toList());
-					timeSV = System.nanoTime()-start;
+					timeSV = System.nanoTime() - start;
 					break;
 				case 7:
 					start = System.nanoTime();
@@ -179,7 +181,7 @@ public class RowSV extends SV {
 							.filter((RowEntry e) -> ((LineItem) e.getValue()).getReceiptDate().getTime() >= lower
 									&& ((LineItem) e.getValue()).getReceiptDate().getTime() <= higher)
 							.collect(Collectors.toList());
-					timeSV = System.nanoTime()-start;
+					timeSV = System.nanoTime() - start;
 					break;
 				default:
 					res = null;
@@ -187,8 +189,8 @@ public class RowSV extends SV {
 				}
 			}
 			long timeLog = LogManager.getLogManager().getTime(table, attr, lower, higher, "");
-			return new SVResult(this.getId() + "tmp", "Row", table, attr, lower, higher, timeLog, timeSV,
-					res.size(), 0, "OK", new RowSV(this.getId() + "tmp", table, attr, lower, higher, res));
+			return new SVResult(this.getId() + "tmp", "Row", table, attr, lower, higher, timeLog, timeSV, res.size(), 0,
+					0, "OK", new RowSV(this.getId() + "tmp", table, attr, lower, higher, res));
 
 		} else {
 			if (!this.getTable().toLowerCase().equals(table.toLowerCase()))
@@ -200,6 +202,65 @@ public class RowSV extends SV {
 			else
 				return LogManager.getLogManager().scan(table, attr, lower, higher, "Random error");
 		}
+	}
+
+	public double getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
+		if (this.getTable().toLowerCase().equals(table.toLowerCase())
+				&& this.getAttr().toLowerCase().equals(attr.toLowerCase()) && this.getLower() <= lower
+				&& this.getHigher() >= higher) {
+			if (!distinct) {
+				return this.getSize();
+			} else {
+				HashMap<Double, Tuple> hm = new HashMap<>();
+				for (RowEntry v : this.rowData) {
+					Tuple t =v.getValue();
+					if (table.toLowerCase().equals("orders")) {
+						switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
+						case 0:
+							hm.put(((Order) t).getTotalPrice(), t);
+							break;
+						case 1:
+							hm.put((double) ((Order) t).getOrderDate().getTime(), t);
+							break;
+						default:
+							break;
+						}
+					} else {
+						switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
+						case 0:
+							hm.put((double) ((LineItem) t).getLineNumber(), t);
+							break;
+						case 1:
+							hm.put((double) ((LineItem) t).getQuantity(), t);
+							break;
+						case 2:
+							hm.put((double) ((LineItem) t).getExtendedPrice(), t);
+							break;
+						case 3:
+							hm.put((double) ((LineItem) t).getDiscount(), t);
+							break;
+						case 4:
+							hm.put((double) ((LineItem) t).getTax(), t);
+							break;
+						case 5:
+							hm.put((double) ((LineItem) t).getShipDate().getTime(), t);
+							break;
+						case 6:
+							hm.put((double) ((LineItem) t).getCommitDate().getTime(), t);
+							break;
+						case 7:
+							hm.put((double) ((LineItem) t).getReceiptDate().getTime(), t);
+							break;
+						default:
+							break;
+						}
+					}
+				}
+				return hm.size();
+			}
+		}
+		else
+			return LogManager.getLogManager().getCount(table, attr, lower, higher, distinct, message);
 	}
 
 }

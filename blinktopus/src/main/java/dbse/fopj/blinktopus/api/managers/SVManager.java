@@ -31,7 +31,7 @@ public final class SVManager {
 	 */
 	public SVManagerResult getAllSV() {
 		long start = System.nanoTime();
-		return new SVManagerResult("SV", "Manager", "", "", 0, 0, 0, System.nanoTime() - start, allSV.size(), 0, "OK",
+		return new SVManagerResult("SV", "Manager", "", "", 0, 0, 0, System.nanoTime() - start, allSV.size(),0, 0, "OK",
 				allSV);
 	}
 	
@@ -72,14 +72,14 @@ public final class SVManager {
 				RowSV res = new RowSV(rowId, table, attr, lower, higher);
 				this.allSV.add(res);
 				long timeSV = res.getTime();
-				return new SVResult(rowId, type, table, attr, lower, higher, 0, timeSV, res.getSize(), 0, "OK",
+				return new SVResult(rowId, type, table, attr, lower, higher, 0, timeSV, res.getSize(),0, 0, "OK",
 						res);
 			} else if (type.toLowerCase().equals("col")) {
 				String colId = "Col" + (idSV++);
 				ColSV res = new ColSV(colId, table, attr, lower, higher);
 				this.allSV.add(res);
 				long timeSV = res.getTime();
-				return new SVResult(colId, type, table, attr, lower, higher, 0, timeSV, res.getSize(), 0, "OK",
+				return new SVResult(colId, type, table, attr, lower, higher, 0, timeSV, res.getSize(),0, 0, "OK",
 						res);
 			} else {
 				String aqpId = "Aqp" + (idSV++);
@@ -88,7 +88,7 @@ public final class SVManager {
 				AqpSV res = null;
 				this.allSV.add(res);
 				return new SVResult(aqpId, type, table, attr, lower, higher, System.nanoTime() - start, 0,
-						res.getSize(), 0, "OK", res);
+						res.getSize(),0, 0, "OK", res);
 			}
 		} else {
 			SV sv = new SV();

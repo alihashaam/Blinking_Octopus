@@ -19,8 +19,8 @@ public class LogResult extends Result {
 	}
 
 	public LogResult(String SVid, String type, String table, String attr, double lower, double higher, long timeLog,
-			long timeSV, int size, double error, String message, List<Tuple> resultTuples) {
-		super(SVid, type, table, attr, lower, higher, timeLog, timeSV, size, error, message);
+			long timeSV, double exactCount, double apprCount, double error, String message, List<Tuple> resultTuples) {
+		super(SVid, type, table, attr, lower, higher, timeLog, timeSV, exactCount, apprCount, error, message);
 		this.logResultTuples = resultTuples;
 	}
 

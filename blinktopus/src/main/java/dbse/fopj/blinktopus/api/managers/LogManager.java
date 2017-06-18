@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,10 +32,13 @@ public final class LogManager {
 
 	/**
 	 * 
-	 * @param pathOrders - path to orders
-	 * @param pathLineItems - path to lineitems
+	 * @param pathOrders
+	 *            - path to orders
+	 * @param pathLineItems
+	 *            - path to lineitems
 	 */
 	public void loadData(String pathOrders, String pathLineItems) {
+		this.dataLog.clear();
 		ArrayList<Order> orders = new ArrayList<>();
 		ArrayList<LineItem> lineitems = new ArrayList<>();
 
@@ -124,8 +128,8 @@ public final class LogManager {
 	 */
 	public LogResult getAllLog() {
 		long start = System.nanoTime();
-		return new LogResult("Primary", "Log", "", "", 0, 0, System.nanoTime() - start, 0, this.dataLog.size(), 0, "OK",
-				this.dataLog);
+		return new LogResult("Primary", "Log", "", "", 0, 0, System.nanoTime() - start, 0, this.dataLog.size(), 0, 0,
+				"OK", this.dataLog);
 	}
 
 	/**
@@ -223,12 +227,66 @@ public final class LogManager {
 			}
 		}
 		return new LogResult("Primary", "Log", table, attr, lower, higher, System.nanoTime() - start, 0, res.size(), 0,
-				message, res);
+				0, message, res);
 	}
 
 	public long getTime(String table, String attr, double lower, double higher, String message) {
 		LogResult r = this.scan(table, attr, lower, higher, message);
 		return r.getTimeLog();
+	}
+
+	public double getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
+		if (!distinct) {
+			LogResult r = this.scan(table, attr, lower, higher, message);
+			return r.getExactCount();
+		} else {
+			List<Tuple> r = this.scan(table, attr, lower, higher, message).getResultTuples();
+			HashMap<Double, Tuple> hm = new HashMap<>();
+			for (Tuple t : r) {
+				if (table.toLowerCase().equals("orders")) {
+					switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
+					case 0:
+						hm.put(((Order) t).getTotalPrice(), t);
+						break;
+					case 1:
+						hm.put((double) ((Order) t).getOrderDate().getTime(), t);
+						break;
+					default:
+						break;
+					}
+				} else {
+					switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
+					case 0:
+						hm.put((double) ((LineItem) t).getLineNumber(), t);
+						break;
+					case 1:
+						hm.put((double) ((LineItem) t).getQuantity(), t);
+						break;
+					case 2:
+						hm.put((double) ((LineItem) t).getExtendedPrice(), t);
+						break;
+					case 3:
+						hm.put((double) ((LineItem) t).getDiscount(), t);
+						break;
+					case 4:
+						hm.put((double) ((LineItem) t).getTax(), t);
+						break;
+					case 5:
+						hm.put((double) ((LineItem) t).getShipDate().getTime(), t);
+						break;
+					case 6:
+						hm.put((double) ((LineItem) t).getCommitDate().getTime(), t);
+						break;
+					case 7:
+						hm.put((double) ((LineItem) t).getReceiptDate().getTime(), t);
+						break;
+					default:
+						break;
+					}
+				}
+			}
+			return hm.size();
+		}
 	}
 
 }

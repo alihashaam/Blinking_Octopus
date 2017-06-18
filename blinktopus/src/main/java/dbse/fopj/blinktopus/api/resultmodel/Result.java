@@ -8,15 +8,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public abstract class Result {
 	private String SVid;
+	
 	private String type;
 	private String table;
 	private String attr;
 	private double lower;
 	private double higher;
+	
 	private long timeLog;
 	private long timeSV;
-	private int size;
+	private double exactCount;
+	private double apprCount;
 	private double error;
+	
+	
 	private String message;
 
 	public Result() {
@@ -24,7 +29,7 @@ public abstract class Result {
 	}
 
 	public Result(String SVid, String type, String table, String attr, double lower, double higher, long timeLog,
-			long timeSV, int size, double error, String message) {
+			long timeSV, double exactCount, double apprCount, double error, String message) {
 		this.SVid = SVid;
 		this.type = type;
 		this.table = table;
@@ -33,7 +38,8 @@ public abstract class Result {
 		this.higher = higher;
 		this.timeLog = timeLog;
 		this.timeSV = timeSV;
-		this.size = size;
+		this.exactCount=exactCount;
+		this.apprCount=apprCount;
 		this.error = error;
 		this.message = message;
 	}
@@ -79,8 +85,13 @@ public abstract class Result {
 	}
 
 	@JsonProperty
-	public int getSize() {
-		return size;
+	public double getExactCount() {
+		return exactCount;
+	}
+	
+	@JsonProperty
+	public double getApprCount() {
+		return apprCount;
 	}
 
 	@JsonProperty
