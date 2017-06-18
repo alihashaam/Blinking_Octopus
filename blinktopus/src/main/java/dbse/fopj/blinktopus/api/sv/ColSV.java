@@ -22,7 +22,7 @@ import dbse.fopj.blinktopus.resources.QueryProcessor;
  * @author urmikl18 Class represents column-oriented db.
  */
 public class ColSV extends SV {
-	public class ColEntry {
+	class ColEntry {
 		private double value;
 		private int pos;
 

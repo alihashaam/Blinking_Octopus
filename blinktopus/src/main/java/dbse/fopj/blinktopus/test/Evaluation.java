@@ -5,14 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
-
 import dbse.fopj.blinktopus.api.managers.LogManager;
 import dbse.fopj.blinktopus.api.managers.SVManager;
 import dbse.fopj.blinktopus.api.resultmodel.Result;
-import dbse.fopj.blinktopus.api.sv.ColSV;
-import dbse.fopj.blinktopus.api.sv.ColSV.ColEntry;
-import dbse.fopj.blinktopus.api.sv.RowSV;
 
 public class Evaluation {
 	private static void loadData() {
