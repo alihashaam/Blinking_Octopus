@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  17 JUN 2017 14:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  19 JUN 2017 17:28
 entering extended mode
 **./Blinktopus.tex
 (Blinktopus.tex
@@ -298,39 +298,39 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 44.
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
 \OT1/ptm/m/it/10 Trans-form(HWT) \OT1/ptm/m/n/10 is prob-a-bly con-cep-tu-ally 
 the eas-i-est
  []
 
 
-Underfull \hbox (badness 7944) in paragraph at lines 82--83
+Underfull \hbox (badness 7944) in paragraph at lines 85--86
 \OT1/ptm/m/n/10 and there-fore the most widely im-ple-mented wavelet
  []
 
 
-Underfull \hbox (badness 2726) in paragraph at lines 82--83
+Underfull \hbox (badness 2726) in paragraph at lines 85--86
 \OT1/ptm/m/n/10 dif-fer-enc-ing the re-sult-ing wavelets are straight-for-wardl
 y
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 82--83
+Underfull \hbox (badness 2189) in paragraph at lines 85--86
 \OT1/ptm/m/n/10 com-puted and have been ob-served to show prac-ti-cally
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
 \OT1/ptm/m/n/10 ac-cept-able per-for-mance for nu-mer-ous num-ber of
  []
 
 
-Underfull \hbox (badness 1845) in paragraph at lines 82--83
+Underfull \hbox (badness 1845) in paragraph at lines 85--86
 \OT1/ptm/m/n/10 ap-pli-ca-tions(e.g., im-age edit-ing, query-ing to OLAP and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
 
  []
 
@@ -375,12 +375,12 @@ Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--180
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
 []\OT1/ptm/m/n/8 https://www.gartner.com/doc/3179439/predicts--inmemory-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
 []\OT1/ptm/m/n/8 https://www.confluent.io/blog/turning-the-database-inside-out-
 with-
  []
@@ -413,26 +413,26 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
-
-] (Blinktopus.aux) ) 
+[5] (Blinktopus.aux) ) 
 Here is how much of TeX's memory you used:
- 3061 strings out of 493328
- 49779 string characters out of 3139098
- 123132 words of memory out of 3000000
- 6566 multiletter control sequences out of 15000+200000
+ 3064 strings out of 493328
+ 49807 string characters out of 3139098
+ 124140 words of memory out of 3000000
+ 6569 multiletter control sequences out of 15000+200000
  34114 words of font info for 63 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,8n,37p,1137b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
-/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pf
-b>
-Output written on Blinktopus.pdf (5 pages, 135043 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/ut
+mbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Blinktopus.pdf (5 pages, 161773 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
+ 52 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
