@@ -107,7 +107,7 @@ As a result of an active research in the area of histograms over the last decade
 As long as they also barely support more than one data dimensions, one-dimensional histogram is the most preferable type. \\The simplicity in implementation and interpretation contributed to the popularity of \textit{equi-width} and \textit{equi-depth} histograms. Equi-width histograms do not overlap among the ranges of attribute values within the bucket and independent of their value frequencies have the same range size (or the number) of values in every bucket[21]. Since they store a greater amount of information than trivial ones, therefore often demonstrate better estimations. The reverse of equi-width histograms - equi-depth (or \textit{equi-height}) class of histograms has the same the sum of the frequencies of the attribute values with respect to each bucket, independent of the range size(i.e., the number) of these values. According to the studies of Piatetsky-Shapiro and Connell who also gave this class of histograms its name, equi-depth histograms have lower worst-case and average error values for a diverse set of selection queries than equi-width histograms.
 Beyond aforementioned types, more others have been introduced such as \textit{serial}[21], \textit{end biased} and \textit{high biased}, \textit{maxdiff} and other generalizations. 
 
-Another aspect which also worth taking into consideration is a construction cost. With regard to it, histograms can be divided into two groups: \textit{static} and \textit{dynamic}or \textit{adaptive} histograms[20]. Static histograms are commonly used in DBMSs. After they are built, even when the data is being changed, they remain unaltered. Hence, with the time a static histogram drifts away from its "up-to-date" state and its estimations may deteriorate from progressively larger errors. When this occurs, these histograms are recalculated and the old histograms are replaced with the "fresher" versions. 
+Another aspect which also worth taking into consideration is a construction cost. With regard to it, histograms can be divided into two groups: \textit{static} and \textit{dynamic} or \textit{adaptive} histograms[20]. Static histograms are commonly used in DBMSs. After they are built, even when the data is being changed, they remain unaltered. Hence, with the time a static histogram drifts away from its "up-to-date" state and its estimations may deteriorate from progressively larger errors. When this occurs, these histograms are recalculated and the old histograms are replaced with the "fresher" versions. 
 Despite of the fact that there have been proposed some efficient calculation algorithms for static histograms, adaptive histograms are the only viable option in a data stream environment. The most known examples of dynamic histograms are \textit{equi-depth and compressed} histograms[25], \textit{v-optimal} and \textit{spline-based} histograms. 
 
 Histograms efficiently answer range-sum queries and their variations. Furthermore, they can be utilized to approximate more general classes of queries(e.g., aggregations over joins), as well as real-valued data and set-valued queries.
@@ -148,6 +148,18 @@ Once created, the views can be accessed via \textit{SVManager}. This component i
 In spite the above-mentioned views can serve as the data storages, Blinktopus uses them only to provide the results to the user query. 
 
 Finally, the central component that connects all the components of Blinktopus together is \textit{QueryProcessor}. It analyzes the query issued by a user and redirects it to the component which responsible for it.
+
+\subsection{Workflow}
+
+In this subsection we describe the workflow of user query processing in Blinktopus.
+\begin{itemize}
+\item{After query was issued, QueryProcessor interprets it. The query contains the table, column and a range of interest, as well as the SV type that user wants to use for the given query. In contrast to OctopusDB, where the Holistic SV Optimizer decided which SV to provide/create, in Blinktopus, this decision is made by user himself. However, a similar component that automatically will decide upon what storage view on a given query to provide can be easily implemented in the Blinktopus system.}
+\item{After the query had been analyzed, QueryProcessor redirects it whether to the SVManager, if the specified view is either Column, Row or AQP, or to the LogManager.}
+\item{If user had chosen to look up over the log, then the whole primary storage will be scanned and the relevant tuples along with the information about the query (e.g. the table, the attribute, the range as well as query processing time) will be retrieved.}
+\item{If any other type of secondary SV was chosen, depending on the user's choice, the SVManager will either invoke the creation of the specified view or retrieve the required data from already existing SV.}
+\item{As it is not desirable for SVManager in order to retrieve the relevant tuples to scan the data, therefore SVs themselves are responsible for the result further retrieval and representation. Now when the view is created for the first time, the primary storage will be scanned and the relevant tuples will be formatted to fit to the desired view. Otherwise, an SV itself will scan the data it already stores and return to a user the only existing subset of the data.}
+
+\end{itemize}
 
 \section{Experimental Part}
 
