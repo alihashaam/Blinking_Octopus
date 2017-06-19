@@ -5,12 +5,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import dbse.fopj.blinktopus.api.datamodel.*;
+import dbse.fopj.blinktopus.api.datamodel.LineItem;
+import dbse.fopj.blinktopus.api.datamodel.Order;
+import dbse.fopj.blinktopus.api.datamodel.Tuple;
 import dbse.fopj.blinktopus.api.resultmodel.LogResult;
 import dbse.fopj.blinktopus.resources.QueryProcessor;
 
@@ -241,15 +243,15 @@ public final class LogManager {
 			return r.getExactCount();
 		} else {
 			List<Tuple> r = this.scan(table, attr, lower, higher, message).getResultTuples();
-			HashMap<Double, Tuple> hm = new HashMap<>();
+			HashSet<Double> hs = new HashSet<>();
 			for (Tuple t : r) {
 				if (table.toLowerCase().equals("orders")) {
 					switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
 					case 0:
-						hm.put(((Order) t).getTotalPrice(), t);
+						hs.add(((Order) t).getTotalPrice());
 						break;
 					case 1:
-						hm.put((double) ((Order) t).getOrderDate().getTime(), t);
+						hs.add((double) ((Order) t).getOrderDate().getTime());
 						break;
 					default:
 						break;
@@ -257,35 +259,35 @@ public final class LogManager {
 				} else {
 					switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
 					case 0:
-						hm.put((double) ((LineItem) t).getLineNumber(), t);
+						hs.add((double) ((LineItem) t).getLineNumber());
 						break;
 					case 1:
-						hm.put((double) ((LineItem) t).getQuantity(), t);
+						hs.add((double) ((LineItem) t).getQuantity());
 						break;
 					case 2:
-						hm.put((double) ((LineItem) t).getExtendedPrice(), t);
+						hs.add((double) ((LineItem) t).getExtendedPrice());
 						break;
 					case 3:
-						hm.put((double) ((LineItem) t).getDiscount(), t);
+						hs.add((double) ((LineItem) t).getDiscount());
 						break;
 					case 4:
-						hm.put((double) ((LineItem) t).getTax(), t);
+						hs.add((double) ((LineItem) t).getTax());
 						break;
 					case 5:
-						hm.put((double) ((LineItem) t).getShipDate().getTime(), t);
+						hs.add((double) ((LineItem) t).getShipDate().getTime());
 						break;
 					case 6:
-						hm.put((double) ((LineItem) t).getCommitDate().getTime(), t);
+						hs.add((double) ((LineItem) t).getCommitDate().getTime());
 						break;
 					case 7:
-						hm.put((double) ((LineItem) t).getReceiptDate().getTime(), t);
+						hs.add((double) ((LineItem) t).getReceiptDate().getTime());
 						break;
 					default:
 						break;
 					}
 				}
 			}
-			return hm.size();
+			return hs.size();
 		}
 	}
 
