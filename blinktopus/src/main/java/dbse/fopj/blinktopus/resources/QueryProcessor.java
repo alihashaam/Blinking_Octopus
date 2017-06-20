@@ -23,24 +23,13 @@ import dbse.fopj.blinktopus.api.resultmodel.SVManagerResult;
 @Produces(MediaType.APPLICATION_JSON)
 public class QueryProcessor {
 
-	public final static HashMap<String, Integer> attrIndex = new HashMap<String, Integer>() {
+	public final static HashMap<String, Integer> attrIndex=new HashMap<String,Integer>(){
 
-		private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID=1L;
 
-		{
-			put("totalprice", 0);
-			put("orderdate", 1);
+	{put("totalprice",0);put("orderdate",1);
 
-			put("linenumber", 0);
-			put("quantity", 1);
-			put("extendedprice", 2);
-			put("discount", 3);
-			put("tax", 4);
-			put("shipdate", 5);
-			put("commitdate", 6);
-			put("receiptdate", 7);
-		}
-	};
+	put("linenumber",0);put("quantity",1);put("extendedprice",2);put("discount",3);put("tax",4);put("shipdate",5);put("commitdate",6);put("receiptdate",7);}};
 
 	public QueryProcessor() {
 
@@ -56,7 +45,7 @@ public class QueryProcessor {
 	public SVManagerResult getAllSVs() {
 		return SVManager.getSVManager().getAllSV();
 	}
-	
+
 	@Path("/sv/clear")
 	@GET
 	@Timed
@@ -102,8 +91,14 @@ public class QueryProcessor {
 		if (type.toLowerCase().equals("log"))
 			return LogManager.getLogManager().scan(table, attr, Double.parseDouble(lower), Double.parseDouble(higher),"OK");
 		else
-			return SVManager.getSVManager().maintain(SVId, type, table, attr, Double.parseDouble(lower),
-					Double.parseDouble(higher), Boolean.parseBoolean(createSV));
+		{
+			if (type.toLowerCase().equals("aqp"))
+				return SVManager.getSVManager().maintain(SVId, type, table, attr, Double.parseDouble(lower),
+					Double.parseDouble(higher), false);
+			else
+				return SVManager.getSVManager().maintain(SVId, type, table, attr, Double.parseDouble(lower),
+						Double.parseDouble(higher), Boolean.parseBoolean(createSV));
+		}
 	}
 
 }

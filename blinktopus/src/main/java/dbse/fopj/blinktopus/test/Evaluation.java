@@ -8,6 +8,7 @@ import java.util.Calendar;
 import dbse.fopj.blinktopus.api.managers.LogManager;
 import dbse.fopj.blinktopus.api.managers.SVManager;
 import dbse.fopj.blinktopus.api.resultmodel.Result;
+import dbse.fopj.blinktopus.api.sv.AqpSV;
 import dbse.fopj.blinktopus.api.sv.ColSV;
 import dbse.fopj.blinktopus.api.sv.RowSV;
 
@@ -111,9 +112,9 @@ public class Evaluation {
 
 	public static void main(String[] args) {
 		String table = "orders";
-		String attr = "orderDate";
-		double lower = 698626800000.0;
-		double higher = 900972000000.0;
+		String attr = "totalPrice";
+		double lower = 50000.0;
+		double higher = 200000.0;
 		int nQuery = 100;
 
 		// !!! LOG-SV TEST !!!
@@ -132,6 +133,7 @@ public class Evaluation {
 		// !!! COUNT TEST !!!
 		 RowSV row = new RowSV("Row1", table, attr, lower, higher);
 		 ColSV col = new ColSV("Col2", table, attr, lower, higher);
+		 AqpSV aqp = new AqpSV();
 		 double countLog = LogManager.getLogManager().getCount(table, attr,
 		 lower, higher, false, "count");
 		 double distCountLog = LogManager.getLogManager().getCount(table,
@@ -144,10 +146,13 @@ public class Evaluation {
 		 "count");
 		 double distCountCol = col.getCount(table, attr, lower, higher, true,
 		 "count");
+		 double countAqp = aqp.query(table, attr, lower, higher);
+		 
 		
 		 System.out.println("SV\tNormal\tDistinct");
 		 System.out.println("Log\t"+countLog+"\t"+distCountLog);
 		 System.out.println("Row\t"+countRow+"\t"+distCountRow);
 		 System.out.println("Col\t"+countCol+"\t"+distCountCol);
+		 System.out.println("AQP\t"+countAqp+"\t"+0);
 	}
 }

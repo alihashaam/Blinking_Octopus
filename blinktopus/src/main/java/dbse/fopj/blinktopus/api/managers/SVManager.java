@@ -82,13 +82,14 @@ public final class SVManager {
 				return new SVResult(colId, type, table, attr, lower, higher, 0, timeSV, res.getSize(),0, 0, "OK",
 						res);
 			} else {
-				String aqpId = "Aqp" + (idSV++);
-				long start = System.nanoTime();
-				// AqpSV res = new AqpSV(aqpId, table, attr, lower, higher);
-				AqpSV res = null;
+				String aqpId = "AQP";
+				AqpSV res = new AqpSV();
 				this.allSV.add(res);
-				return new SVResult(aqpId, type, table, attr, lower, higher, System.nanoTime() - start, 0,
-						res.getSize(),0, 0, "OK", res);
+								
+				double exactCount = LogManager.getLogManager().getCount(table, attr, lower, higher, false, "Exact count");
+				double apprCount = res.query(table, attr, lower, higher);
+				return new SVResult(aqpId, type, table, attr, lower, higher, 0, res.getTime(),
+						exactCount, apprCount, Math.abs(exactCount-apprCount)/exactCount, "OK", res);			
 			}
 		} else {
 			SV sv = new SV();
@@ -111,7 +112,13 @@ public final class SVManager {
 				ColSV colSV = (ColSV) sv;
 				return colSV.query(table, attr, lower, higher);
 			} else {
-				return null;
+				AqpSV aqpSV = (AqpSV) sv;
+				long startTime = System.nanoTime();
+				double exactCount = LogManager.getLogManager().getCount(table, attr, lower, higher, false, "Exact count");
+				long logTime = System.nanoTime()-startTime;
+				double apprCount = aqpSV.query(table, attr, lower, higher);
+				return new SVResult(SVId, type, table, attr, lower, higher, logTime, aqpSV.getTime(),
+						exactCount, apprCount, Math.abs(exactCount-apprCount)/exactCount, "OK", aqpSV);
 			}
 		}
 	}
