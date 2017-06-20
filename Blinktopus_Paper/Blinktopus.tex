@@ -2,6 +2,7 @@
 
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
+%%\usepackage{amsmath}
 
 \begin{document}
 
@@ -84,10 +85,11 @@ Finally, adding the estimation from several samples can incrementally enhance an
 
 As an example of the wavelet synopsis \textit{Haar Wavelet Transform(HWT)} is probably conceptually the easiest and therefore the most widely implemented wavelet transformation. Based on recursive pairwise averaging and differencing the resulting wavelets are straightforwardly computed and have been observed to show practically acceptable performance for numerous number of applications(e.g., image editing, querying to OLAP and streaming-data).\\
 
-\textbf{Histograms} are another type of data synopses for summarizing the frequency distribution of an attribute or sets of attributes. Basically, a histogram groups input data values into subsets(i.e., "buckets") for each bucket it computes a small summary statistics in order to use it further for approximate reconstruction of the data in the bucket. In designing histograms the following aspects are to be carefully considered.  \\
+\textbf{Histograms} are another type of data synopses for summarizing the frequency distribution of an attribute or sets of attributes. Basically, a histogram groups input data values into subsets(i.e., "buckets", "bins") for each bucket it computes a small summary statistics in order to use it further for approximate reconstruction of the data in the bucket. In designing histograms the following aspects are to be carefully considered.  \\
 - \textit{Bucketing scheme}. Data items must be distributed within the buckets in order to better represent its structure. It can be decided depending on some local criteria(e.g., value frequencies or similarities etc.) or some global "optimality" criteria of the histogram according to a workload or a query class.\\
 - \textit{Intra-bucket approximation scheme}. In essence, there have been used two methods(e.g.,\textit{continuous value assumption} approach and  approach of \textit{uniform spread assumption}[24]) for intra-bucket approximation scheme of one-dimensional histogram. Both of them assume that values are uniformly distributed within the bucket range, with the first neglecting the number of the values and the second storing that number in the bucket. For the multi-dimensional histograms these approaches are to be extended. The choice of approximation scheme can also depend on the class of queries that histograms answer.\\
-- \textit{Statistics stored per bucket} can contain the number of items in each bucket along with the subset boundaries. The method chosen for the data approximation usually defines what information will be stored.\\ 
+- \textit{Statistics stored per bucket} can contain the number of items in each bucket along with the subset boundaries. The method chosen for the data approximation usually defines what information will be stored.\\
+- \textit{Bucket width}. The representation of real data via histograms may involve a loss of information, especially depending on the wrongly defined bucket width. Sturges's rule[30] is one of the commonly used rules. Moreover, other rules have been suggested that try to improve its performance without a normality assumption such as Doane's formula[29] and the Rice rule[28].\\ 
 - \textit{Class of queries answered}. Even though histograms can answer a wide spectrum of queries(e.g., queries related to "selectivity estimation", range-count queries etc.), class of queries answered still needs to be carefully considered while building a histogram.\\ 
 - \textit{Efficiency}. The cost of utilizing the histogram to provide query approximations, together with the time and space requirements can define the histogram from its efficiency perspective.\\
 - \textit{Accuracy} in answering queries to a given size constraint is one of the most significant aspects when constructing an "optimal" histogram. \\
@@ -138,7 +140,7 @@ The core idea of Blinktopus derives from two cornerstones:\\
 2. Since AQP techniques guarantee better interactive response times to a user query(especially, OLAP queries) over the "fresher" data, Blinktopus uses AQP techniques to further enhance its performance.
 
 In the Fig. 1 we present the architecture of Blinktopus. Similarly to Octopus, Blinktopus also does not have a fixed store and all data is stored in a \textit{primary storage} or \textit{primary log}.
-All data from the log or its some parts is represented via materialized SV namely \textit{LogSV}, which is as another type of SV can be used for answering the queries. The component of \textit{LogManager} defines the structure of LogSV and operates it within a \textit{rimary Log Store}. 
+All data from the log or its some parts is represented via materialized SV namely \textit{LogSV}, which is as another type of SV can be used for answering the queries. The component of \textit{LogManager} defines the structure of LogSV and operates it within a \textit{Primary Log Store}. 
 
 In general, besides LogSV, Blinktopus can manipulate the dataset via other secondary types of storage views: column SV(\textit{ColSV}), row SV(\textit{RowSV}) and AQP SV(\textit{AQPSV}). Although, the latter is rather different from the first two, Blinktopus still considers it as another storage view over the data. This simplifies the implementation and allows further views to be added. Along with the data, relevant to the query, such views contain other information like the number of entries or the range of a data. 
 %%However, the entries in our primary storage are different from the ones stored in LogSV. In OctopusDB, LogSV also contained the user's query which could be used for reconstruction purposes. In our cases, only the data is stored in the Log. 
@@ -149,14 +151,30 @@ In spite the above-mentioned views can serve as the data storages, Blinktopus us
 
 Finally, the central component that connects all the components of Blinktopus together is \textit{QueryProcessor}. It analyzes the query issued by a user and redirects it to the component which responsible for it.
 
+For AQP module of Blinktopus we have chosen equi-depth type of histograms, that were built on the whole dataset for COUNT queries. Histograms are calculated on the column of \textit{extendedprice} from \textit{LineItem} relation and \textit{totalprice} from \textit{Orders}.
+
+The first step in constructing histograms is to sort the data with the attribute used(i.e., totalprice from Orders, extendedprice from LineItem). After the sorting, in order to calculate the number of buckets \textit{k} we used the \textit{Rice Rule}.
+
+$\textit{k}=[2\textit{n}^{1/3}]$
+
+where \textit{n} - the number of elements in the dataset.
+ 
+Since \textit{k} is determined, next step is to define the statistics stored per bucket. As long as AQP component of Blinktopus supports only COUNT queries, we decided to store the number of elements per bin and its lower boundaries together with the highest boundary for the far rightmost bucket.
+
+The front end part of Blinktopus is a user-friendly interface that facilitates user to act as \textit{Holistic SV Optimizer} in OctopusDB, i.e., to decide which of RowSV or ColSV to create/delete, or to which SV(e.g., RowSV, ColSV, LogSV or AQPSV) to address his query. 
+
+Likewise, via this interface user is provided with opportunities to list all SVs created earlier in tabular or JSON format and delete all existing SVs.
+The front end and back end parts of Blinktopus communicate via JSON files. After receiving and interpreting JSON files from back end side, front end provides user the results in the tabular format. Additionally, along with the query results, it visualizes in the form of bar charts the pre-calculated by back end query statistics(i.e., query runtimes and a comparison of the results performed over the different SVs).
+
 \subsection{Workflow}
 
 In this subsection we describe the workflow of user query processing in Blinktopus.
 \begin{itemize}
 \item{After query was issued, QueryProcessor interprets it. The query contains the table, column and a range of interest, as well as the SV type that user wants to use for the given query. In contrast to OctopusDB, where the Holistic SV Optimizer decided which SV to provide/create, in Blinktopus, this decision is made by user himself. However, a similar component that automatically will decide upon what storage view on a given query to provide can be easily implemented in the Blinktopus system.}
-\item{After the query had been analyzed, QueryProcessor redirects it whether to the SVManager, if the specified view is either Column, Row or AQP, or to the LogManager.}
+\item{After the query had been analyzed, QueryProcessor redirects it whether to the SVManager, if the specified view is either Column, Row or AQP module, or to the LogManager.}
 \item{If user had chosen to look up over the log, then the whole primary storage will be scanned and the relevant tuples along with the information about the query (e.g. the table, the attribute, the range as well as query processing time) will be retrieved.}
 \item{If any other type of secondary SV was chosen, depending on the user's choice, the SVManager will either invoke the creation of the specified view or retrieve the required data from already existing SV.}
+\item{If user had chosen to query over the AQPSV, the function \textit{queryHistograms} sums up the number of elements for every bin that lie exactly within a given range. For the histograms buckets whose ranges were not covered completely within the bins, in order to provide an approximate result we use \textit{continuous value assumption}.}
 \item{As it is not desirable for SVManager in order to retrieve the relevant tuples to scan the data, therefore SVs themselves are responsible for the result further retrieval and representation. Now when the view is created for the first time, the primary storage will be scanned and the relevant tuples will be formatted to fit to the desired view. Otherwise, an SV itself will scan the data it already stores and return to a user the only existing subset of the data.}
 
 \end{itemize}
@@ -239,6 +257,12 @@ Gibbons P., Matias Y., Poosala V.: Fast Incremental Maintenance of Approximate H
 https://yahooeng.tumblr.com/post/135390948446/data-sketches
 \bibitem{hyperloglog}
 P. Flajolet, \`{E}ric Fusy, O. Gandouet, and et al., Hyperloglog: The analysis of a near-optimal cardinality estimation algorithm," in IN AOFA '07: PROCEEDINGS OF THE 2007 INTERNATIONAL CONFERENCE ON ANALYSIS OF ALGORITHMS, 2007.
+\bibitem{bucket_width_rice_rule}
+Lane, D.M.: Online statistics education: an interactive multimedia course of study (2015). http://onlinestatbook.com/2/graphing distributions/histograms.html. Accessed 03 Dec 2015
+\bibitem{doane_formula}
+Doane, D.P.: Aesthetic frequency classifications. Am. Stat. 30(4), 181–183 (1976)
+\bibitem{sturges_rule}
+Hyndman, R.J.: The problem with sturges rule for constructing histograms. Monash University (1995)
 \end{thebibliography}
 
 \end{document}
