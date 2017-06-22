@@ -155,7 +155,7 @@ For AQP module of Blinktopus we have chosen equi-depth type of histograms, that 
 
 The first step in constructing histograms is to sort the data with the attribute used(i.e., totalprice from Orders, extendedprice from LineItem). After the sorting, in order to calculate the number of buckets \textit{k} we used the \textit{Rice Rule}.
 
-$\textit{k}=[2\textit{n}^{1/3}]$
+$\textit{k}=(2\textit{n}^{1/3})$
 
 where \textit{n} - the number of elements in the dataset.
  
@@ -189,9 +189,14 @@ Evaluation of the test results:
 2. Comparison of the diff SVs by means of percentage representation.
 
 \section{Related Work}
-Some related work has to be mentioned here.
-samza
-rodentstore
+In this section we briefly discuss several prior works that share some similarities with Blinktopus.
+
+\textbf{Logs as a primary structure.} How the data is stored defines which data access techniques to implement in order to obtain the best performance possible for a certain database system. Most of modern DBMSs prefer to use a single data storage layout. Although, relying on the initial goal of the system such single-layout systems may acquire an exceptional efficiency, none of these choices may be a universally perfect solution. As a result, the most architecturally different systems have implemented new types of data storage layouts(e.g., tiles, logs, PAXes etc). 
+
+Log is most probably one of the simplest data structures for DBMS. In essence, by reading dataset sequentially logs may not even require additional access methods, which eventually may show a better performance. Samza[31], OctopusDB[1] are examples of the systems that exploit logs as their primary storage. In contrast to OctopusDB, in Samza these logs are also being replicated(i.e., more scalable). Moreover, Samza supports a log compaction mode, in which older messages are garbage-collected[31].\\
+\textbf{Rodent Store}.\\
+\textbf{HTAP+AQP.} SnappyData.\\
+
 
 \section{Conclusions}
 Sum up what happened and provide future work
@@ -263,6 +268,8 @@ Lane, D.M.: Online statistics education: an interactive multimedia course of stu
 Doane, D.P.: Aesthetic frequency classifications. Am. Stat. 30(4), 181–183 (1976)
 \bibitem{sturges_rule}
 Hyndman, R.J.: The problem with sturges rule for constructing histograms. Monash University (1995)
+\bibitem{samza_kafka}
+Kleppmann M., Kreps J.: Kafka, Samza and the Unix philosophy of distributed data. IEEE Data Engineering Bulletin 38(4):4–14, December 2015.
 \end{thebibliography}
 
 \end{document}
