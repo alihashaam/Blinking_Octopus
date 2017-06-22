@@ -2,7 +2,8 @@
 
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
-%%\usepackage{amsmath}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 
 \begin{document}
 
@@ -151,15 +152,16 @@ In spite the above-mentioned views can serve as the data storages, Blinktopus us
 
 Finally, the central component that connects all the components of Blinktopus together is \textit{QueryProcessor}. It analyzes the query issued by a user and redirects it to the component which responsible for it.
 
-For AQP module of Blinktopus we have chosen equi-depth type of histograms, that were built on the whole dataset for COUNT queries. Histograms are calculated on the column of \textit{extendedprice} from \textit{LineItem} relation and \textit{totalprice} from \textit{Orders}.
+Since Blinktopus answers only range queries and histograms are especially suitable for this class of queries and also due to their simplicity in implementaion and interpretation, together with acceptable error estimates we have chosen equi-depth type of histograms for AQP module of Blinktopus. They were constructed on the column of \textit{extendedprice} from \textit{LineItem} relation and \textit{totalprice} from \textit{Orders} on the whole dataset for COUNT queries.
 
-The first step in constructing histograms is to sort the data with the attribute used(i.e., totalprice from Orders, extendedprice from LineItem). After the sorting, in order to calculate the number of buckets \textit{k} we used the \textit{Rice Rule}.
-
-$\textit{k}=(2\textit{n}^{1/3})$
+The first step in constructing histograms is to sort the data with the attribute used(i.e., totalprice from Orders, extendedprice from LineItem). After the sorting, in order to calculate the number of buckets \textit{k} we used the simplified and enhanced version of Sturge's Rule - \textit{Rice Rule}.
+\begin{equation}
+k=\ceil*{2n^{1/3}}
+\end{equation}
 
 where \textit{n} - the number of elements in the dataset.
  
-Since \textit{k} is determined, next step is to define the statistics stored per bucket. As long as AQP component of Blinktopus supports only COUNT queries, we decided to store the number of elements per bin and its lower boundaries together with the highest boundary for the far rightmost bucket.
+Since \textit{k} is determined, next step is to define the statistics stored per bucket. As long as AQP component of Blinktopus supports only COUNT queries, we decided to store the number of elements with its lower boundaries per bin, along with the highest boundary for the far rightmost bucket.
 
 The front end part of Blinktopus is a user-friendly interface that facilitates user to act as \textit{Holistic SV Optimizer} in OctopusDB, i.e., to decide which of RowSV or ColSV to create/delete, or to which SV(e.g., RowSV, ColSV, LogSV or AQPSV) to address his query. 
 
@@ -189,13 +191,13 @@ Evaluation of the test results:
 2. Comparison of the diff SVs by means of percentage representation.
 
 \section{Related Work}
-In this section we briefly discuss several prior works that share some similarities with Blinktopus.
+In this section we briefly discuss several prior works and describe similarities and dissimilarities that they share with Blinktopus.
 
 \textbf{Logs as a primary structure.} How the data is stored defines which data access techniques to implement in order to obtain the best performance possible for a certain database system. Most of modern DBMSs prefer to use a single data storage layout. Although, relying on the initial goal of the system such single-layout systems may acquire an exceptional efficiency, none of these choices may be a universally perfect solution. As a result, the most architecturally different systems have implemented new types of data storage layouts(e.g., tiles, logs, PAXes etc). 
 
-Log is most probably one of the simplest data structures for DBMS. In essence, by reading dataset sequentially logs may not even require additional access methods, which eventually may show a better performance. Samza[31], OctopusDB[1] are examples of the systems that exploit logs as their primary storage. In contrast to OctopusDB, in Samza these logs are also being replicated(i.e., more scalable). Moreover, Samza supports a log compaction mode, in which older messages are garbage-collected[31].\\
-\textbf{Rodent Store}.\\
-\textbf{HTAP+AQP.} SnappyData.\\
+Log is most probably one of the simplest data structures for DBMS. In essence, by supporting an appending write and sequential read, logs may not even require additional access methods. Therefore these systems eventually may show a better performance. Samza[31], OctopusDB[1] are examples of the systems that exploit logs as their primary storage. Where Samza also supports a so-called \textit{log compaction mode}, in which older messages are garbage-collected[31]. Moreover, in contrast to OctopusDB and Blinktopus, in Samza these logs are also being replicated(i.e., more scalable).\\
+\textbf{Rodent Store} is a declarative and adaptive system that provides DBAs a high-level interface to specify the data physical representation by means of \textit{storage algebra}23]. In particular, adiministrators declare how to group and order a logical schema into sets of columns, rows and/or arrays. \\
+\textbf{HTAP+AQP=SnappyData}.\\
 
 
 \section{Conclusions}
@@ -272,4 +274,4 @@ Hyndman, R.J.: The problem with sturges rule for constructing histograms. Monash
 Kleppmann M., Kreps J.: Kafka, Samza and the Unix philosophy of distributed data. IEEE Data Engineering Bulletin 38(4):4–14, December 2015.
 \end{thebibliography}
 
-\end{document}
+\end{document}\grid
