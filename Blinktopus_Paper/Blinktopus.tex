@@ -193,12 +193,17 @@ Evaluation of the test results:
 \section{Related Work}
 In this section we briefly discuss several prior works and describe similarities and dissimilarities that they share with Blinktopus.
 
-\textbf{Logs as a primary structure.} How the data is stored defines which data access techniques to implement in order to obtain the best performance possible for a certain database system. Most of modern DBMSs prefer to use a single data storage layout. Although, relying on the initial goal of the system such single-layout systems may acquire an exceptional efficiency, none of these choices may be a universally perfect solution. As a result, the most architecturally different systems have implemented new types of data storage layouts(e.g., tiles, logs, PAXes etc). 
+\textbf{Logs as a primary structure.} How the data is stored defines which data access techniques to implement in order to obtain the best performance possible for a certain database system. Most of modern DBMSs prefer to use a single data storage layout. Although, relying on the initial goal of the system such single-layout systems may acquire an exceptional efficiency, none of these choices may be a universally perfect solution. As a result, the most architecturally different systems have implemented new types of data storage layouts(e.g., log, PAX etc). 
 
-Log is most probably one of the simplest data structures for DBMS. Furthermore, by supporting an appending write and sequential read, logs may not even require additional access methods. Therefore these systems eventually may show a better performance. Samza[31], OctopusDB[1] are examples of the systems that exploit logs as their primary storage. Where Samza also supports a so-called \textit{log compaction mode}, in which older messages are garbage-collected[31]. Moreover, in contrast to OctopusDB and Blinktopus, in Samza these logs are also being replicated(i.e., more scalable).\\
-\textbf{Rodent Store} is a declarative and adaptive system that provides DBAs a high-level interface to specify the data physical representation by means of \textit{storage algebra}23]. In particular, adiministrators declare how to group and order a logical schema into sets of columns, rows and/or arrays. \\
-\textbf{HTAP+AQP=SnappyData}.\\
+Log is most probably one of the simplest data structures for DBMS. Furthermore, by supporting an appending write and sequential read, logs may not even require additional access methods. Therefore, these systems eventually may show a better performance. Apache Samza[31], OctopusDB[1] are examples of the systems that utilize logs as their primary storage. In contrast to OctopusDB and Blinktopus, Samza demonstrates a better scalability by replicating these logs on multiple nodes. Moreover, Samza also supports a so-called log compaction mode, in which older messages are garbage-collected[31].
 
+\textbf{Data representation.} Now after query issued, reading from a log is another challenging task because of the log full scan. Thus, representing the data in the different physical layout which will  answer different queries more efficiently, can be quite a viable solution. 
+
+Here Samza again exploits the idea of materialized views by consuming the events in a log and building the cached views[18]. These materialized views resemble somehow SVs in Blinktopus. However, differently from Blinktopus's types of SVs, they have index-based structures such as a full-text search index, a graph index, a key-value store, etc. 
+
+Rodent Store is another example of the system that shares the same idea of representing data in the various physical layouts. Rodent Store claims itself as a declarative and adaptive system that provides DBAs a high-level interface to specify the data physical representation by means of storage algebra[23]. In particular, adiministrators declare how to group and order a logical schema into sets of columns, rows and/or arrays. In case of Blinktopus, user is also behind the decisions in terms of data physical representation. In addition, aside from relatively "usual" row- and column-based layouts, user can accelerate retrieving the queries results through AQPSVs. \\
+\textbf{HTAP with AQP support.} %%Providing interactive response times in answering queries is one the most significant tasks of database systems. While delivering fast analytics over a "fresher" data is another challenging goal of HTAP systems. 
+Snappy Data has integrated OLTP, OLAP, processing of streaming data along with  AQP techniques in a single solution. For AQP part Snappy Data successfully implemented sketches, uniform and stratified samples, namely count-min sketch(CMS) for "heavy hitters"(i.e., top-K queries) and stratified samples for queries with selective WHERE conditions on stratified columns and etc[32]. Currently they extended the AQP functionality by allowing user to specify the number of column sets to approximate the results. Moreover, by means of high-level accuracy contract(HAC) approach user is allowed to define as a single percentage an acceptable for him/her a level of accuracy. Both of these concepts seem though to be a possible directions for a future work for Blinktopus.\\
 
 \section{Conclusions}
 Sum up what happened and provide future work
@@ -272,6 +277,9 @@ Doane, D.P.: Aesthetic frequency classifications. Am. Stat. 30(4), 181–183 (19
 Hyndman, R.J.: The problem with sturges rule for constructing histograms. Monash University (1995)
 \bibitem{samza_kafka}
 Kleppmann M., Kreps J.: Kafka, Samza and the Unix philosophy of distributed data. IEEE Data Engineering Bulletin 38(4):4–14, December 2015.
+\bibitem{snappydata_paper}
+Ramnarayan, Jags, Barzan Mozafari, Sumedh Wale, Sudhir Menon, Neeraj Kumar, Hemant Bhanawat, Soubhik Chakraborty, Yogesh Mahajan, Rishitesh Mishra and Kishor Bachhav. “SnappyData: Streaming, Transactions, and Interactive Analytics in a Unified Engine.” (2016).
 \end{thebibliography}
 
 \end{document}\grid
+\grid
