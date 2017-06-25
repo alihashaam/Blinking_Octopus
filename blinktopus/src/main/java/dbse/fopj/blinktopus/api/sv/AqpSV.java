@@ -42,7 +42,7 @@ public class AqpSV extends SV{
 		//calculate total Size
 		int size = histogramList.size();
 		// Race Rule to compute number of bins for histogram
-		int bins = (int)java.lang.Math.ceil(Math.pow(2*size, 0.33));
+		int bins = (int)(2*java.lang.Math.ceil(Math.pow(size, 0.33)));
 		//calculate number of items per bin
 		int itemsPerBin = (int)java.lang.Math.ceil((float)size/bins);
 		Map<Double, Integer> histoTotalPrice = new HashMap<Double, Integer>();
@@ -75,7 +75,7 @@ public class AqpSV extends SV{
 		//calculate total Size
 		int size = histogramList.size();
 		// Race Rule to compute number of bins for histogram
-		int bins = (int)java.lang.Math.ceil(Math.pow(2*size, 0.33));
+		int bins = (int)(2*java.lang.Math.ceil(Math.pow(size, 0.33)));
 		//calculate number of items per bin
 		int itemsPerBin = (int)java.lang.Math.ceil((float)size/bins);
 		Map<Double, Integer> histoTotalPrice = new HashMap<Double, Integer>();

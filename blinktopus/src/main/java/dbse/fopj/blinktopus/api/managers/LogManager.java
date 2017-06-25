@@ -49,26 +49,26 @@ public final class LogManager {
 		String l = "";
 		String csvSplitBy = "\\|";
 
-		try {
-			br = new BufferedReader(new FileReader(pathOrders));
-			while ((l = br.readLine()) != null) {
-				String[] line = l.split(csvSplitBy);
-				if (line.length == 9)
-					orders.add(new Order(Long.parseLong(line[0].trim()), Long.parseLong(line[1].trim()),
-							line[2].trim().charAt(0), Double.parseDouble(line[3].trim()), format.parse(line[4].trim()),
-							line[5].trim(), line[6].trim(), Integer.parseInt(line[7].trim()), line[8].trim()));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+//		try {
+//			br = new BufferedReader(new FileReader(pathOrders));
+//			while ((l = br.readLine()) != null) {
+//				String[] line = l.split(csvSplitBy);
+//				if (line.length == 9)
+//					orders.add(new Order(Long.parseLong(line[0].trim()), Long.parseLong(line[1].trim()),
+//							line[2].trim().charAt(0), Double.parseDouble(line[3].trim()), format.parse(line[4].trim()),
+//							line[5].trim(), line[6].trim(), Integer.parseInt(line[7].trim()), line[8].trim()));
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			if (br != null) {
+//				try {
+//					br.close();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
 
 		try {
 			br = new BufferedReader(new FileReader(pathLineItems));

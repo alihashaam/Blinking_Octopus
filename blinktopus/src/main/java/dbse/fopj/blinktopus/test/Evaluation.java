@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import dbse.fopj.blinktopus.api.*;
 import dbse.fopj.blinktopus.api.managers.LogManager;
 import dbse.fopj.blinktopus.api.managers.SVManager;
 import dbse.fopj.blinktopus.api.resultmodel.Result;
@@ -22,8 +23,8 @@ public class Evaluation {
 			e.printStackTrace();
 		}
 
-		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/O_0.1.tbl",
-				baseDir + "/src/main/resources/dataset/LI_0.1.tbl");
+		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/O_1.tbl",
+				baseDir + "/src/main/resources/dataset/LI_1.tbl");
 	}
 
 	private static void createSV(String table, String attr, double lower, double higher) {
@@ -118,41 +119,40 @@ public class Evaluation {
 		int nQuery = 100;
 
 		// !!! LOG-SV TEST !!!
-//		Calendar cal = Calendar.getInstance();
-//		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-//		System.out.println(sdf.format(cal.getTime()));
-//
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		System.out.println(sdf.format(cal.getTime()));
+
 		loadData();
-//		createSV(table, attr, lower, higher);
-//		long[] resLog = queryLog(nQuery, table, attr, lower, higher);
-//		long[] resRow = queryRow(nQuery, table, attr, lower, higher);
-//		long[] resCol = queryCol(nQuery, table, attr, lower, higher);
-//		exportData(resLog, resRow, resCol);
-//		System.out.println(sdf.format(cal.getTime()));
+		createSV(table, attr, lower, higher);
+		long[] resLog = queryLog(nQuery, table, attr, lower, higher);
+		long[] resRow = queryRow(nQuery, table, attr, lower, higher);
+		long[] resCol = queryCol(nQuery, table, attr, lower, higher);
+		exportData(resLog, resRow, resCol);
+		System.out.println(sdf.format(cal.getTime()));
 
 		// !!! COUNT TEST !!!
-		 RowSV row = new RowSV("Row1", table, attr, lower, higher);
-		 ColSV col = new ColSV("Col2", table, attr, lower, higher);
-		 AqpSV aqp = new AqpSV();
-		 double countLog = LogManager.getLogManager().getCount(table, attr,
-		 lower, higher, false, "count");
-		 double distCountLog = LogManager.getLogManager().getCount(table,
-		 attr, lower, higher, true, "count");
-		 double countRow = row.getCount(table, attr, lower, higher, false,
-		 "count");
-		 double distCountRow = row.getCount(table, attr, lower, higher, true,
-		 "count");
-		 double countCol = col.getCount(table, attr, lower, higher, false,
-		 "count");
-		 double distCountCol = col.getCount(table, attr, lower, higher, true,
-		 "count");
-		 double countAqp = aqp.query(table, attr, lower, higher);
-		 
-		
-		 System.out.println("SV\tNormal\tDistinct");
-		 System.out.println("Log\t"+countLog+"\t"+distCountLog);
-		 System.out.println("Row\t"+countRow+"\t"+distCountRow);
-		 System.out.println("Col\t"+countCol+"\t"+distCountCol);
-		 System.out.println("AQP\t"+countAqp+"\t"+0);
+//		 RowSV row = new RowSV("Row1", table, attr, lower, higher);
+//		 ColSV col = new ColSV("Col2", table, attr, lower, higher);
+//		 AqpSV aqp = new AqpSV();
+//		 double countLog = LogManager.getLogManager().getCount(table, attr,
+//		 lower, higher, false, "count");
+//		 double distCountLog = LogManager.getLogManager().getCount(table,
+//		 attr, lower, higher, true, "count");
+//		 double countRow = row.getCount(table, attr, lower, higher, false,
+//		 "count");
+//		 double distCountRow = row.getCount(table, attr, lower, higher, true,
+//		 "count");
+//		 double countCol = col.getCount(table, attr, lower, higher, false,
+//		 "count");
+//		 double distCountCol = col.getCount(table, attr, lower, higher, true,
+//		 "count");
+//		 double countAqp = aqp.query(table, attr, lower, higher);
+//		 
+//		
+//		 System.out.println("SV\tNormal\tDistinct");
+//		 System.out.println("Log\t"+countLog+"\t"+distCountLog);
+//		 System.out.println("Row\t"+countRow+"\t"+distCountRow);
+//		 System.out.println("Col\t"+countCol+"\t"+distCountCol);
 	}
 }
