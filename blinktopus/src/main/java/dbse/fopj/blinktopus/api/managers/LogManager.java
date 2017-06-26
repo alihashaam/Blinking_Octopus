@@ -237,7 +237,7 @@ public final class LogManager {
 		return r.getTimeLog();
 	}
 
-	public double getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
+	public long getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
 		if (!distinct) {
 			LogResult r = this.scan(table, attr, lower, higher, message);
 			return r.getExactCount();

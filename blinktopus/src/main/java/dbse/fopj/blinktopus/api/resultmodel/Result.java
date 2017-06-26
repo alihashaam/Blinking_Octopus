@@ -17,8 +17,8 @@ public abstract class Result {
 	
 	private long timeLog;
 	private long timeSV;
-	private double exactCount;
-	private double apprCount;
+	private long exactCount;
+	private long apprCount;
 	private double error;
 	
 	
@@ -29,7 +29,7 @@ public abstract class Result {
 	}
 
 	public Result(String SVid, String type, String table, String attr, double lower, double higher, long timeLog,
-			long timeSV, double exactCount, double apprCount, double error, String message) {
+			long timeSV, long exactCount, long apprCount, double error, String message) {
 		this.SVid = SVid;
 		this.type = type;
 		this.table = table;
@@ -85,12 +85,12 @@ public abstract class Result {
 	}
 
 	@JsonProperty
-	public double getExactCount() {
+	public long getExactCount() {
 		return exactCount;
 	}
 	
 	@JsonProperty
-	public double getApprCount() {
+	public long getApprCount() {
 		return apprCount;
 	}
 

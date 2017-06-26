@@ -116,7 +116,7 @@ public class AqpSV extends SV{
 	    return closest;
 	}
 	
-	public double query(String table, String attr, double lower, double higher)
+	public long query(String table, String attr, double lower, double higher)
 	{
 		if (table.toLowerCase().equals("orders"))
 			return queryHistograms(lower,higher,histOrders);
@@ -125,9 +125,9 @@ public class AqpSV extends SV{
 	}
 	
 	/*queryHistograms() takes the ranges as input and gives count as result*/
-	public double queryHistograms(double startrange, double endrange, Map<Double, Integer> histoTotalPrice){
+	public long queryHistograms(double startrange, double endrange, Map<Double, Integer> histoTotalPrice){
 		long startTime = System.nanoTime();
-		double count =0;
+		long count =0;
 		//get all the keys from the Map and sort them
 		List<Double> l = new ArrayList<Double>(histoTotalPrice.keySet());
 		Collections.sort(l);
