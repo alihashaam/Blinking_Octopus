@@ -174,16 +174,21 @@ public class ColSV extends SV {
 		}
 	}
 
-	public double getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
+	public long getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
 		if (this.getTable().toLowerCase().equals(table.toLowerCase())
 				&& this.getAttr().toLowerCase().equals(attr.toLowerCase()) && this.getLower() <= lower
 				&& this.getHigher() >= higher) {
 			if (!distinct) {
-				return (double) this.getSize();
+				return this.query(table, attr, lower, higher).getExactCount();
 			} else {
 				HashSet<Double> hs = new HashSet<>();
 				for (ColEntry v : this.colData)
-					hs.add(v.getValue());
+				{
+					double val = v.getValue();
+					if (val>=lower && val<=higher)
+						hs.add(v.getValue());
+						
+				}
 				return hs.size();
 			}
 		} else

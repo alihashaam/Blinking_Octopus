@@ -204,23 +204,28 @@ public class RowSV extends SV {
 		}
 	}
 
-	public double getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
+	public long getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
 		if (this.getTable().toLowerCase().equals(table.toLowerCase())
 				&& this.getAttr().toLowerCase().equals(attr.toLowerCase()) && this.getLower() <= lower
 				&& this.getHigher() >= higher) {
 			if (!distinct) {
-				return this.getSize();
+				return this.query(table, attr, lower, higher).getExactCount();
 			} else {
+				double val = 0.0;
 				HashSet<Double> hs = new HashSet<>();
 				for (RowEntry v : this.rowData) {
 					Tuple t = v.getValue();
 					if (table.toLowerCase().equals("orders")) {
 						switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
 						case 0:
-							hs.add(((Order) t).getTotalPrice());
+							val = ((Order) t).getTotalPrice();
+							if (val>=lower && val <=higher) 
+								hs.add(val);
 							break;
 						case 1:
-							hs.add((double) ((Order) t).getOrderDate().getTime());
+							val = (double) ((Order) t).getOrderDate().getTime();
+							if (val>=lower && val <=higher) 
+								hs.add(val);
 							break;
 						default:
 							break;
@@ -228,28 +233,44 @@ public class RowSV extends SV {
 					} else {
 						switch (QueryProcessor.attrIndex.get(attr.toLowerCase())) {
 						case 0:
-							hs.add((double) ((LineItem) t).getLineNumber());
+							val = (double) ((LineItem) t).getLineNumber();
+							if (val>=lower && val <=higher) 
+								hs.add(val);
 							break;
 						case 1:
-							hs.add((double) ((LineItem) t).getQuantity());
+							val = (double) ((LineItem) t).getQuantity();
+							if (val>=lower && val <=higher) 
+								hs.add(val);
 							break;
 						case 2:
-							hs.add((double) ((LineItem) t).getExtendedPrice());
+							val = (double) ((LineItem) t).getExtendedPrice();
+							if (val>=lower && val <=higher) 
+								hs.add(val);
 							break;
 						case 3:
-							hs.add((double) ((LineItem) t).getDiscount());
+							val = (double) ((LineItem) t).getDiscount();
+							if (val>=lower && val <=higher) 
+								hs.add(val);
 							break;
 						case 4:
-							hs.add((double) ((LineItem) t).getTax());
+							val = (double) ((LineItem) t).getTax();
+							if (val>=lower && val <=higher) 
+								hs.add(val);
 							break;
 						case 5:
-							hs.add((double) ((LineItem) t).getShipDate().getTime());
+							val = (double) ((LineItem) t).getShipDate().getTime();
+							if (val>=lower && val <=higher) 
+								hs.add(val);
 							break;
 						case 6:
-							hs.add((double) ((LineItem) t).getCommitDate().getTime());
+							val = (double) ((LineItem) t).getCommitDate().getTime();
+							if (val>=lower && val <=higher) 
+								hs.add(val);
 							break;
 						case 7:
-							hs.add((double) ((LineItem) t).getReceiptDate().getTime());
+							val = (double) ((LineItem) t).getReceiptDate().getTime();
+							if (val>=lower && val <=higher) 
+								hs.add(val);
 							break;
 						default:
 							break;
