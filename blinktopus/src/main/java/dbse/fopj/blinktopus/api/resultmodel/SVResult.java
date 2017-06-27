@@ -17,7 +17,7 @@ public class SVResult extends Result {
 	}
 
 	public SVResult(String SVid, String type, String table, String attr, double lower, double higher, long timeLog,
-			long timeSV, double exactCount, double apprCount, double error, String message, SV svResult) {
+			long timeSV, long exactCount, long apprCount, double error, String message, SV svResult) {
 		super(SVid, type, table, attr, lower, higher, timeLog, timeSV, exactCount, apprCount, error, message);
 		this.svResult = svResult;
 	}

@@ -19,7 +19,7 @@ public class SVManagerResult extends Result {
 	}
 
 	public SVManagerResult(String SVid, String type, String table, String attr, double lower, double higher,
-			long timeLog, long timeSV, double exactCount, double apprCount, double error, String message, List<SV> allSV) {
+			long timeLog, long timeSV, long exactCount, long apprCount, double error, String message, List<SV> allSV) {
 		super(SVid, type, table, attr, lower, higher, timeLog, timeSV, exactCount, apprCount, error, message);
 		this.allSV = allSV;
 	}

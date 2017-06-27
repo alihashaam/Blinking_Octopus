@@ -127,7 +127,7 @@ public class AqpSV extends SV{
 	/*queryHistograms() takes the ranges as input and gives count as result*/
 	public long queryHistograms(double startrange, double endrange, Map<Double, Integer> histoTotalPrice){
 		long startTime = System.nanoTime();
-		long count =0;
+		double count =0;
 		//get all the keys from the Map and sort them
 		List<Double> l = new ArrayList<Double>(histoTotalPrice.keySet());
 		Collections.sort(l);
@@ -186,7 +186,7 @@ public class AqpSV extends SV{
         	}
         }
         this.setTime(System.nanoTime()-startTime);
-		return count;
+		return (long)count;
 	}
 
 	
