@@ -153,7 +153,7 @@ public class Evaluation {
 	private static void exportData(ArrayList<double[]> res) {
 		FileWriter fileWriter = null;
 
-		String filepath = "/evaluation.csv";
+		String filepath = "evaluation.csv";
 
 		try {
 			fileWriter = new FileWriter(filepath);
@@ -189,17 +189,17 @@ public class Evaluation {
 
 	public static void main(String[] args) {
 		//Evaluation Setup
-		String O_1 = "O_0.1.tbl";
-		String LI_1 = "LI_0.1.tbl";
+//		String O_1 = "O_0.1.tbl";
+//		String LI_1 = "LI_0.1.tbl";
 		
-		String O_2 = "O_0.5.tbl";
-		String LI_2 = "LI_0.5.tbl";
+//		String O_2 = "O_0.5.tbl";
+//		String LI_2 = "LI_0.5.tbl";
 		
-//		String O_1 = "O_1.tbl";
-//		String LI_1 = "LI_1.tbl";
+		String O_1 = "O_1.tbl";
+		String LI_1 = "LI_1.tbl";
 //		
-//		String O_2 = "O_10.tbl";
-//		String LI_2 = "LI_10.tbl";
+		String O_2 = "O_10.tbl";
+		String LI_2 = "LI_10.tbl";
 		
 		String table = "orders";
 		String attr = "totalprice";

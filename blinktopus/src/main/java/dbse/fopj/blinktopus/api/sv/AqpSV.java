@@ -9,15 +9,16 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import com.yahoo.sketches.hll.HllSketch;
+
 import dbse.fopj.blinktopus.api.datamodel.LineItem;
 import dbse.fopj.blinktopus.api.datamodel.Order;
-import dbse.fopj.blinktopus.api.datamodel.Tuple;
 import dbse.fopj.blinktopus.api.managers.LogManager;
 
 /**
- * 
- * @author urmikl18
- * Class represents a Storage View to answer approximate queries
+ * AQP-module. Uses two types of synopses: histograms and sketches. Histogram: equi-depth. Sketch: HyperLogLog.
+ * @author Hashaam
+ *
  */
 public class AqpSV extends SV{
 	private List<Order> ordersData = new ArrayList<>();
@@ -26,17 +27,30 @@ public class AqpSV extends SV{
 	private Map<Double,Integer> histOrders = new HashMap<>();
 	private Map<Double,Integer> histLineItems = new HashMap<>();
 	
+	private List<Double> totalPriceData = new ArrayList<>();
+	private final int lgK=12;
+	private HllSketch sketch;
+	
+	/**
+	 * Default constructor. Creates histograms for Order and LineItem tables (totalPrice, extendedPrice).
+	 * Create sketch for Order table (totalprice).
+	 */
 	public AqpSV()
 	{
-		//(List<Order>)(List<?>)LogManager.blabla....
 		super("AQP", "aqp", "everything", "price", Double.MIN_VALUE, Double.MAX_VALUE);
 		this.ordersData = (List<Order>)(List<?>)LogManager.getLogManager().scan("orders", "totalprice", Double.MIN_VALUE, Double.MAX_VALUE, "Orders histogram").getResultTuples();
 		this.lineitemData = (List<LineItem>)(List<?>)LogManager.getLogManager().scan("lineitems", "extendedprice", Double.MIN_VALUE, Double.MAX_VALUE, "LineItems histogram").getResultTuples();
 		histOrders = calculateHistogramsOrder(ordersData);
 		histLineItems = calculateHistogramsLI(lineitemData);
+		
+		this.totalPriceData=ordersData.stream()
+	              .map(Order::getTotalPrice)
+	              .collect(Collectors.toList());
+		this.sketch = new HllSketch(this.lgK);
+		this.totalPriceData.forEach(item -> sketch.update(item));
 	}
 
-	public Map<Double, Integer> calculateHistogramsOrder(List <Order> histogramList){
+	private Map<Double, Integer> calculateHistogramsOrder(List <Order> histogramList){
 		// sort the list on the attribute we are making Histogram on
 		Collections.sort(histogramList, Comparator.comparing(Order::getTotalPrice));
 		//calculate total Size
@@ -69,7 +83,7 @@ public class AqpSV extends SV{
 		return histoTotalPrice;
 	}
 	
-	public Map<Double, Integer> calculateHistogramsLI(List <LineItem> histogramList){
+	private Map<Double, Integer> calculateHistogramsLI(List <LineItem> histogramList){
 		// sort the list on the attribute we are making Histogram on
 		Collections.sort(histogramList, Comparator.comparing(LineItem::getExtendedPrice));
 		//calculate total Size
@@ -102,7 +116,7 @@ public class AqpSV extends SV{
 		return histoTotalPrice;
 	}
 	
-	public double closest(double of, List<Double> in) {
+	private double closest(double of, List<Double> in) {
 		// calculate the closest smallest element to given value
 		double min = Double.MAX_VALUE;
 		double closest = of;
@@ -116,6 +130,15 @@ public class AqpSV extends SV{
 	    return closest;
 	}
 	
+	/**
+	 * Returns approximate number of (unique) values in a given range.
+	 * @param table Table to be queried. (Order/LineItem)
+	 * @param attr Attribute to be queried (e.g. totalprice/extendedprice)
+	 * @param lower The lower boundary of a range query.
+	 * @param higher The higher boundary of a range query.
+	 * @param distinct True, if number of unique values to be returned, false otherwise.
+	 * @return The approximate number of (unique) values in a given range.
+	 */
 	public long query(String table, String attr, double lower, double higher, boolean distinct)
 	{
 		if (!distinct)
@@ -124,16 +147,16 @@ public class AqpSV extends SV{
 		}
 		else
 		{
-			return queryHLL(table,attr);
+			return queryHLL();
 		}
 	}
 	
-	public long queryHLL(String table, String attr)
+	private long queryHLL()
 	{
-		return 0;
+		return (long)this.sketch.getEstimate();
 	}
 	
-	public long queryHist(String table, String attr, double lower, double higher)
+	private long queryHist(String table, String attr, double lower, double higher)
 	{
 		if (table.toLowerCase().equals("orders"))
 			return queryHistograms(lower,higher,histOrders);
@@ -142,7 +165,7 @@ public class AqpSV extends SV{
 	}
 	
 	/*queryHistograms() takes the ranges as input and gives count as result*/
-	public long queryHistograms(double startrange, double endrange, Map<Double, Integer> histoTotalPrice){
+	private long queryHistograms(double startrange, double endrange, Map<Double, Integer> histoTotalPrice){
 		long startTime = System.nanoTime();
 		double count =0;
 		//get all the keys from the Map and sort them
