@@ -16,10 +16,10 @@ import dbse.fopj.blinktopus.api.datamodel.Tuple;
 import dbse.fopj.blinktopus.api.resultmodel.LogResult;
 import dbse.fopj.blinktopus.resources.QueryProcessor;
 
-/**
+/** LogManager - class that operates the primary storage (primary log). Singleton class.
  * 
- * @author urmikl18 Class that represents a primary log adapted from OctopusDB.
- *         Singleton.
+ * @author Pavlo Shevchenko (urmikl18)
+ *
  */
 public final class LogManager {
 	private static final LogManager INSTANCE = new LogManager();
@@ -28,16 +28,18 @@ public final class LogManager {
 	private LogManager() {
 	}
 
+	/**
+	 * 
+	 * @return The Singleton instance of LogManager
+	 */
 	public static LogManager getLogManager() {
 		return INSTANCE;
 	}
 
 	/**
-	 * 
-	 * @param pathOrders
-	 *            - path to orders
-	 * @param pathLineItems
-	 *            - path to lineitems
+	 * Loads the tables into the primary storage. Load separately Order and LineItem. Then interleave the results.
+	 * @param pathOrders Path to the Order table.
+	 * @param pathLineItems Path to the LineItem table.
 	 */
 	public void loadData(String pathOrders, String pathLineItems) {
 		this.dataLog.clear();
@@ -126,7 +128,7 @@ public final class LogManager {
 
 	/**
 	 * 
-	 * @return all entries currently stored in log
+	 * @return All entries currently stored in a log.
 	 */
 	public LogResult getAllLog() {
 		long start = System.nanoTime();
@@ -136,15 +138,15 @@ public final class LogManager {
 
 	/**
 	 * 
-	 * @param table
-	 *            - name of a relation
-	 * @param attr
-	 *            - name of an attribute
-	 * @param lower
-	 *            - left border of an interval
-	 * @param higher
-	 *            - right border of an interval
-	 * @return Sublog with relevant data.
+	 * The method that returns relevant tuples and relevant information about the query to the user.
+	 * @param table The table to be queried (Order/LineItem)
+	 * @param attr The attribute to be queried on (e.g. totalprice/extendedprice)
+	 * @param lower The lower boundary of a range query.
+	 * @param higher The higher boundary of a range query.
+	 * @param message Debug message.
+	 * @return An instance of a class Result that contains information about the query (table, attr, lower, higher),
+	 * information about SV (Id, Type (Col,Row,AQP)), information about result (tuples, size), and
+	 * analytical information (time it took to retrieve the result, and error if necessary).
 	 */
 	public LogResult scan(String table, String attr, double lower, double higher, String message) {
 		List<Tuple> res = new ArrayList<Tuple>();
@@ -232,11 +234,30 @@ public final class LogManager {
 				0, message, res);
 	}
 
+	/**
+	 * 
+	 * @param table The table to be queried (Order/LineItem)
+	 * @param attr The attribute to be queried on (e.g. totalprice/extendedprice)
+	 * @param lower The lower boundary of a range query.
+	 * @param higher The higher boundary of a range query.
+	 * @param message Message for debug purposes.
+	 * @return The time it takes to run a certain query over the log. Used for evaluation purposes.
+	 */
 	public long getTime(String table, String attr, double lower, double higher, String message) {
 		LogResult r = this.scan(table, attr, lower, higher, message);
 		return r.getTimeLog();
 	}
 
+	/**
+	 * 
+	 * @param table The table to be queried (Order/LineItem)
+	 * @param attr The attribute to be queried on (e.g. totalprice/extendedprice)
+	 * @param lower The lower boundary of a range query.
+	 * @param higher The higher boundary of a range query.
+	 * @param distinct True, if only unique values should be counted, false otherwise.
+	 * @param message Message for debug purposes.
+	 * @return The number of (unique) values that satisfy given query.
+	 */
 	public long getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
 		if (!distinct) {
 			LogResult r = this.scan(table, attr, lower, higher, message);

@@ -11,10 +11,10 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-/**
+/** Entry-point for the Blinktopus.
  * 
- * @author urmikl18 Entry point of application. Registers resource class
- *         {@link QueryProcessor} and health class {@link BlinktopusHealth}
+ * @author urmikl18
+ *
  */
 public class BlinktopusApplication extends Application<BlinktopusConfiguration> {
 
@@ -26,7 +26,11 @@ public class BlinktopusApplication extends Application<BlinktopusConfiguration> 
 	public String getName() {
 		return "Blinktopus";
 	}
-
+	
+	/**
+	 * 1. Loads the initial data into the primary log.\n
+	 * 2. Creates histograms and initializes HyperLogLog.
+	 */
 	@Override
 	public void initialize(final Bootstrap<BlinktopusConfiguration> bootstrap) {
 		String baseDir = "";
@@ -37,7 +41,7 @@ public class BlinktopusApplication extends Application<BlinktopusConfiguration> 
 		}
 		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/O_0.1.tbl",
 				baseDir + "/src/main/resources/dataset/LI_0.1.tbl");
-		SVManager.getSVManager().maintain("AQP", "aqp", "orders", "totalPrice", Double.MIN_VALUE, Double.MAX_VALUE, true);
+		SVManager.getSVManager().maintain("AQP", "aqp", "orders", "totalPrice", Double.MIN_VALUE, Double.MAX_VALUE, true, false);
 	}
 
 	@Override

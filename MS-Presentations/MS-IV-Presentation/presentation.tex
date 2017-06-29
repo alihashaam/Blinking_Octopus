@@ -32,8 +32,33 @@
 % one size fits all (OLTP OLAP together)
 % interactive queries (AQP part)
 % HTAP freshness OLAP queries (AQP?)
+\begin{frame}
+\frametitle{Motivation}
+\begin{enumerate}
+\item{Companies need to pick only  specialized DBMSs, each tailored to their specific use-case. \\ \pause
+$\Rightarrow$ Need for \emph{one size fits all system} (e.g. HTAP)}
+\pause
+\item{Support OLAP queries for analysis over real-time data (i.e., freshness). \\ \pause
+$\Rightarrow$ Explore the techniques related to more interactive queries (e.g. \emph{Approximate Query Processing})}
+\end{enumerate}
+\end{frame}
 
 \section{Background}
+\begin{frame}
+\frametitle{Background}
+\begin{enumerate}
+\item{OctopusDB}
+\begin{itemize}
+\item{uses logs as a primary storage}
+\item{mimicks several types of systems (OLAP, OLTP, etc.) by representing them as \emph{Storage Views}}
+\end{itemize}
+\pause
+\item{BlinkDB}
+\begin{itemize}
+\item{Successfully integrates AQP techniques into its architecture}
+\end{itemize}
+\end{enumerate}
+\end{frame}
 % OctopusDB (SV)
 % BlinkDB (AQP)
 
@@ -48,6 +73,27 @@
 
 \section{Related Work}
 % Apache Samza, Rodent Store, Snappy Data
+\begin{frame}
+\frametitle{Related Work}
+\begin{enumerate}
+\item{Apache Samza}
+\begin{itemize}
+\item{logs as a primary structure}
+\item{replicates logs on multiple nodes}
+\end{itemize}
+\item{Rodent Store}
+\begin{itemize}
+\item{represents data in the various physical layouts}
+\item{provides DBAs a high-level interface to specify the data physical representation by means of storage algebra}
+\end{itemize}
+\item{Snappy Data}
+\begin{itemize}
+\item{AQP Support}
+\item{Uses numerous types of synopses (samples, sketches)}
+\item{User defines the level of accuracy and the number of column sets to approximate the results}
+\end{itemize}
+\end{enumerate}
+\end{frame}
 
 \section{Conclusion and Future Work}
 % Challenges (memory problem)

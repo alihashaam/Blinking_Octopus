@@ -116,7 +116,24 @@ public class AqpSV extends SV{
 	    return closest;
 	}
 	
-	public long query(String table, String attr, double lower, double higher)
+	public long query(String table, String attr, double lower, double higher, boolean distinct)
+	{
+		if (!distinct)
+		{
+			return queryHist(table,attr,lower,higher);
+		}
+		else
+		{
+			return queryHLL(table,attr);
+		}
+	}
+	
+	public long queryHLL(String table, String attr)
+	{
+		return 0;
+	}
+	
+	public long queryHist(String table, String attr, double lower, double higher)
 	{
 		if (table.toLowerCase().equals("orders"))
 			return queryHistograms(lower,higher,histOrders);

@@ -17,9 +17,9 @@ import dbse.fopj.blinktopus.api.resultmodel.Result;
 import dbse.fopj.blinktopus.api.resultmodel.SVResult;
 import dbse.fopj.blinktopus.resources.QueryProcessor;
 
-/**
- * 
- * @author urmikl18 Class represents column-oriented db.
+/** Represents a column-oriented store. Created as a list of ColEntry's, which are double values and a position of this entry in a primary log.
+ * @author Pavlo Shevchenko (urmikl18)
+ *
  */
 public class ColSV extends SV {
 	class ColEntry {
@@ -47,9 +47,20 @@ public class ColSV extends SV {
 
 	private List<ColEntry> colData;
 
+	/**
+	 * Default constructor.
+	 */
 	public ColSV() {
 	}
 
+	/**
+	 * 
+	 * @param id The ID this SV will be stored by.
+	 * @param table The table (Order or LineItem) the SV will be created on.
+	 * @param attr The attribute (e.g. totalprice/extendedprice) the SV will be created on.
+	 * @param lower	The lower boundary of a range query that invoked the creation of this SV.
+	 * @param higher The higher boundary of a range query that invoked the creation of this SV.
+	 */
 	public ColSV(String id, String table, String attr, double lower, double higher) {
 		super(id, "Col", table, attr, lower, higher);
 		List<Tuple> all = LogManager.getLogManager().getAllLog().getResultTuples();
@@ -129,26 +140,24 @@ public class ColSV extends SV {
 		this.setSize(colData.size());
 	}
 
+	/**
+	 * 
+	 * @return The current data stored in this Column SV.
+	 */
 	@JsonProperty
 	public List<ColEntry> getColData() {
 		return colData;
 	}
 
 	/**
-	 * 
-	 * @param table
-	 *            - name of a relation to query on
-	 * @param attr
-	 *            - name of an attribute to query on
-	 * @param lower
-	 *            - left border of an interval
-	 * @param higher
-	 *            - right border of an interval
-	 * @return SVResult with relevant information Works as follows: 1. Check if
-	 *         table name and attribute name are of this SV, check if range is a
-	 *         subrange of current one:\n 1.1 YES - create temporary RowSV and
-	 *         return it as a result. 1.2 NO - create new RowSV and store it in
-	 *         SVManager
+	 * The method that returns relevant tuples and relevant information about the query to the user.
+	 * @param table The table to be queried (Order/LineItem)
+	 * @param attr The attribute to be queried on (e.g. totalprice/extendedprice)
+	 * @param lower The lower boundary of a range query.
+	 * @param higher The higher boundary of a range query.
+	 * @return An instance of a class Result that contains information about the query (table, attr, lower, higher),
+	 * information about SV (Id, Type (Col,Row,AQP)), information about result (tuples, size), and
+	 * analytical information (time it took to retrieve the result, and error if necessary).
 	 */
 	public Result query(String table, String attr, double lower, double higher) {
 		List<ColEntry> res = new ArrayList<ColEntry>();
@@ -174,6 +183,16 @@ public class ColSV extends SV {
 		}
 	}
 
+	/**
+	 * 
+	 * @param table The table to be queried (Order/LineItem)
+	 * @param attr The attribute to be queried on (e.g. totalprice/extendedprice)
+	 * @param lower The lower boundary of a range query.
+	 * @param higher The higher boundary of a range query.
+	 * @param distinct True, if only unique values should be counted, false otherwise.
+	 * @param message Message for debug purposes.
+	 * @return The number of (unique) values that satisfy given query.
+	 */
 	public long getCount(String table, String attr, double lower, double higher, boolean distinct, String message) {
 		if (this.getTable().toLowerCase().equals(table.toLowerCase())
 				&& this.getAttr().toLowerCase().equals(attr.toLowerCase()) && this.getLower() <= lower

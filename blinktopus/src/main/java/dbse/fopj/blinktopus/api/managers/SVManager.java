@@ -9,9 +9,10 @@ import dbse.fopj.blinktopus.api.resultmodel.SVManagerResult;
 import dbse.fopj.blinktopus.api.resultmodel.SVResult;
 import dbse.fopj.blinktopus.api.sv.*;
 
-/**
+/** SVManager - stores, organizes Storage Views and redirects the user's query to specified SV. Singleton class.
  * 
- * @author urmikl18 Class that manages list of SVs. Singleton.
+ * @author Pavlo Shevchenko (urmikl18)
+ *
  */
 public final class SVManager {
 	private List<SV> allSV = new ArrayList<SV>();
@@ -21,6 +22,10 @@ public final class SVManager {
 	private SVManager() {
 	}
 
+	/**
+	 * 
+	 * @return The Singleton instance of class SVManager.
+	 */
 	public static SVManager getSVManager() {
 		return INSTANCE;
 	}
@@ -35,6 +40,9 @@ public final class SVManager {
 				allSV);
 	}
 	
+	/**
+	 * Deletes all SVs, that are currently stored.
+	 */
 	public void clear()
 	{
 		this.allSV.clear();
@@ -43,29 +51,20 @@ public final class SVManager {
 
 	/**
 	 * 
-	 * @param SVId
-	 *            - ID of used SV
-	 * @param type
-	 *            - type of SV
-	 * @param table
-	 *            - name of a relation
-	 * @param attr
-	 *            - name of an attribute
-	 * @param lower
-	 *            - left border of an interval
-	 * @param higher
-	 *            - right border of an interval
-	 * @param createSV
-	 *            - indicates whether new SV should be created
-	 * @return SV with results. Work flow:\n 1. Checks if new SV must be
-	 *         created:\n 1.1.YES - Create new SV of specified type and store
-	 *         it. \n 1.2.NO - Try to find SV with given ID. \n 1.2.1 Found -
-	 *         Call method that creates temporary view on this SV. 1.2.2 Not
-	 *         found - Create new SV with given parameters.
-	 * 
+	 * @param SVId ID of a Storage View to be maintained.
+	 * @param type Type of SV (Col, Row, AQP).
+	 * @param table Table that SV should be created on.(Order/LineItem)
+	 * @param attr Attribute that SV should be created on.(e.g. totalprice/extendedprice)
+	 * @param lower The lower boundary of a range query.
+	 * @param higher The higher boundary of a range query.
+	 * @param createSV True, if new SV of given type should be created, false, if already existing SV with SVId should be used.
+	 * @param distinct Used for count queries, using AQP.
+	 * @return An instance of a class Result that contains information about the query (table, attr, lower, higher),
+	 * information about SV (Id, Type (Col,Row,AQP)), information about result (tuples, size), and
+	 * analytical information (time it took to retrieve the result, and error if necessary).
 	 */
 	public Result maintain(String SVId, String type, String table, String attr, double lower, double higher,
-			boolean createSV) {
+			boolean createSV, boolean distinct) {
 		if (createSV) {
 			if (type.toLowerCase().equals("row")) {
 				String rowId = "Row" + (idSV++);
@@ -86,8 +85,8 @@ public final class SVManager {
 				AqpSV res = new AqpSV();
 				this.allSV.add(res);
 								
-				long exactCount = LogManager.getLogManager().getCount(table, attr, lower, higher, false, "Exact count");
-				long apprCount = res.query(table, attr, lower, higher);
+				long exactCount = LogManager.getLogManager().getCount(table, attr, lower, higher, distinct, "Exact count");
+				long apprCount = res.query(table, attr, lower, higher, distinct);
 				return new SVResult(aqpId, type, table, attr, lower, higher, 0, res.getTime(),
 						exactCount, apprCount, apprCount - exactCount, "OK", res);			
 			}
@@ -114,9 +113,9 @@ public final class SVManager {
 			} else {
 				AqpSV aqpSV = (AqpSV) sv;
 				long startTime = System.nanoTime();
-				long exactCount = LogManager.getLogManager().getCount(table, attr, lower, higher, false, "Exact count");
+				long exactCount = LogManager.getLogManager().getCount(table, attr, lower, higher, distinct, "Exact count");
 				long logTime = System.nanoTime()-startTime;
-				long apprCount = aqpSV.query(table, attr, lower, higher);
+				long apprCount = aqpSV.query(table, attr, lower, higher, distinct);
 				return new SVResult(SVId, type, table, attr, lower, higher, logTime, aqpSV.getTime(),
 						exactCount, apprCount, apprCount - exactCount, "OK", aqpSV);
 			}

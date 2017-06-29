@@ -83,7 +83,7 @@ public class Evaluation {
 		for (int i=0;i<nQuery;++i)
 		{
 			start = System.nanoTime();
-			aqp.query(table, attr, lower, higher);
+			aqp.query(table, attr, lower, higher, false);
 			aqpTimes.add(System.nanoTime()-start);
 		}
 		System.out.println("\t\t\tHistogram ready");
@@ -132,7 +132,7 @@ public class Evaluation {
 		for (int i=0;i<nQuery;++i)
 		{
 			start = System.nanoTime();
-			aqp.query(table, attr, lower, higher);
+			aqp.query(table, attr, lower, higher, true);
 			aqpTimes.add(System.nanoTime()-start);
 		}
 		System.out.println("\t\t\tHLL ready");

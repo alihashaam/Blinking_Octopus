@@ -3,9 +3,9 @@ package dbse.fopj.blinktopus.api.sv;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
- * @author urmikl18
- * Class represents Storage View. Stores relevant information.
+ * Abstract class to generalize Storage Views (Row,Col,AQP).
+ * @author Pavlo Shevchenko (urmikl18)
+ *
  */
 public class SV {
 	
@@ -20,9 +20,21 @@ public class SV {
 	private long timeSV;
 
 	
+	/**
+	 * Default constructor
+	 */
 	public SV() {
 	}
 
+	/**
+	 * 
+	 * @param id The ID this SV will be stored by.
+	 * @param type The type of this SV.(Row,Col,AQP).
+	 * @param table The table (Order or LineItem) the SV will be created on.
+	 * @param attr The attribute (e.g. totalprice/extendedprice) the SV will be created on.
+	 * @param lower	The lower boundary of a range query that invoked the creation of this SV.
+	 * @param higher The higher boundary of a range query that invoked the creation of this SV.
+	 */
 	public SV(String id, String type, String table, String attr, double lower, double higher) {
 		this.id = id;
 		this.type = type;
@@ -32,6 +44,10 @@ public class SV {
 		this.higher = higher;
 	}
 	
+	/**
+	 * 
+	 * @return size
+	 */
 	public int getSize()
 	{
 		return size;
@@ -42,6 +58,10 @@ public class SV {
 		this.size=size;
 	}
 	
+	/**
+	 * 
+	 * @return timeSV
+	 */
 	public long getTime()
 	{
 		return timeSV;
@@ -52,42 +72,64 @@ public class SV {
 		this.timeSV=timeSV;
 	}
 	
+	/**
+	 * 
+	 * @return id
+	 */
 	@JsonProperty
 	public String getId()
 	{
 		return id;
 	}
 	
+	/**
+	 * 
+	 * @return type
+	 */
 	@JsonProperty
 	public String getType()
 	{
 		return type;
 	}
 	
+	/**
+	 * 
+	 * @return table
+	 */
 	@JsonProperty
 	public String getTable()
 	{
 		return table;
 	}
 	
+	/**
+	 * 
+	 * @return attr
+	 */
 	@JsonProperty
 	public String getAttr()
 	{
 		return attr;
 	}
 	
+	/**
+	 * 
+	 * @return lower
+	 */
 	@JsonProperty
 	public double getLower()
 	{
 		return lower;
 	}
 	
+	/**
+	 * 
+	 * @return higher
+	 */
 	@JsonProperty
 	public double getHigher()
 	{
 		return higher;
 	}
-	
-	
 
 }
