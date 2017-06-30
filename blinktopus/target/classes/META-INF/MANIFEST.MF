@@ -35,7 +35,7 @@ Class-Path: dropwizard-core-1.1.0.jar dropwizard-util-1.1.0.jar jackso
  2.jar metrics-servlets-3.2.2.jar metrics-json-3.2.2.jar profiler-1.0.
  2.jar metrics-healthchecks-3.2.2.jar dropwizard-request-logging-1.1.0
  .jar logback-access-1.2.1.jar argparse4j-0.7.0.jar jetty-setuid-java-
- 1.0.3.jar
+ 1.0.3.jar sketches-core-0.10.0.jar
 Build-Jdk: 1.8.0_121
 Created-By: Maven Integration for Eclipse
 Main-Class: dbse.fopj.blinktopus.BlinktopusApplication

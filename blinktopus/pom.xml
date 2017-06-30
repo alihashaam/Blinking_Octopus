@@ -32,6 +32,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+            	<groupId>com.yahoo</groupId>
+            	<artifactId>sketches-core</artifactId>
+            	<version>0.10.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -43,7 +48,6 @@
         <dependency>
         	<groupId>com.yahoo</groupId>
         	<artifactId>sketches-core</artifactId>
-        	<version>0.10.0</version>
         </dependency>
     </dependencies>
 
