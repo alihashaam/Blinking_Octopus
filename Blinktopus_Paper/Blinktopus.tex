@@ -38,7 +38,7 @@ Nowadays there exists a great variety of systems that claim to solve the aforeme
 
 Still, following the \textit{one size does not fit all} observation these systems have mainly specialized either for OLAP or for OLTP[6]. Thus, it has lead the various vendors to try to build the comprehensive solutions, namely Hybrid Transactional/Analytical Processing (HTAP) systems(the term HTAP was defined by Gartner[17]). Some examples including SAP HANA[9] which has the engines that are optimized for OLAP workloads, at the same time it also supports ACID transactions. HyPer[10] is another example, which has a hybrid approach that uses memory snapshots based on process forking. Other examples include Peloton[11], OctopusDB[1] and  SnappyData[16] also belong to HTAP systems.  \\
 One of the solutions that most radically departs from existing architectures was proposed by Jens Dittrich and Alekh Jindal - a new type of database system, coined OctopusDB[1].
-\begin{figure} \includegraphics[width=0.4\textwidth, center]{img/blinktopus_architecture.jpeg} 
+\begin{figure} \includegraphics[width=0.4\textwidth, center]{img/blinktopus_architecture.png} 
 \caption{Blinktopus Architecture.}
 \end{figure}
 By dynamically mimicking several types of systems(OLAP, OLTP, Hybrid of OLAP and OLTP and etc.) OctopusDB is a solution that combines a copy-based mechanism for supporting adaptive layouts and logs as a primary storage. As a result, OctopusDB shows a considerably better performance. Moreover, depending on the use-case it may also emulate data stream management systems by replacing some of the stores with streaming windows. 
@@ -207,35 +207,44 @@ In this subsection we describe the workflow of user query processing in Blinktop
 \end{itemize}
 
 \section{Experimental Part}
-In this section we provide the results and compare a query performance given different ranges in the physical layouts presented in Blinktopus(LogSV, RowSV, ColSV and AQPSV). \\
+In this section we provide the results and compare a query performance depending on various parameters (e.g. table size, query selectivity, query types) in the physical layouts presented in Blinktopus(LogSV, RowSV, ColSV and AQPSV). The Section is structured as follows: firstly, we discuss the benchmark datasets that were used and queries that were chosen for the experiment. Then, in respective subsections, we analyze the results obtained from three experiments and provide an outlook on the performance of Blinktops system.
 
-Blinktopus was implemented in Dropwizard(Java 1.8) for back end side and Jupyter Notebook(Phython 2.7) for front end. The experiments were computed on a commodity multi-core machine running CentOS Linux 7.1.1503 and Java SDK 8u131-b11-linux-x64, with 2 Intel(r) Xeon (TM) E5-2630 v3s CPU @ 3.2 GHz processors (8 cores each) and 1024 GiB of Memory. 
+\label{subsec:Setup}
+\subsection{Setup}
+%Blinktopus was implemented in Dropwizard(Java 1.8) for back end side and Jupyter Notebook(Phython 2.7) for front end. 
+The experiments were computed on a commodity multi-core machine running CentOS Linux 7.1.1503 and Java SDK 8u131-b11-linux-x64, with 2 Intel(r) Xeon (TM) E5-2630 v3s CPU @ 3.2 GHz processors (8 cores each) and 1024 GiB of Memory. 
 
-In Blinktopus we exploit TPC-H datasets, namely Orders and LineItem relations, but for our evaluation we decided to run queries only over totalprice attribute from Orders.
+In Blinktopus we exploit TPC-H datasets, namely \textit{Orders} and \textit{Lineitems} relations, but for our evaluation we decided to run queries only over \textit{Totalprice} attribute from \textit{Orders}.
 
 For all experiments the numbers we report are an average runtime of each query for 100 runs. The ranges we have especially chosen for the queries cover 10\% and 90\% of Orders. Lastly, for better representation and interpretation the results were normalized to $\log_{10}$.
 
-\begin{figure} \includegraphics[width=0.4\textwidth, center]{img/exp1.jpeg} 
+\label{fig:exp1}
+\begin{figure} \includegraphics[width=0.4\textwidth, center]{img/exp1.png} 
 \caption{Experiment 1.}
 \end{figure}
 
-In the first experiment we compare the performance of the query over Log, Row and Column storage views and Fig.2 demonstrates its results. 
+\subsection{Experiment 1}
+The goal of the first experiment was to compare the performance of a range query over three storage views: Log, Row, and Column. For this purpose, we ran 100 range queries over two benchmark datasets with approximately 770k and 7,7M entries, and analyzed how the size of a dataset influences the performance of restricted storage views like Row and Column in comparison to Log. By restricted views, we mean that RowSV and ColSV contained only the tuples relevant to the query. Furthermore, for each dataset we run queries with low and high selectivity to see how the amount of data, stored in a single view influences the query response time.
 
-As we expected in almost all cases the scan over LogSV obtained the worst results, while ColSV performed slightly better than RowSV. However, surprisingly for us, in the last case the query over ColSV was not as fast as usual and together with LogSV demonstrated almost similar performance.  
+In Figure~2, we show the results of this experiment. As expected, Log store has the largest response time as it has to scan the whole data in order to retrieve relevant tuples. Row view performs better than Log, while Column storage view is slightly better than Row SV. Furthermore, we see that the restricted storage views do not become more beneficial with the increasing amounts of data, as the response time of all views is growing linearly with the increasing size of datasets. However, interesting results can be obtained while comparing the performance of Log, Row, and Column, depending on predicate selectivity. With the decreasing predicate selectivity, the speedup of RowSV and ColSV in comparison to Log is also decreasing: from 115 to 12 for RowSV, and 360 to 35 for ColSV. We expect the speedup to be slightly larger than 1 when the views contain all the data from given relation.
 
-In the second experiment we repeated the same test as in the first, additionally including the tests over AQPSV. 
+\subsection{Experiment 2}
+In the second experiment, we analyze the performance of an AQP component in the Blinktopus system. For this purpose, we run range queries with low and high selectivities over a larger dataset with approximately 7,7M records. We compare the performance of an equi-depth histogram to the one of Log, Row, and Column views. In this experiment, a histogram was created offline prior to query processing, and Row and Column views contain the data from the whole Orders table. Furthermore, we analyze how the decrease in selectivity influences the performance of histograms.
 
-For our AQPSV, we have decided to build histograms on the columns of extendedprice from LineItem relation and totalprice from Orders. They were constructed on the whole dataset for COUNT queries. Furthermore, we needed to sort the data of the given attribute. 
-
-As for sketches on DISTINCT COUNT queries, we estimate the cardinality of totalprice attribute from Orders.
-
-The results for the second experiment can be seen from Fig. 3. It illustrates that among all SVs, AQP shows a considerably better performance and has the smallest query runtime. In the second case ColSV again demonstrated unexpectedly worst performance.
-
-\begin{figure} \includegraphics[width=0.4\textwidth, center]{img/exp2.jpeg} 
+\begin{figure} \includegraphics[width=0.4\textwidth, center]{img/exp2.png} 
 \caption{Experiment 2.}
 \end{figure}
 
-\begin{figure} \includegraphics[width=0.4\textwidth, center]{img/exp3.jpeg} 
+We show the results of the second experiment in Figure~3. As expected, histograms show a tremendous improvement in response time in comparison to other views, with a speedup ranging from 5500 up to 10000. Although we do not take in the consideration the time it takes to create a histogram, we expect the results to be similar when adding this number. As the histogram is created once over the whole data and can be used to answer all queries over the data, the time to create a histogram can be distributed over all the queries and for a large enough number of iterations, this number won't make a significant difference.
+
+As mentioned before, we tried to find a connection between a number of bins that include the queried range and the speedup. The number of such bins can be estimated by the predicate selectivity. If a query covers 10\% of the data, then the histogram uses approximately 10\% of its bins to answer the query. So, with a growing number of buckets used by a histogram, we expect the response time to grow. However, we do not witness such behavior in our experiment. This can be explained by the fact that highly optimized histogram compacts the data well and the number of bins used to respond to a query does not make a difference.
+
+\subsection{Experiment 3}
+The goal of the last experiment is to analyze the performance of the second element of AQP component - the sketches. In order to do this, we calculate the cardinality of a \textit{Totalprice} attribute from \textit{Orders} relation, using Log, Row, and Column views for the exact results and HyperLogLog sketch to estimate the result. Similar to the previous experiment, Row and Column views contained all the date from \textit{Orders} table, and the sketch was precalculated. In this experiment we test how the building of a hash table can be compared to the query with a precalculated sketch.
+
+As to be seen in Figure~4, a sketch provides a speedup of about 1M in comparison to Log, 300k - to Row, and 140k - to Column. Although we do not take the sketch building time into consideration, these values represent accurate behavior of sketches in database applications. An offline-created sketch is used to answer the approximate queries, which means that the response time is technically equal to a time it takes a system to return a precalculated estimated value. As the sketch can be quickly updated when new data is inserted, this time has no big influence on the query response time, which again equals the time it takes to return an estimated value.
+
+\begin{figure} \includegraphics[width=0.4\textwidth, center]{img/exp3.png} 
 \caption{Experiment 3.}
 \end{figure}
 

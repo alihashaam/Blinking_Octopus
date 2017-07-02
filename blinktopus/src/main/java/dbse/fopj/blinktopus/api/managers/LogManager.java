@@ -50,6 +50,9 @@ public final class LogManager {
 		BufferedReader br = null;
 		String l = "";
 		String csvSplitBy = "\\|";
+		
+		long ordersCount = 0;
+		long liCount=0;
 
 		try {
 			br = new BufferedReader(new FileReader(pathOrders));
@@ -59,6 +62,9 @@ public final class LogManager {
 					orders.add(new Order(Long.parseLong(line[0].trim()), Long.parseLong(line[1].trim()),
 							line[2].trim().charAt(0), Double.parseDouble(line[3].trim()), format.parse(line[4].trim()),
 							line[5].trim(), line[6].trim(), Integer.parseInt(line[7].trim()), line[8].trim()));
+				++ordersCount;
+				if (ordersCount%120000==0)
+					System.out.println(ordersCount+" orders were loaded");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -84,6 +90,11 @@ public final class LogManager {
 							line[8].trim().charAt(0), line[9].trim().charAt(0), format.parse(line[10].trim()),
 							format.parse(line[11].trim()), format.parse(line[12].trim()), line[13].trim(),
 							line[14].trim(), line[15].trim()));
+				++liCount;
+				if (liCount%550000==0)
+				{
+					System.out.println(liCount+" lineitems were loaded");
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
