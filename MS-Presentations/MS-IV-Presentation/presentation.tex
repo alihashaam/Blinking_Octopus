@@ -65,11 +65,71 @@ $\Rightarrow$ Explore the techniques related to more interactive queries (e.g. \
 \section{Conceptual Idea and Implementation}
 % Blinktopus architecture
 % Briefly Histograms (Rice rule) and HLL (Library)
+\begin{frame}
+\frametitle{Conceptual Idea and Implementation}
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{img/blinktopus_architecture.png}
+\caption{OctopusDB Architecture.}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conceptual Idea and Implementation}
+\textbf{Which synopses to pick?}
+\begin{itemize}
+\item{Equi-depth histograms}
+\begin{itemize}
+\item{suitable for range queries}
+\item{simple to implement and interpretate}
+\end{itemize}
+\item{Sketches}
+\begin{itemize}
+\item{\emph{HyperLogLog}}
+\item{\textit{DISTINCT COUNT} queries}
+\item{\textit{DataSketches} library by \textit{Yahoo} \footnote{https://yahooeng.tumblr.com/post/125390948446/data-sketches}}
+\end{itemize}
+\end{itemize}
+\end{frame}
 
 \section{Evaluation Setup and Results}
-% Query details (table, attr, range)
-% 100 times
-% Charts for SF 1 (hopefully)
+\begin{frame}
+\frametitle{Evaluation Setup}
+\textbf{Machine}
+\begin{itemize}
+\item{CentOS Linux 7.1.1503}
+\item{Java SDK 8u131-b11-linux-x64}
+\item{2 Intel(r) Xeon (TM) E5-2630 v3s CPU @ 3.2GHz processors (8 cores each) and 1024 GiB memory}
+\end{itemize}
+\textbf{Benchmark Datasets}
+\begin{itemize}
+\item{TPC-H datasets (Orders and Lineitems)}
+\end{itemize}
+\textbf{Experiments}
+\begin{enumerate}
+\item{Average response time for a range query on the Orders table with various scaling factors and predicate selectivity}
+\item{Average response time for a count-range query on the Orders table. Comparison with an equi-depth histogram}
+\item{Average response time for a count distinct query on the Orders table. Comparison with a HLL sketch}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results. Experiment 1}
+\centering
+\includegraphics[scale=0.5]{img/exp1.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results. Experiment 2}
+\centering
+\includegraphics[scale=0.5]{img/exp2.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results. Experiment 3}
+\centering
+\includegraphics[scale=0.5]{img/exp3.png}
+\end{frame}
 
 \section{Related Work}
 % Apache Samza, Rodent Store, Snappy Data
@@ -99,15 +159,30 @@ $\Rightarrow$ Explore the techniques related to more interactive queries (e.g. \
 % Challenges (memory problem)
 % Conclusion from paper
 % Future Work from paper
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item{OLAP queries can benefit from AQP techniques}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Future Work}
+\begin{itemize}
+\item{optimize centralized log (e.g. log replication, garbage collection)}
+\item{extend Blinktopus architecture to support transactional model}
+\item{extend query classes by implementing sample-based data synopses}
+\end{itemize}
+\end{frame}
 
 \section{Demonstration}
 
 \begin{frame}
- %Huge thank you to Gabriel and everyone. Blablabla
+\frametitle{Thank you!}
 \end{frame}
 
 \begin{frame}
- \frametitle{Thank you! Any questions?}
+ \frametitle{Questions? Recommendations? Remarks?}
 \end{frame}
 
 \begin{frame}
