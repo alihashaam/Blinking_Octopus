@@ -12,8 +12,18 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 /** Entry-point for the Blinktopus.
+ * <p>
+ *  Start:<p>
+ *   1. mvn clean <p>
+ *   2. mvn install <p>
+ *   3. in blinktopus/ java -jar target/blinktopus-0.0.1-SNAPSHOT.jar server config.yml <p>
+ *  Functionality: <p>
+ *   1. View all entries in log: localhost:8080/log <p>
+ *   2. View all SVs: localhost:8080/sv/all <p>
+ *   3. Delete all SVs: localhost:8080/sv/clear <p>
+ *   4. Query: http://localhost:8080/query?SVid=aqp&type=aqp&table=orders&attr=totalPrice&lower=100&higher=5000&create=false&distinct=false <p>
  * 
- * @author urmikl18
+ * @author Pavlo Shevchenko (urmikl18)
  *
  */
 public class BlinktopusApplication extends Application<BlinktopusConfiguration> {
