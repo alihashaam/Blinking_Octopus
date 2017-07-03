@@ -2,6 +2,8 @@ Blinking_Octopus
 
 FOPJ, SoSe 17
 
+Dropwizard application. Requires Maven.
+
  Start:
 
 1. mvn clean
