@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  3 JUL 2017 13:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  3 JUL 2017 17:04
 entering extended mode
 **./Blinktopus.tex
 (Blinktopus.tex
@@ -418,139 +418,133 @@ G,.JBIG2,.JB2,.eps]
 <img/htap.png, id=1, 478.03593pt x 354.57469pt>
 File: img/htap.png Graphic file (type png)
  <use img/htap.png>
-Package pdftex.def Info: img/htap.png used on input line 38.
+Package pdftex.def Info: img/htap.png used on input line 37.
 (pdftex.def)             Requested size: 206.39685pt x 153.09174pt.
-
-Underfull \hbox (badness 1803) in paragraph at lines 43--47
-[]\OT1/ptm/m/n/10 Another im-por-tant goal of HTAP sys-tems(aside from
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 43--47
-
- []
-
 
 Underfull \vbox (badness 2005) has occurred while \output is active []
 
  [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
- <./img/htap.png>] [2]
-Underfull \hbox (badness 3557) in paragraph at lines 82--83
+ <./img/htap.png>]
+Underfull \hbox (badness 1803) in paragraph at lines 42--45
+[]\OT1/ptm/m/n/10 Another im-por-tant goal of HTAP sys-tems(aside from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--45
+
+ []
+
+[2]
+Underfull \hbox (badness 3557) in paragraph at lines 77--78
 []\OT1/ptm/m/n/10 AQP sys-tems dif-fer ac-cord-ing to their method-ol-ogy
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 91--92
+Underfull \hbox (badness 1394) in paragraph at lines 86--87
 \OT1/ptm/m/n/10 ag-gre-ga-tion" al-go-rithms. Notwith-stand-ing, when the data
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--92
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
 
-Underfull \hbox (badness 7379) in paragraph at lines 99--100
+Underfull \hbox (badness 7379) in paragraph at lines 94--95
 []\OT1/ptm/m/n/10 Wavelets as his-tograms have the same "curse of
  []
 
 
-Underfull \hbox (badness 6842) in paragraph at lines 99--100
+Underfull \hbox (badness 6842) in paragraph at lines 94--95
 \OT1/ptm/m/n/10 di-men-sion-al-ity" lim-i-ta-tion. Though this is-sue can be
  []
 
 
-Underfull \hbox (badness 1496) in paragraph at lines 99--100
+Underfull \hbox (badness 1496) in paragraph at lines 94--95
 \OT1/ptm/m/n/10 tack-led by ef-fi-ciently built wavelet de-com-po-si-tion, most
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-[3] <img/equi-depth_histogram.png, id=17, 352.31625pt x 301.125pt>
+[3] <img/equi-depth_histogram.png, id=20, 352.31625pt x 301.125pt>
 File: img/equi-depth_histogram.png Graphic file (type png)
 
 <use img/equi-depth_histogram.png>
-Package pdftex.def Info: img/equi-depth_histogram.png used on input line 129.
+Package pdftex.def Info: img/equi-depth_histogram.png used on input line 115.
 (pdftex.def)             Requested size: 154.80157pt x 132.307pt.
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
-
-Underfull \hbox (badness 3058) in paragraph at lines 140--141
+ [4 <./img/equi-depth_histogram.png>]
+Underfull \hbox (badness 3058) in paragraph at lines 126--127
 \OT1/ptm/m/n/10 stor-age over-head, they are mainly ex-ploited by query
  []
 
 
-Underfull \hbox (badness 2269) in paragraph at lines 140--141
+Underfull \hbox (badness 2269) in paragraph at lines 126--127
 \OT1/ptm/m/n/10 op-ti-miz-ers of al-most all DBMSs to pro-duce cost and
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 140--141
+Underfull \hbox (badness 1577) in paragraph at lines 126--127
 \OT1/ptm/m/n/10 se-lec-tiv-ity es-ti-ma-tions of var-i-ous query plans. How-eve
 r,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
-[4 <./img/equi-depth_histogram.png>]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-
-<img/distinct_count_sketches.png, id=23, 501.875pt x 156.585pt>
+<img/distinct_count_sketches.png, id=26, 501.875pt x 156.585pt>
 File: img/distinct_count_sketches.png Graphic file (type png)
 
 <use img/distinct_count_sketches.png>
-Package pdftex.def Info: img/distinct_count_sketches.png used on input line 160
+Package pdftex.def Info: img/distinct_count_sketches.png used on input line 146
 .
 (pdftex.def)             Requested size: 206.39685pt x 64.39618pt.
  [5 <./img/distinct_count_sketches.png>]
-<img/blinktopus_architecture.png, id=31, 494.59781pt x 332.74312pt>
+<img/blinktopus_architecture.png, id=34, 494.59781pt x 332.74312pt>
 File: img/blinktopus_architecture.png Graphic file (type png)
 
 <use img/blinktopus_architecture.png>
-Package pdftex.def Info: img/blinktopus_architecture.png used on input line 207
+Package pdftex.def Info: img/blinktopus_architecture.png used on input line 193
 .
 (pdftex.def)             Requested size: 206.39685pt x 138.85248pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6 <./img/blinktopus_architecture.png>] <img/exp1.png, id=39, 602.25pt x 372.3
-9125pt>
+ [6 <./img/blinktopus_architecture.png>]
+<img/exp1.png, id=42, 602.25pt x 372.39125pt>
 File: img/exp1.png Graphic file (type png)
-
-<use img/exp1.png>
-Package pdftex.def Info: img/exp1.png used on input line 237.
+ <use img/exp1.png>
+Package pdftex.def Info: img/exp1.png used on input line 223.
 (pdftex.def)             Requested size: 206.39685pt x 127.62277pt.
- <img/exp2.png, id=40, 602.25pt x 372.39125pt>
-File: img/exp2.png Graphic file (type png)
 
-<use img/exp2.png>
-Package pdftex.def Info: img/exp2.png used on input line 249.
+<img/exp2.png, id=43, 602.25pt x 372.39125pt>
+File: img/exp2.png Graphic file (type png)
+ <use img/exp2.png>
+Package pdftex.def Info: img/exp2.png used on input line 235.
 (pdftex.def)             Requested size: 206.39685pt x 127.62277pt.
  [7 <./img/exp1.png> <./img/exp2.png (PNG copy)>]
-<img/exp3.png, id=45, 602.25pt x 372.39125pt>
+<img/exp3.png, id=48, 602.25pt x 372.39125pt>
 File: img/exp3.png Graphic file (type png)
  <use img/exp3.png>
-Package pdftex.def Info: img/exp3.png used on input line 262.
+Package pdftex.def Info: img/exp3.png used on input line 248.
 (pdftex.def)             Requested size: 206.39685pt x 127.62277pt.
  [8 <./img/exp3.png (PNG copy)>]
 Missing character: There is no ‚ in font ptmr7t!
@@ -586,12 +580,12 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
+Underfull \hbox (badness 10000) in paragraph at lines 311--312
 []\OT1/ptm/m/n/8 https://www.gartner.com/doc/3179439/predicts--inmemory-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--328
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
 []\OT1/ptm/m/n/8 https://www.confluent.io/blog/turning-the-database-inside-out-
 with-
  []
@@ -607,6 +601,7 @@ Missing character: There is no ì in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
+[9]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -618,29 +613,37 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[9] (Blinktopus.aux) ) 
+[10
+
+] (Blinktopus.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5542 strings out of 493328
- 85025 string characters out of 3139098
+ 5550 strings out of 493328
+ 85099 string characters out of 3139098
  183464 words of memory out of 3000000
- 8975 multiletter control sequences out of 15000+200000
- 39522 words of font info for 76 fonts, out of 3000000 for 9000
+ 8979 multiletter control sequences out of 15000+200000
+ 40659 words of font info for 80 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,8n,41p,1255b,304s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/urw/times/utmri8a.pfb>
-Output written on Blinktopus.pdf (9 pages, 314520 bytes).
+ 39i,8n,41p,1282b,304s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ti
+mes/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Blinktopus.pdf (10 pages, 342822 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
+ 103 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
