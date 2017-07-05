@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  4 JUL 2017 06:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.1)  4 JUL 2017 21:21
 entering extended mode
 **./Blinktopus.tex
 (Blinktopus.tex
@@ -427,8 +427,14 @@ Underfull \vbox (badness 2005) has occurred while \output is active []
 
 
  <./img/htap.png>]
-Underfull \hbox (badness 1803) in paragraph at lines 42--45
-[]\OT1/ptm/m/n/10 Another im-por-tant goal of HTAP sys-tems(aside from
+Underfull \hbox (badness 3354) in paragraph at lines 42--45
+\OT1/ptm/m/n/10 main-tain-ing dif-fer-ent sys-tem com-po-nents com-pat-i-ble in
+
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 42--45
+\OT1/ptm/m/n/10 streams[12]. Sev-eral suc-cess-ful ex-am-ples (e.g. BlinkDB,
  []
 
 
@@ -436,7 +442,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 42--45
 
  []
 
-[2]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
 Underfull \hbox (badness 3557) in paragraph at lines 77--78
 []\OT1/ptm/m/n/10 AQP sys-tems dif-fer ac-cord-ing to their method-ol-ogy
  []
@@ -457,8 +466,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--87
  []
 
 
-Underfull \hbox (badness 7379) in paragraph at lines 94--95
-[]\OT1/ptm/m/n/10 Wavelets as his-tograms have the same "curse of
+Underfull \hbox (badness 3690) in paragraph at lines 94--95
+[]\OT1/ptm/m/n/10 Wavelets, like his-tograms have the same ``curse of
  []
 
 
@@ -470,6 +479,11 @@ Underfull \hbox (badness 6842) in paragraph at lines 94--95
 Underfull \hbox (badness 1496) in paragraph at lines 94--95
 \OT1/ptm/m/n/10 tack-led by ef-fi-ciently built wavelet de-com-po-si-tion, most
 
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 94--95
+\OT1/ptm/m/n/10 which can an-swer only a lim-ited spec-trum of queries.
  []
 
 
@@ -507,12 +521,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ú in font ptmr7t!
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ù in font ptmr7t!
 <img/distinct_count_sketches.png, id=25, 501.875pt x 156.585pt>
 File: img/distinct_count_sketches.png Graphic file (type png)
 
@@ -619,11 +627,11 @@ Before submitting the final camera ready copy, remember to:
 Here is how much of TeX's memory you used:
  5551 strings out of 493328
  85117 string characters out of 3139098
- 183464 words of memory out of 3000000
+ 184464 words of memory out of 3000000
  8980 multiletter control sequences out of 15000+200000
  40659 words of font info for 80 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,8n,41p,1282b,304s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,8n,41p,1288b,304s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C
 :/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/
@@ -637,7 +645,7 @@ s/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
 KTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on Blinktopus.pdf (10 pages, 335418 bytes).
+Output written on Blinktopus.pdf (10 pages, 335898 bytes).
 PDF statistics:
  99 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
