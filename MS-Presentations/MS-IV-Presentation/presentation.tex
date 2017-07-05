@@ -29,9 +29,6 @@
 \end{frame}
 
 \section{Motivation/Problem Statement}
-% one size fits all (OLTP OLAP together)
-% interactive queries (AQP part)
-% HTAP freshness OLAP queries (AQP?)
 \begin{frame}
 \frametitle{Motivation}
 \begin{enumerate}
@@ -59,12 +56,8 @@ $\Rightarrow$ Explore the techniques related to more interactive queries (e.g. \
 \end{itemize}
 \end{enumerate}
 \end{frame}
-% OctopusDB (SV)
-% BlinkDB (AQP)
 
 \section{Conceptual Idea and Implementation}
-% Blinktopus architecture
-% Briefly Histograms (Rice rule) and HLL (Library)
 \begin{frame}
 \frametitle{Conceptual Idea and Implementation}
 \begin{figure}
@@ -134,14 +127,20 @@ $\Rightarrow$ Explore the techniques related to more interactive queries (e.g. \
 \includegraphics[scale=0.5]{img/exp3.png}
 \end{frame}
 
+\begin{frame}
+\frametitle{Challenges} \pause
+\centering
+\includegraphics[scale=0.5]{img/beast.jpg} \\ \pause
+5788,41 min = 96 hours = 4 days
+\end{frame}
+
 \section{Related Work}
-% Apache Samza, Rodent Store, Snappy Data
 \begin{frame}
 \frametitle{Related Work} \pause
 \begin{enumerate}
 \item{\textbf{Apache Samza}}
 \begin{itemize}
-\item{logs as a primary structure;}
+\item{logs as a primary storage;}
 \item{replicates logs on multiple nodes.}
 \end{itemize}
 \pause
@@ -161,13 +160,10 @@ $\Rightarrow$ Explore the techniques related to more interactive queries (e.g. \
 \end{frame}
 
 \section{Conclusion and Future Work}
-% Challenges (memory problem)
-% Conclusion from paper
-% Future Work from paper
 \begin{frame}
 \frametitle{Conclusion} \pause
 \begin{itemize}
-\item{Systems with adaptive layouts can be combined with AQP techniques.} \pause
+\item{Systems with adaptive layouts can be effectively combined with AQP techniques.} \pause
 \item{OLAP queries can benefit from AQP techniques.} \pause
 \item{Non-optimized central log as a primary storage is quite prohibitive.}
 \end{itemize}
