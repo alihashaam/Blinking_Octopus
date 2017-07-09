@@ -21,7 +21,7 @@ import io.dropwizard.setup.Environment;
  *   1. View all entries in log: localhost:8080/log <p>
  *   2. View all SVs: localhost:8080/sv/all <p>
  *   3. Delete all SVs: localhost:8080/sv/clear <p>
- *   4. Query: http://localhost:8080/query?SVid=aqp&type=aqp&table=orders&attr=totalPrice&lower=100&higher=5000&create=false&distinct=false <p>
+ *   4. Query: http://localhost:8080/query?SVid=aqp{@code &}type=aqp{@code &}table=orders{@code &}attr=totalPrice{@code &}lower=100{@code &}higher=5000{@code &}create=false{@code &}distinct=false
  * 
  * @author Pavlo Shevchenko (urmikl18)
  *

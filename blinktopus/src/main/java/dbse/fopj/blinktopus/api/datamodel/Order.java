@@ -31,7 +31,16 @@ public class Order extends Tuple {
 	}
 
 	/**
-	 * Creates a tuple of type Order, for parameters' type information check http://www.tpc.org/tpc_documents_current_versions/pdf/tpc-h_v2.17.2.pdf
+	 * 
+	 * @param orderKey OrderKey
+	 * @param custKey CustKey
+	 * @param orderStatus OrderStatus
+ 	 * @param totalPrice TotalPrice
+	 * @param orderDate OrderDate
+	 * @param orderPriority OrderPriority
+	 * @param clerk Clerk
+	 * @param shipPriority ShipPriority
+	 * @param comment Comment
 	 */
 	public Order(long orderKey, long custKey, char orderStatus, double totalPrice, Date orderDate, String orderPriority, String clerk,
 			int shipPriority, String comment) {

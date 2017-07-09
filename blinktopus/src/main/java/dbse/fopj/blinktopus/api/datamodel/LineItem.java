@@ -39,7 +39,23 @@ public class LineItem extends Tuple {
 	}
 
 	/**
-	 * Creates a new tuple of type LineItem. For parameters' type information check http://www.tpc.org/tpc_documents_current_versions/pdf/tpc-h_v2.17.2.pdf
+	 * 
+	 * @param orderKey OrderKey
+	 * @param partKey PartKey
+	 * @param suppKey SuppKey
+	 * @param lineNumber LineNumber
+	 * @param quantity Quantity
+	 * @param extendedPrice ExtendedPrice
+	 * @param discount Discount
+	 * @param tax Tax
+	 * @param returnFlag ReturnFlag
+	 * @param lineStatus LineStatus
+	 * @param shipDate ShipDate
+	 * @param commitDate CommitDate
+	 * @param receiptDate ReceiptDate
+	 * @param shipInstruct ShipInstruct
+	 * @param shipMode ShipMode
+	 * @param comment Comment
 	 */
 	public LineItem(long orderKey, long partKey, long suppKey, int lineNumber, double quantity, double extendedPrice,
 			double discount, double tax, char returnFlag, char lineStatus, Date shipDate, Date commitDate,
