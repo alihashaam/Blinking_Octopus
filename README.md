@@ -21,3 +21,7 @@ Functionality:
 3. Delete all SVs: localhost:8080/sv/clear
 
 4. Query: http://localhost:8080/query?SVid=aqp&type=aqp&table=orders&attr=totalPrice&lower=100&higher=5000&create=false&distinct=false 
+
+Frontend:
+
+To run the blinktopus application with user interface, use blinktopus.ipynb file.
