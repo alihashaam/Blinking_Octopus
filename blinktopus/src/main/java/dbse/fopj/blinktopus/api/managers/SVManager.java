@@ -45,7 +45,9 @@ public final class SVManager {
 	 */
 	public void clear()
 	{
+		SV aqp = this.allSV.get(0);
 		this.allSV.clear();
+		this.allSV.add(aqp);
 		this.idSV=1;
 	}
 
