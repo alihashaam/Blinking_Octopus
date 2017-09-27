@@ -33,10 +33,10 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-            	<groupId>com.yahoo</groupId>
-            	<artifactId>sketches-core</artifactId>
-            	<version>0.10.0</version>
-            </dependency>
+				<groupId>com.yahoo.datasketches</groupId>
+				<artifactId>sketches-core</artifactId>
+				<version>0.10.0</version>
+			</dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -46,7 +46,7 @@
             <artifactId>dropwizard-core</artifactId>
         </dependency>
         <dependency>
-        	<groupId>com.yahoo</groupId>
+        	<groupId>com.yahoo.datasketches</groupId>
         	<artifactId>sketches-core</artifactId>
         </dependency>
     </dependencies>

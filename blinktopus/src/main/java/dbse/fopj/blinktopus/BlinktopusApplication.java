@@ -49,9 +49,9 @@ public class BlinktopusApplication extends Application<BlinktopusConfiguration> 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/O_0.1.tbl",
-				baseDir + "/src/main/resources/dataset/LI_0.1.tbl");
-		SVManager.getSVManager().maintain("AQP", "aqp", "orders", "totalPrice", Double.MIN_VALUE, Double.MAX_VALUE, true, false);
+		//LogManager.getLogManager().loadData(baseDir + "/src/main/resources/dataset/O_0.1.tbl",
+		//		baseDir + "/src/main/resources/dataset/LI_0.1.tbl");
+		//SVManager.getSVManager().maintain("AQP", "aqp", "orders", "totalPrice", Double.MIN_VALUE, Double.MAX_VALUE, true, false);
 	}
 
 	@Override

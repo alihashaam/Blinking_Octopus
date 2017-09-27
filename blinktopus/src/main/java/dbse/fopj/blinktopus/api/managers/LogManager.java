@@ -5,14 +5,22 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import dbse.fopj.blinktopus.api.datamodel.LineItem;
 import dbse.fopj.blinktopus.api.datamodel.Order;
 import dbse.fopj.blinktopus.api.datamodel.Tuple;
+import dbse.fopj.blinktopus.api.datamodel.User;
 import dbse.fopj.blinktopus.api.resultmodel.LogResult;
 import dbse.fopj.blinktopus.resources.QueryProcessor;
 
@@ -21,10 +29,13 @@ import dbse.fopj.blinktopus.resources.QueryProcessor;
  * @author Pavlo Shevchenko (urmikl18)
  *
  */
+
 public final class LogManager {
 	private static final LogManager INSTANCE = new LogManager();
-	private List<Tuple> dataLog = new ArrayList<Tuple>();
-
+	private List<Tuple> dataLog = new ArrayList<>();
+	private Map<String, Integer> keys = new HashMap<>();
+	ReentrantLock lock = new ReentrantLock();
+	
 	private LogManager() {
 	}
 
@@ -322,5 +333,124 @@ public final class LogManager {
 			return hs.size();
 		}
 	}
-
+	
+	
+	public Response insert(String table, String key, String field0, String field1,String field2, String field3,String field4, String field5,String field6,String field7,String field8,String field9 ){		
+		lock.lock();
+		Response resp = Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		try{
+			User user = new User (key,field0, field1, field2,field3,  field4, field5, field6,  field7, field8,  field9);
+			if (keys.keySet().contains(key)){
+				resp = Response.status(Status.BAD_REQUEST).build();
+			}
+			else{
+				dataLog.add(user);
+				keys.put(key, dataLog.size()-1);
+				resp = Response.status(Status.CREATED).build();
+			}
+		}
+		catch(Exception e){
+	        lock.unlock();
+	        return resp;
+		}
+		finally {
+	        lock.unlock();
+	    }
+		return resp;
+	}
+	
+	public Response update(String table, String key, String field0, String field1,String field2, String field3,String field4, String field5,String field6,String field7,String field8,String field9 ){		
+		lock.lock();
+		Response resp = Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		try{
+			User user = new User (key,field0, field1, field2,field3,  field4, field5, field6,  field7, field8,  field9);
+			if (!keys.keySet().contains(key)){
+				resp = Response.status(Status.BAD_REQUEST).build();
+			}
+			else{
+				dataLog.set(keys.get(key), user);
+				resp = Response.status(Status.CREATED).build();
+			}
+		}
+		catch(Exception e){
+	        lock.unlock();
+	        return resp;
+		}
+		finally {
+	        lock.unlock();
+	    }
+		return resp;
+	}
+	
+	public Response delete(String table, String key){		
+		lock.lock();
+		Response resp = Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		try{
+			if (!keys.keySet().contains(key)){
+				resp = Response.status(Status.BAD_REQUEST).build();
+			}
+			else{
+				dataLog.remove(keys.get(key)); 
+				keys.remove(key);
+				resp = Response.status(Status.CREATED).build();
+			}
+		}
+		catch(Exception e){
+	        lock.unlock();
+	        return resp;
+		}
+		finally {
+	        lock.unlock();
+	    }
+		return resp;
+	}
+	
+	public Response read(String table, String key, List<String> fields){
+		Response resp = Response.status(Status.NOT_FOUND).build();
+		lock.lock();
+		try{
+			if (keys.containsKey(key)){
+				if (fields==null || fields.isEmpty()){
+					dbse.fopj.blinktopus.api.resultmodel.User result = new dbse.fopj.blinktopus.api.resultmodel.User((User)dataLog.get(keys.get(key)));
+					resp = Response.ok(result).build();	
+				}
+				else{
+					dbse.fopj.blinktopus.api.resultmodel.User result = new dbse.fopj.blinktopus.api.resultmodel.User((User)dataLog.get(keys.get(key)), fields);
+					resp = Response.ok(result).build();	
+				}
+							
+			}
+		}
+		finally {
+	        lock.unlock();
+	    }
+		return resp;
+	}
+	
+	public Response scan(String table, String key, List<String> fields, Integer recordCount){
+		Response resp = Response.status(Status.NOT_FOUND).build();
+		lock.lock();
+		try{
+			if (keys.containsKey(key)){
+				Integer foundPos= keys.get(key);
+				List<dbse.fopj.blinktopus.api.resultmodel.User> results = new ArrayList<>();
+				while(foundPos<dataLog.size()&&results.size()<recordCount){
+					if (fields==null || fields.isEmpty()){
+						dbse.fopj.blinktopus.api.resultmodel.User result = new dbse.fopj.blinktopus.api.resultmodel.User((User)dataLog.get(foundPos));
+						results.add(result);
+					}
+					else{
+						dbse.fopj.blinktopus.api.resultmodel.User result = new dbse.fopj.blinktopus.api.resultmodel.User((User)dataLog.get(foundPos), fields);
+						results.add(result);
+					}
+					foundPos++;
+				}
+				resp = Response.ok(results).build();	
+			}
+		}
+		finally {
+	        lock.unlock();
+	    }
+		return resp;
+	}
 }
