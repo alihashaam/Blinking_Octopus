@@ -1,3 +1,6 @@
+For Detail Description of work done in the project, see the scientific report:
+https://github.com/pshevche/Blinking_Octopus/blob/master/Blinktopus_Paper/Blinktopus.pdf
+
 Blinking_Octopus
 
 FOPJ, SoSe 17
